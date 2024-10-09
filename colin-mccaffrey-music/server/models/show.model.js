@@ -7,24 +7,27 @@ const ShowSchema = mongoose.Schema({
   },
   title: {
     type: String,
-    required: [true, "Please enter a title"]
+    required: [true, "please enter a title"],
   },
   location: {
     type: String,
-    required: [true, "Please enter a location"]
+    required: [true, "please enter a location"],
   },
   price: {
     type: Number,
     required: true,
     default: 0,
   },
-  date: Date,
-  required: true,
-},
+  
+  date: {
+    type: Date,
+    required: [true, "please choose a date"]
+    },
+  },
   {
     timestamps: true,
   });
 
-const Show = mongoose.model("Product", ProductSchema);
+const Show = mongoose.model("Show", ShowSchema);
 
 module.exports = Show;
