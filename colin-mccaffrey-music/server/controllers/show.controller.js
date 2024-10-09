@@ -1,3 +1,5 @@
+const express = require("express");
+const router = express.Router();
 const Show = require("../models/show.model");
 
 const getShows = async (req, res) => {
