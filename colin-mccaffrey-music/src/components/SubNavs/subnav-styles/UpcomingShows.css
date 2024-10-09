@@ -3,3 +3,46 @@
   flex-direction: row;
   background-color: white;
 }
+
+.table-container {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 100%;
+}
+
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+
+}
+
+
+th,
+td {
+  border-bottom: 1px solid #ddd;
+  padding: 10px;
+  text-align: left;
+}
+
+th {
+  background-color: #f0f0f0;
+  font-weight: bold;
+  padding: 10px;
+  text-align: left;
+}
+
+tr:nth-child(even) {
+  background-color: #f7f7f7;
+}
+
+tr:hover {
+  background-color: #e7e7e7;
+}
+
+button {
+  background-color: #4CAF50;
+  
+}

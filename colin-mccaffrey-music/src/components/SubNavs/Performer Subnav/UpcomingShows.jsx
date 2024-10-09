@@ -20,24 +20,60 @@ function UpcomingShows() {
   }, []);
 
   return (
-    <div>
-      <h1>Upcoming Shows</h1>
+    // <div>
+    //   <h1>Upcoming Shows</h1>
       
-        {shows.map(show => (
-          <div className="shows-container" key={show.id}>
-            <h2>{show.title}</h2>
-            <p>
-              <span>Date:</span> {new Date(Date.parse(show.date)).toLocaleDateString()}
-              <br />
-              <span>Time:</span> {new Date(Date.parse(show.date)).toLocaleTimeString()}
-              <br />
-              <span>Location: </span>{show.location}
-              <br />
-              <span>{show.description}</span></p>
-          </div>
-        ))}
+    //     {shows.map(show => (
+    //       <div className="shows-container" key={show.id}>
+    //         <h2>{show.title}</h2>
+    //         <p>
+    //           <span>Date:</span> {new Date(Date.parse(show.date)).toLocaleDateString()}
+    //           <br />
+    //           <span>Time:</span> {new Date(Date.parse(show.date)).toLocaleTimeString()}
+    //           <br />
+    //           <span>Location: </span>{show.location}
+    //           <br />
+    //           <span>{show.description}</span></p>
+    //       </div>
+    //     ))}
       
-    </div>
+    // </div>
+
+    <div className="table-container">
+
+  <table>
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>Time</th>
+        <th>Venue</th>
+        <th>Location</th>
+            <th>Price</th>
+            <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      {shows.map((show, index) => (
+        <tr key={show.id}>
+          <td>{new Date(Date.parse(show.date)).toLocaleDateString()}</td>
+          <td>{new Date(Date.parse(show.date)).toLocaleTimeString('en-US', {hour: '2-digit', minute: '2-digit'})}</td>
+          <td>{show.title} @ {new Date(Date.parse(show.date)).toLocaleTimeString('en-US', {hour: '2-digit', minute: '2-digit'})}</td>
+          <td>{show.location}</td>
+          <td>${show.price}</td>
+          <td>
+            <button id="rsvp">RSVP</button>
+            <button id="tickets">Buy Tickets</button>
+          </td>
+        </tr>
+
+      ))}
+
+    </tbody>
+
+  </table>
+
+</div>
   )
 }
 
