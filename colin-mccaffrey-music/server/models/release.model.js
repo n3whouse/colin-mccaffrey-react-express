@@ -2,7 +2,11 @@ const mongoose = require("mongoose");
 
 const ReleaseSchema = mongoose.Schema(
   {
-    cover: {
+    coverFile: {
+      type: Buffer,
+      required: false,
+    },
+    coverUrl: {
       type: String,
       required: false,
     },
@@ -18,7 +22,7 @@ const ReleaseSchema = mongoose.Schema(
       type: String,
       required: false,
     }
-  },
+  }
 
 )
 

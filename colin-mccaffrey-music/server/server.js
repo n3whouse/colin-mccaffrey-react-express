@@ -22,7 +22,7 @@ app.use(bodyParser.json());
 
 app.use("/api/shows", showsRoute);
 app.use("/api/releases", releasesRoute);
-app.use("api/media", mediaRoute);
+app.use("/api/media", mediaRoute);
 
 app.get("/message", (req, res) => {
   const data = { message: "Hello from the Node.js backend!" };
