@@ -4,6 +4,7 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 const showsRoute = require("./routes/show.route");
 const releasesRoute = require("./routes/release.route");
+const mediaRoute = require("./routes/media.route");
 
 const app = express();
 const PORT = 3000;
@@ -21,6 +22,7 @@ app.use(bodyParser.json());
 
 app.use("/api/shows", showsRoute);
 app.use("/api/releases", releasesRoute);
+app.use("api/media", mediaRoute);
 
 app.get("/message", (req, res) => {
   const data = { message: "Hello from the Node.js backend!" };

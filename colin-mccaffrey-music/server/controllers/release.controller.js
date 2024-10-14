@@ -5,7 +5,7 @@ const Release = require("../models/release.model");
 const getReleases = async (req, res) => {
   try {
     const releases = await Release.find({});
-    res.status(200).json(albums);
+    res.status(200).json(releases);
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
