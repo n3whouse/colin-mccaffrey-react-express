@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const showsRoute = require("./routes/show.route");
+const releasesRoute = require("./routes/release.route");
 
 const app = express();
 const PORT = 3000;
@@ -17,7 +18,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cors(corsOptions));
 app.use(bodyParser.json());
+
 app.use("/api/shows", showsRoute);
+app.use("/api/releases", releasesRoute);
 
 app.get("/message", (req, res) => {
   const data = { message: "Hello from the Node.js backend!" };
@@ -26,7 +29,6 @@ app.get("/message", (req, res) => {
 
 
 //⁡⁢⁣⁣// NEXT UP:
-//     1. wrap the mongoose.connect function around it and...
 //      2. put the DB_name, DB_url, username, and password in an .env file (you're going to have to install dotenv and import it like  "require("dotenv").express or something, look it up
 //        3. refer to your school projects regarding JSONwebtoken, bcrypt, and admin middleware and do some Notes about it ⁡
 
