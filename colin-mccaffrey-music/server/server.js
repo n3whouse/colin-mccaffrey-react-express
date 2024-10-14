@@ -1,3 +1,4 @@
+require("dotenv").config({ path: `../.env` });
 const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
@@ -6,8 +7,12 @@ const showsRoute = require("./routes/show.route");
 const releasesRoute = require("./routes/release.route");
 const mediaRoute = require("./routes/media.route");
 
+const dbUser = process.env.DB_USER;
+const dbPassword = process.env.DB_PASSWORD;
+const dbPath = process.env.DB_PATH;
+const port = process.env.PORT || 3001 || 4000;
+
 const app = express();
-const PORT = 3000;
 
 const corsOptions = {
   origin: "*", //Allow requests from any origin
@@ -31,17 +36,16 @@ app.get("/message", (req, res) => {
 
 
 //⁡⁢⁣⁣// NEXT UP:
-//      2. put the DB_name, DB_url, username, and password in an .env file (you're going to have to install dotenv and import it like  "require("dotenv").express or something, look it up
 //        3. refer to your school projects regarding JSONwebtoken, bcrypt, and admin middleware and do some Notes about it ⁡
 
 mongoose
   .connect(
-    "mongodb+srv://alexv:3XH*%3AGKZg%3BNJCFr@colin-mccaffrey.rr3t8.mongodb.net/"
+    `mongodb+srv://${dbUser}:${dbPassword}@${dbPath}/`
   )
   .then(() => {
     console.log("Connected to LiminalDB!");
-    app.listen((3000, 3001), () => {
-      console.log(`Server is running on port: ${PORT}`);
+    app.listen(3000, () => {
+      console.log(`Server is running on port: ${port}`);
     });
   })
   .catch(() => {
