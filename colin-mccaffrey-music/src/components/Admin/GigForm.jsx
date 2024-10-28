@@ -48,7 +48,6 @@ function GigForm({ setShowGigForm }) {
           onChange={handleChange}
           placeholder="Upload an Image"
           accept="image/*"
-          required
         />
         <input className="gigInput" type="text"
           name="title"

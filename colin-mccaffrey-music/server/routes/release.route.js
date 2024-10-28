@@ -5,7 +5,7 @@ const {
   getOneRelease,
   createRelease,
   updateOneRelease,
-  deleteOneRelease
+  deleteOneRelease,
 } = require("../controllers/release.controller");
 
 router.get("/", getReleases);

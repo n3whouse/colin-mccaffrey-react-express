@@ -6,11 +6,12 @@ const cors = require("cors");
 const showsRoute = require("./routes/show.route");
 const releasesRoute = require("./routes/release.route");
 const mediaRoute = require("./routes/media.route");
+const userRoute = require("./routes/user.route");
 
 const dbUser = process.env.DB_USER;
 const dbPassword = process.env.DB_PASSWORD;
 const dbPath = process.env.DB_PATH;
-const port = process.env.PORT || 3001 || 4000;
+const port = process.env.PORT;
 
 const app = express();
 
@@ -28,11 +29,8 @@ app.use(bodyParser.json());
 app.use("/api/shows", showsRoute);
 app.use("/api/releases", releasesRoute);
 app.use("/api/media", mediaRoute);
+app.use("/api/users", userRoute);
 
-app.get("/message", (req, res) => {
-  const data = { message: "Hello from the Node.js backend!" };
-  res.json(data);
-});
 
 
 //⁡⁢⁣⁣// NEXT UP:
@@ -40,11 +38,11 @@ app.get("/message", (req, res) => {
 
 mongoose
   .connect(
-    `mongodb+srv://${dbUser}:${dbPassword}@${dbPath}/`
+    `mongodb+srv://${dbUser}:${dbPassword}@${dbPath}`
   )
   .then(() => {
-    console.log("Connected to LiminalDB!");
-    app.listen(3000, () => {
+    console.log(`Connected to ${dbPath}!`);
+    app.listen(port, () => {
       console.log(`Server is running on port: ${port}`);
     });
   })

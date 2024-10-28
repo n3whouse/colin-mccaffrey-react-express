@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react'
 import "../subnav-styles/UpcomingShows.css";
 
+const dbUrl = process.env.DB_URL;
+
 function UpcomingShows() {
   const [shows, setShows] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:3001/api/shows")
+    fetch("http://localhost:3000/api/shows")
       .then(response => response.json())
       .then(data => {
         console.log("Parsed Data:", data);
