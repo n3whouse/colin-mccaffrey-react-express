@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-function GigForm() {
+function GigForm({ setShowGigForm }) {
   const [gig, setGig] = useState({
     image: '',
     title: '',
@@ -18,6 +18,10 @@ function GigForm() {
     } else {
       setGig({ ...gig, [name]: value });
     }
+  }
+
+  const handleClose = () => {
+    setShowGigForm(false);
   }
 
   const handleSubmit = async (e) => {
@@ -91,7 +95,7 @@ function GigForm() {
           placeholder="Description"
         />
         <button type="submit">Add Gig</button>
-        <button type="button">Back</button>
+        <button type="button" onClick={handleClose}>Close</button>
       </form>
     </>
   )
