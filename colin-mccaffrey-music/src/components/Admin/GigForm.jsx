@@ -38,6 +38,10 @@ function GigForm({ setShowGigForm }) {
     formData.append('imageFile', gig.imageFile);
   }
 
+  /* 
+  ⁡⁢⁣⁣NEXT UP...
+  We have to make the handleSubmit button push data to the proper endpoints so we can bring CRUD functionality to the forms.⁡
+  */
 
   return (
     <>

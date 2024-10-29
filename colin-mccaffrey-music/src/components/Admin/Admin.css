@@ -30,18 +30,16 @@
 
 }
 
-.gigForm, .userForm {
+form {
   display: flex;
   flex-direction: column;
   margin: auto;
-  width: 50%;
+  width: 60%;
   gap: 10px;
   background-color: gainsboro;
 }
 
-.gigInput {
-  outline: 2px black double;
-}
+
 
 .landing-btn {
   width: 20dvh;

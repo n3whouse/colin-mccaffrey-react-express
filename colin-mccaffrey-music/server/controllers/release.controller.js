@@ -2,6 +2,8 @@ const express = require("express");
 const router = express.Router();
 const Release = require("../models/release.model");
 
+
+
 const getReleases = async (req, res) => {
   try {
     const releases = await Release.find({});

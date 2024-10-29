@@ -6,7 +6,7 @@ const ReleaseSchema = mongoose.Schema(
       type: Buffer,
       required: false,
     },
-    coverUrl: {
+    imageUrl: {
       type: String,
       required: false,
     },
