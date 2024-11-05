@@ -35,7 +35,7 @@ app.use("/api/users", userRoute);
 app.use(
   "/assets",
   express.static(path.join(__dirname, "../src/assets/albumcovers"))
-);
+); //to allow any image uploads from the release form pointed at  "localhost:xxxx/assets" to be statically served from /assets/albumcovers folder in repo
 
 mongoose
   .connect(`mongodb+srv://${dbUser}:${dbPassword}@${dbPath}/`)
