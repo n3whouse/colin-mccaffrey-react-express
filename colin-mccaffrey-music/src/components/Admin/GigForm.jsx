@@ -46,7 +46,7 @@ function GigForm({ setShowGigForm }) {
       console.error("Error:", error);
     }
   };
- 
+
   return (
     <>
       <form onSubmit={handleSubmit} className="gigForm">
@@ -90,7 +90,7 @@ function GigForm({ setShowGigForm }) {
 
         <input
           className="gigInput"
-          type="date"
+          type="datetime-local"
           name="date"
           value={gig.date}
           onChange={handleChange}

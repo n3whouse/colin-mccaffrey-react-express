@@ -20,7 +20,7 @@ function UpcomingShows() {
       .catch((error) => {
         console.error("Error fetching data:", error);
       });
-  }, []);
+  }, []); //Leave dependency array empty. Putting in 'shows' as dependency causes infinite loop on GET
 
   return (
     <div className="table-container">
@@ -53,11 +53,6 @@ function UpcomingShows() {
                 <button id="tickets">Buy Tickets</button>
               </td>
             </tr>
-
-            //⁡⁢⁣⁣// Next Up:
-            /* 
-        2. Now that the frontend and backend are connected, time to hash out the admin middleware. Dependencies we will need to install are dotenv, JSONwebtoken, Bcrypt... so far that's it.
-        3. Address Colin once project loose ends are finalized and ask if RSVP/Tickets buttons are necessary/if there are ways to purchase tickets online for shows. If not, shelve them. Either way, they look pretty f'n cool */
           ))}
         </tbody>
       </table>

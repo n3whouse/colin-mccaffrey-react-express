@@ -29,7 +29,7 @@ function Store() {
   }, []);
 
   const handleItemClick = (item) => {
-    setSelectedItem(item);
+    setSelectedItem(selectedItem === item ? null : item); // for toggling selection logic
   };
 
   useEffect(() => {
@@ -56,10 +56,8 @@ function Store() {
             onClick={() => handleItemClick(release._id)}
           >
             <img
-              src={release.coverFile}
-              className={`album-art item${release._id} ${
-                selectedItem === release._id ? "" : "coverFile"
-              }`}
+              src={release.imageUrl}
+              className={`album-art`}
               alt={release.title}
             />
 

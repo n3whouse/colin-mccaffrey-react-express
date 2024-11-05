@@ -1,9 +1,9 @@
 require("dotenv").config({ path: `../.env` });
 const express = require("express");
+const path = require("path");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const cors = require("cors");
-
 
 const showsRoute = require("./routes/show.route");
 const releasesRoute = require("./routes/release.route");
@@ -20,7 +20,7 @@ const app = express();
 const corsOptions = {
   origin: "*", //Allow requests from any origin
   methods: ["OPTIONS", "GET", "POST", "PUT", "DELETE"],
-  allowedHeaders: ["Content-Type", "Authorization"]
+  allowedHeaders: ["Content-Type", "Authorization"],
 };
 
 app.use(cors(corsOptions));
@@ -32,12 +32,13 @@ app.use("/api/shows", showsRoute);
 app.use("/api/releases", releasesRoute);
 app.use("/api/media", mediaRoute);
 app.use("/api/users", userRoute);
-
+app.use(
+  "/assets",
+  express.static(path.join(__dirname, "../src/assets/albumcovers"))
+);
 
 mongoose
-  .connect(
-    `mongodb+srv://${dbUser}:${dbPassword}@${dbPath}/`
-  )
+  .connect(`mongodb+srv://${dbUser}:${dbPassword}@${dbPath}/`)
   .then(() => {
     console.log(`Connected to ${dbPath}!`);
     app.listen(port, () => {
