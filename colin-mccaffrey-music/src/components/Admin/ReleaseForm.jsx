@@ -27,7 +27,7 @@ function ReleaseForm({ setShowReleaseForm }) {
   }
 
   const addRelease = (newRelease) => {
-    setRelease([...release, newRelease]);
+    setRelease([ ...release, newRelease ]);
   }
 
     const handleClose = () => {

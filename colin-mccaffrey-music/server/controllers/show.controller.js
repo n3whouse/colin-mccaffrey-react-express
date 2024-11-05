@@ -3,8 +3,10 @@ const router = express.Router();
 const Show = require("../models/show.model");
 
 const getShows = async (req, res) => {
+  console.log("test")
   try {
     const shows = await Show.find({});
+    console.log(shows)
     res.status(200).json(shows);
   } catch (error) {
     res.status(500).json({ message: error.message });
@@ -23,6 +25,18 @@ const getOneShow = async (req, res) => {
 
 const createShow = async (req, res) => {
   try {
+
+    const showData = {
+      imageUrl: req.file ? req.file.path : null,
+      title: req.body.title,
+      location: req.body.location,
+      price: req.body.price,
+      date: req.body.date,
+      description: req.body.description,
+    };
+
+    console.log("Received Data:", showData);
+
     const show = await Show.create(req.body);
     res.status(201).json(show);
   } catch (error) {

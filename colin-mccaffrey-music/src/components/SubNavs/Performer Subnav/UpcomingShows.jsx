@@ -1,14 +1,18 @@
 import React, { useState, useEffect } from 'react'
 import "../subnav-styles/UpcomingShows.css";
 
-const dbUrl = process.env.DB_URL;
 
 function UpcomingShows() {
   const [shows, setShows] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:3000/api/shows")
-      .then(response => response.json())
+    fetch("http://localhost:8080/api/shows")
+      .then(response => {
+        if (!response.ok) {
+          throw new Error("Network response did a sad");
+        }
+        return response.json()
+      })
       .then(data => {
         console.log("Parsed Data:", data);
         setShows(data);
@@ -18,7 +22,7 @@ function UpcomingShows() {
         console.error("Error fetching data:", error);
       
       });
-  }, [shows]);
+  }, []);
 
   return (
 

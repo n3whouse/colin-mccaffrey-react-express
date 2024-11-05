@@ -9,13 +9,13 @@ I have added at least one release to the database via Insomnia. This means that 
 
 
 function Store() {
-  const [releases, setReleases] = useState([]);
+  const [releases, setReleases] = useState([]); //the reason the map wasn't working was because I was trying to initiate it as an object and maps only work on arrays.
   const [selectedItem, setSelectedItem] = useState(null);
 
   useEffect(() => {
     const fetchReleases = async () => {
       try {
-        const response = await axios.get(`${process.env.RELEASES_API_URL}`);
+        const response = await axios.get(`${process.env.REACT_APP_RELEASES_API_URL}`);
         setReleases(response.data);
       } catch (error) {
         console.error("Error fetching releases:", error);
@@ -53,14 +53,14 @@ function Store() {
         </div> */}
           {releases.map((release) => (
             <div
-              key={release._id}
-              className={`gridItem item${release._id} ${selectedItem === release._id ? 'selected' : ''}`}
-              onClick={() => handleItemClick(release._id)}>
+              key={release.id}
+              className={`gridItem item${release.id} ${selectedItem === release.id ? 'selected' : ''}`}
+              onClick={() => handleItemClick(release.id)}>
             
-              <img src={release.coverFile} className={`album-art item${release._id} ${selectedItem === release._id ? '' : 'coverFile'}`} alt={release.title} />
+              <img src={release.coverFile} className={`album-art item${release.id} ${selectedItem === release.id ? '' : 'coverFile'}`} alt={release.title} />
 
 
-              {selectedItem === release._id && (
+              {selectedItem === release.id && (
                 <div className="album-details">
                   <button>Buy Now</button>
                   <button>See Credits</button>
