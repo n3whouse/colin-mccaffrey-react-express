@@ -1,20 +1,15 @@
 import React, { useState } from 'react'
 import axios from 'axios';
 
-/* 
-⁡⁢⁣⁣Right now, the submit button is firing off the error message "Error creating release:" and I'm not sure why. We will try again tomorrow.⁡
-
-*/
 
 function ReleaseForm({ setShowReleaseForm }) {
   
   const [release, setRelease] = useState({
-    
-    coverFile: null,
-    imageUrl: '',
+    imageUrl: String,
     title: '',
     location: '',
-    description: ''
+    description: '',
+    imageFile: null,
   });
   
   const handleChange = (e) => {
@@ -24,11 +19,7 @@ function ReleaseForm({ setShowReleaseForm }) {
     } else {
       setRelease({ ...release, [name]: value });
     }
-  }
-
-  const addRelease = (newRelease) => {
-    setRelease([ ...release, newRelease ]);
-  }
+  };
 
     const handleClose = () => {
       setShowReleaseForm(false);
@@ -36,25 +27,20 @@ function ReleaseForm({ setShowReleaseForm }) {
 
     const handleSubmit = async (e) => {
       e.preventDefault();
-
+      
       const formData = new FormData();
-      formData.append('coverFile', release.coverFile);
+      formData.append('imageFile', release.imageFile);
       formData.append('imageUrl', release.imageUrl);
       formData.append('title', release.title);
       formData.append('description', release.description);
       formData.append('purchaseLink', release.purchaseLink);
 
       try {
-        const response = await axios.post(`${process.env.RELEASES_API_URL}`, formData, {
-          headers: {
-            'Content-Type': 'multipart/form-data',
-          },
-        });
-      
-        addRelease(response.data);
-          handleClose()
+        const response = await axios.post(`${process.env.REACT_APP_RELEASES_API_URL}`, formData);
+    
+        console.log("Success", response.data);
       } catch (error) {
-        alert("Error creating release:", error);
+        console.log("Error:", error);
       }
     }
     return (
@@ -62,7 +48,7 @@ function ReleaseForm({ setShowReleaseForm }) {
         <form onSubmit={handleSubmit} className="releaseForm">
 
           <input className="releaseInput" type="file"
-            name="coverFile"
+            name="imageFile"
             onChange={handleChange}
             placeholder="Upload an Image"
             accept="image/*"
@@ -97,7 +83,7 @@ function ReleaseForm({ setShowReleaseForm }) {
             placeholder="Purchase Link"
           />
 
-          <button type="submit" onClick={() => setShowReleaseForm(true)}>Add Release</button>
+          <button type="submit" onClick={handleSubmit}>Add Release</button>
           <button type="button" onClick={handleClose}>Close</button>
         </form>
       </>

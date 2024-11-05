@@ -9,7 +9,6 @@ function GigForm({ setShowGigForm }) {
     price: "",
     date: "",
     description: "",
-    imageFile: null,
   });
 
   const handleChange = (e) => {
@@ -36,11 +35,10 @@ function GigForm({ setShowGigForm }) {
     formData.append("price", gig.price);
     formData.append("date", gig.date);
     formData.append("description", gig.description);
-    formData.append("imageFile", gig.imageFile);
 
     try {
       const response = await axios.post(
-        "http://localhost:8080/api/shows",
+        `${process.env.REACT_APP_SHOWS_API_URL}`,
         formData
       );
       console.log("Success", response.data);
@@ -48,11 +46,7 @@ function GigForm({ setShowGigForm }) {
       console.error("Error:", error);
     }
   };
-  /* 
-  ⁡⁢⁣⁣NEXT UP...
-  We have to make the handleSubmit button push data to the proper endpoints so we can bring CRUD functionality to the forms.⁡
-  */
-
+ 
   return (
     <>
       <form onSubmit={handleSubmit} className="gigForm">
