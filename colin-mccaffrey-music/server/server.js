@@ -1,7 +1,7 @@
-require("dotenv").config({ path: `../.env` });
+require("dotenv").config({ path: `../.env.production` });
 const express = require("express");
 const path = require("path");
-const mongoose = require("mongoose");
+const sequelize = require("./db");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 
@@ -16,6 +16,7 @@ const dbPath = process.env.DB_PATH;
 const port = process.env.PORT;
 
 const app = express();
+require("./db");
 
 const corsOptions = {
   origin: "*", //Allow requests from any origin
@@ -37,14 +38,15 @@ app.use(
   express.static(path.join(__dirname, "../src/assets/albumcovers"))
 ); //to allow any image uploads from the release form pointed at  "localhost:xxxx/assets" to be statically served from /assets/albumcovers folder in repo
 
-mongoose
-  .connect(`mongodb+srv://${dbUser}:${dbPassword}@${dbPath}/`)
+sequelize
+  .sync()
   .then(() => {
-    console.log(`Connected to ${dbPath}!`);
-    app.listen(port, () => {
-      console.log(`Server is running on port: ${port}`);
-    });
+    console.log("Database synced");
   })
-  .catch(() => {
-    console.log("Connection Failed");
+  .catch((err) => {
+    console.log("Unable to connect to the database: ", err);
   });
+
+app.listen(port, () => {
+  console.log(`Server is running on port: ${port}`);
+});
