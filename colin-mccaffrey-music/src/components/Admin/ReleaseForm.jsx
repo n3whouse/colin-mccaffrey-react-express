@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 
+
 function ReleaseForm({ setShowReleaseForm }) {
   const [release, setRelease] = useState({
     imageFile: null,
@@ -38,7 +39,7 @@ function ReleaseForm({ setShowReleaseForm }) {
 
     try {
       const response = await axios.post(
-        `${process.env.REACT_APP_RELEASES_API_URL}`,
+        `${process.env.REACT_APP_RELEASES_URL}`,
         formData
       );
 

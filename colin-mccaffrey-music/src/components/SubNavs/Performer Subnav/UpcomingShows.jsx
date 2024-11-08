@@ -1,11 +1,15 @@
 import React, { useState, useEffect } from "react";
 import "../subnav-styles/UpcomingShows.css";
 
+console.log(process.env)
+const showUrl = process.env.REACT_APP_SHOWS_API_URL;
+
+
 function UpcomingShows() {
   const [shows, setShows] = useState([]);
 
   useEffect(() => {
-    fetch(`${process.env.REACT_APP_SHOWS_API_URL}`)
+    fetch(`${showUrl}`)
       .then((response) => {
         if (!response.ok) {
           throw new Error("Network response did a sad");

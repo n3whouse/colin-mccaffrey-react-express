@@ -1,5 +1,9 @@
 import React, { useState } from "react";
 import axios from "axios";
+console.log("Current Environment: ", process.env.NODE_ENV);
+
+const showApiUrl = process.env.REACT_APP_SHOWS_API_URL;
+console.log(showApiUrl);
 
 function GigForm({ setShowGigForm }) {
   const [gig, setGig] = useState({
@@ -38,7 +42,7 @@ function GigForm({ setShowGigForm }) {
 
     try {
       const response = await axios.post(
-        `${process.env.REACT_APP_SHOWS_API_URL}`,
+        `${showApiUrl}`,
         formData
       );
       console.log("Success", response.data);

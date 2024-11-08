@@ -11,16 +11,22 @@ function LandingPage({ setIsLoggedIn }) {
   const handleGigForm = (e) => {
     e.preventDefault();
     setShowGigForm(true);
+    setShowUserForm(false);
+    setShowReleaseForm(false);
   }
 
   const handleUserForm = (e) => {
     e.preventDefault();
     setShowUserForm(true);
+    setShowGigForm(false);
+    setShowReleaseForm(false);
   }
 
   const handleReleaseForm = (e) => {
     e.preventDefault();
     setShowReleaseForm(true);
+    setShowGigForm(false);
+    setShowUserForm(false);
   }
 
   const handleLogOut = (e) => {
