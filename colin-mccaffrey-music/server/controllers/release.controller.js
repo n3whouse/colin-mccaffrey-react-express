@@ -4,7 +4,7 @@ const Release = require("../models/release.model");
 
 const getReleases = async (req, res) => {
   try {
-    const releases = await Release.find({});
+    const releases = await Release.findAll({});
     res.status(200).json(releases);
   } catch (error) {
     res.status(500).json({ message: error.message });
@@ -14,7 +14,7 @@ const getReleases = async (req, res) => {
 const getOneRelease = async (req, res) => {
   try {
     const { id } = req.params;
-    const release = await Release.findById(id);
+    const release = await Release.findByPk(id);
     res.status(200).json(release);
   } catch (error) {
     res.status(500).json({ message: error.message });
@@ -24,7 +24,7 @@ const getOneRelease = async (req, res) => {
 const createRelease = async (req, res) => {
   try {
     const { title, description, purchaseLink } = req.body;
-    const imageUrl = `http://localhost:8080/assets/${req.file.filename}`;
+    const imageUrl = `${process.env.DB_HOST}/${req.file.filename}`;
 
     const release = await Release.create({
       title,
@@ -42,7 +42,11 @@ const createRelease = async (req, res) => {
 const updateOneRelease = async (req, res) => {
   try {
     const { id } = req.params;
-    const release = await Release.findByIdAndUpdate(id, req.body);
+    const [updated] = await Release.update(id, req.body, {
+      where: {
+        id: id,
+      },
+    });
     res.status(200).json(release);
   } catch (error) {
     res.status(500).json({ message: error.message });

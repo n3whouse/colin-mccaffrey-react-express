@@ -1,18 +1,18 @@
-require("dotenv").config({ path: `../.env.production` });
+//production
 const express = require("express");
 const path = require("path");
 const sequelize = require("./db");
 const bodyParser = require("body-parser");
 const cors = require("cors");
+const dotenv = require("dotenv");
+
 
 const showsRoute = require("./routes/show.route");
 const releasesRoute = require("./routes/release.route");
 const mediaRoute = require("./routes/media.route");
 const userRoute = require("./routes/user.route");
 
-const dbUser = process.env.DB_USER;
-const dbPassword = process.env.DB_PASSWORD;
-const dbPath = process.env.DB_PATH;
+const dbHost = process.env.DB_HOST;
 const port = process.env.PORT;
 
 const app = express();
@@ -35,16 +35,16 @@ app.use("/api/media", mediaRoute);
 app.use("/api/users", userRoute);
 app.use(
   "/assets",
-  express.static(path.join(__dirname, "../src/assets/albumcovers"))
+  express.static(path.join(__dirname, "src/assets/albumcovers"))
 ); //to allow any image uploads from the release form pointed at  "localhost:xxxx/assets" to be statically served from /assets/albumcovers folder in repo
 
 sequelize
   .sync()
   .then(() => {
-    console.log("Database synced");
+    console.log(`Data synced`);
   })
   .catch((err) => {
-    console.log("Unable to connect to the database: ", err);
+    console.log(`Unable to connect to the database: `, err);
   });
 
 app.listen(port, () => {

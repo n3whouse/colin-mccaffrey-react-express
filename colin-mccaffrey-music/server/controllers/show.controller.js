@@ -3,29 +3,32 @@ const router = express.Router();
 const Show = require("../models/show.model");
 
 const getShows = async (req, res) => {
-  console.log("test")
+  console.log("test");
   try {
-    const shows = await Show.find({});
-    console.log(shows)
+    const shows = await Show.findAll({});
+    console.log(shows);
     res.status(200).json(shows);
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
-}
+};
 
 const getOneShow = async (req, res) => {
   try {
     const { id } = req.params;
-    const show = await Show.findById(id)
+    const show = await Show.findByPk(id);
     res.status(200).json(show);
-  } catch (error) {
+    update;
     res.status(500).json({ message: error.message });
+  } catch (error) {
+    res.status(500).json({
+      message: "Show not found",
+    });
   }
-}
+};
 
 const createShow = async (req, res) => {
   try {
-
     const showData = {
       imageUrl: req.file ? req.file.path : null,
       title: req.body.title,
@@ -42,32 +45,43 @@ const createShow = async (req, res) => {
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
-}
+};
 
 const updateOneShow = async (req, res) => {
   try {
     const { id } = req.params;
-    const show = await Show.findByIdAndUpdate(id, req.body);
+    const [updated] = await Show.update(id, req.body, {
+      where: {
+        id: id,
+      },
+    });
+    if (!updated) {
+      return res.status(404).json({ message: "Show not found" });
+    }
     res.status(200).json(show);
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
-}
+};
 
 const deleteOneShow = async (req, res) => {
   try {
     const { id } = req.params;
-    const show = await Show.findByIdAndDelete(id, req.body);
+    const show = await Show.destroy({
+      where: {
+        id: id,
+      },
+    });
     res.status(200).json({ message: "Show successfully deleted!" });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
-}
+};
 
 module.exports = {
   getShows,
   getOneShow,
   createShow,
   updateOneShow,
-  deleteOneShow
-}
+  deleteOneShow,
+};

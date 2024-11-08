@@ -1,16 +1,41 @@
-const mongoose = require("mongoose");
+const { DataTypes } = require("sequelize");
+const sequelize = require("../db");
 
-const MediaSchema = mongoose.Schema(
+const Media = sequelize.define(
+  "Media",
   {
-    videoLink: String,
-    imageLink: String,
-    title: String,
-    description: String,
-    category: String,
+    videoFile: {
+      type: DataTypes.BLOB,
+      allowNull: true,
+    },
+    videoUrl: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+    imageFile: {
+      type: DataTypes.BLOB,
+      allowNull: true,
+    },
+    imageUrl: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+    title: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    description: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+    category: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
   },
-
-)
-
-const Media = mongoose.model("Media", MediaSchema);
+  {
+    timestamps: false,
+  }
+);
 
 module.exports = Media;

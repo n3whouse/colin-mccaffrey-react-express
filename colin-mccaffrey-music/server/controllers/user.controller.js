@@ -67,15 +67,15 @@ const updateOneUser = async (req, res) => {
 const deleteOneUser = async (req, res) => {
   try {
     const { id } = req.params;
-    const user = await User.destroy({
+    const deleted = await User.destroy({
       where: {
         id: id,
       },
     });
     if (!deleted) {
-      return res.status(404).json({ message: "User Not Found" });
+      return res.status(404).json({ message: "User Not Deleted" });
     }
-    res.status(204).send();
+    res.status(204).send({ message: "User Successfully Deleted!" });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
@@ -90,7 +90,7 @@ const loginUser = async (req, res) => {
       return res.status(404).json({ message: "User Not Found" });
     }
     const isMatch = await bcrypt.compare(password, user.password);
-    
+
     if (!isMatch) {
       return res.status(401).json({ message: "Invalid Password" });
     }

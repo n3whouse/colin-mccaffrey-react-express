@@ -1,31 +1,32 @@
-const mongoose = require("mongoose");
+const { DataTypes } = require("sequelize");
+const sequelize = require("../db");
 
-const ReleaseSchema = mongoose.Schema(
+const Release = sequelize.define("Release", 
   {
     coverFile: {
-      type: Buffer,
-      required: false,
+      type: DataTypes.BLOB,
+      allowNull: true,
     },
     imageUrl: {
-      type: String,
-      required: false,
+      type: DataTypes.STRING,
+      allowNull: true,
     },
     title: {
-      type: String,
-      required: true,
+      type: DataTypes.STRING,
+      allowNull: false,
     },
     description: {
-        type: String,
-        required: false,
+        type: DataTypes.STRING,
+        allowNull: true,
     },
     purchaseLink: {
-      type: String,
-      required: false,
+      type: DataTypes.STRING,
+      allowNull: true,
     }
+  }, {
+    timestamps: true
   }
 
 )
-
-const Release = mongoose.model("Release", ReleaseSchema);
 
 module.exports = Release;

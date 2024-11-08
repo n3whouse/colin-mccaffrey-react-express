@@ -1,40 +1,41 @@
-const mongoose = require("mongoose");
+const { DataTypes } = require("sequelize");
+const sequelize = require("../db");
 
-const ShowSchema = mongoose.Schema(
+const Show = sequelize.define(
+  "Show",
   {
     imageUrl: {
-      type: String,
-      required: false,
+      type: DataTypes.STRING,
+      allowNull: false,
+      defaultValue: "",
     },
     title: {
-      type: String,
-      required: [true, "please enter a title"],
+      type: DataTypes.STRING,
+      allowNull: false,
     },
     location: {
-      type: String,
-      required: [true, "please enter a location"],
+      type: DataTypes.STRING,
+      allowNull: false,
     },
     price: {
-      type: Number,
-      required: true,
-      default: 0,
+      type: DataTypes.DECIMAL(10, 2),
+      allowNull: false,
+      defaultValue: 0.0,
     },
 
     date: {
-      type: Date,
-      required: [true, "please choose a date"],
+      type: DataTypes.DATE,
+      allowNull: false,
     },
 
     description: {
-      type: String,
-      required: false,
+      type: DataTypes.STRING,
+      allowNull: false,
     },
   },
   {
     timestamps: true,
   }
 );
-
-const Show = mongoose.model("Show", ShowSchema);
 
 module.exports = Show;
