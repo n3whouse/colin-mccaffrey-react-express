@@ -4,6 +4,8 @@ const path = require("path");
 const sequelize = require("./db");
 const bodyParser = require("body-parser");
 const cors = require("cors");
+const https = require("https");
+const fs = require("fs");
 require("dotenv").config({
   path: `../.env.${process.env.NODE_ENV || "dev"}`,
 });
@@ -14,7 +16,7 @@ const mediaRoute = require("./routes/media.route");
 const userRoute = require("./routes/user.route");
 
 const dbHost = process.env.DB_HOST;
-const port = process.env.PORT;
+const port = process.env.PORT || 443;
 
 const app = express();
 
@@ -23,12 +25,7 @@ const corsOptions = {
   methods: ["OPTIONS", "GET", "POST", "PUT", "DELETE"],
   allowedHeaders: ["Content-Type", "Authorization"],
 };
-// const serveStaticOptions = {
-//   dotfiles: "ignore",
-//   etag: true,
-//   extensions: ["html"],
-//   index: false,
-// };
+
 app.use(express.static(path.join(__dirname, "build")));
 
 app.get("/", (req, res) => {
@@ -58,6 +55,13 @@ sequelize
     console.log(`Unable to connect to the database: `, err);
   });
 
-app.listen(port, () => {
+const options = {
+  key: fs.readFileSync(),
+  cert: fs.readFileSync(),
+};
+
+const server = https.createServer(options, app);
+
+server.listen(port, () => {
   console.log(`Server is running on port: ${port}`);
 });
