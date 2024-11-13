@@ -8,23 +8,22 @@ const showUrl = process.env.REACT_APP_SHOWS_API_URL;
 function UpcomingShows() {
   const [shows, setShows] = useState([]);
 
-  useEffect(() => {
-    fetch(`${showUrl}`)
-      .then((response) => {
+   useEffect(() => {
+    const fetchShows = async () => {
+      try {
+        const response = await fetch(`${showUrl}`);
         if (!response.ok) {
-          throw new Error("Network response did a sad");
+          throw new Error('Network response was not ok');
         }
-        return response.json();
-      })
-      .then((data) => {
-        console.log("Parsed Data:", data);
+        const data = await response.json();
         setShows(data);
-        console.log("Updated State:", shows);
-      })
-      .catch((error) => {
-        console.error("Error fetching data:", error);
-      });
-  }, []); //Leave dependency array empty. Putting in 'shows' as dependency causes infinite loop on GET
+      } catch (error) {
+        console.error('Error fetching shows:', error);
+      }
+    };
+
+    fetchShows();
+  }, [showUrl]);
 
   return (
     <div className="table-container">
