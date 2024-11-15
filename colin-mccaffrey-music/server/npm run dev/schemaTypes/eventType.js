@@ -42,6 +42,8 @@ export const eventType = defineType({
       name: 'price',
       type: 'number',
       group: 'details',
+      validation: (rule) =>
+        rule.required().min(0).error('A price is required. If event is free, enter 0.'),
     }),
     defineField({
       name: 'doorsOpen',

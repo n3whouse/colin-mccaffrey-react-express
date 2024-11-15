@@ -59,7 +59,8 @@ const UpcomingShows = () => {
                 })}
               </td>
               <td>
-                {show.price ? "$" + show.price : 'Free'}
+                {show.price > 0 ? "$" + show.price
+                  : 'Free'}
               </td>
               <td>
                 <button id="rsvp">RSVP</button>
