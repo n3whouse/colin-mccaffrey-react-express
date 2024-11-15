@@ -39,6 +39,11 @@ export const eventType = defineType({
       group: 'details',
     }),
     defineField({
+      name: 'price',
+      type: 'number',
+      group: 'details',
+    }),
+    defineField({
       name: 'doorsOpen',
       description: 'Number of minutes before the start time for admission',
       type: 'number',
