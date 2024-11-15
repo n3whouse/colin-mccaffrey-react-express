@@ -103,7 +103,7 @@ export const eventType = defineType({
         : 'No date'
 
       return {
-        title: artist ? `${nameFormatted} ${artist}` : nameFormatted,
+        title: artist ? `${nameFormatted}: featuring ${artist}` : nameFormatted,
         subtitle: venue ? `${dateFormatted} at ${venue}` : dateFormatted,
         media: image || CalendarIcon,
       }
