@@ -19,24 +19,20 @@ const port = process.env.PORT;
 const app = express();
 
 const corsOptions = {
-  origin: "*", //Allow requests from any origin
+  origin: ["https://colinmccaffrey.com", "https://www.colinmccaffrey.com"],
   methods: ["OPTIONS", "GET", "POST", "PUT", "DELETE"],
   allowedHeaders: ["Content-Type", "Authorization"],
 };
-// const serveStaticOptions = {
-//   dotfiles: "ignore",
-//   etag: true,
-//   extensions: ["html"],
-//   index: false,
-// };
-app.use(express.static(path.join(__dirname, "build")));
-
-app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "../build", "index.html"));
-});
-
+// app.use(cors());
 app.use(cors(corsOptions));
 app.use(express.json());
+
+app.use(express.static(path.join(__dirname, "../static")));
+
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "../static", "index.html"));
+}); //serve main HTML file for any URL that is not an endpoint, so that /admin is accessible
+
 app.use(express.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
