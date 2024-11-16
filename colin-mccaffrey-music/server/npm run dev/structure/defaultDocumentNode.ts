@@ -18,6 +18,8 @@ export const defaultDocumentNode: DefaultDocumentNodeResolver = (S, {schemaType}
           })
           .title('Events'), //sets title of view to 'events' which will be displayed in Sanity UI
       ]) //closes array of views for 'artist' doc.
+    case 'siteSettings':
+      return S.document().views([])
     default:
       return S.document().views([S.view.form()]) //default case for switch statement (just the editing form) for any docs that don't match the 'artist' type.
   }

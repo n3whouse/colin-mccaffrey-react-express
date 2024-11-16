@@ -4,6 +4,7 @@ export const siteSettings = defineType({
   name: 'siteSettings',
   title: 'Site Settings',
   type: 'document',
+  __experimental_formPreviewTitle: false,
   groups: [
     {name: 'bio', title: 'Bio'},
     {name: 'booking', title: 'Booking'},
@@ -12,29 +13,22 @@ export const siteSettings = defineType({
     defineField({
       name: 'bio',
       title: 'Bio',
-      type: 'object',
-      fields: [
-        defineField({
-          name: 'content',
-          title: 'Content',
-          type: 'text',
-          validation: (rule) => rule.required().min(1).error('Bio cannot be blank.'),
-        }),
-        defineField({
-          name: 'profilePicture',
-          title: 'Profile Picture',
-          type: 'image',
-          options: {
-            source: 'siteSettings',
-            hotspot: 'true',
-          },
-        }),
-      ],
+      type: 'text',
+      validation: (rule) => rule.required().min(1).error('Bio cannot be blank.'),
+    }),
+    defineField({
+      name: 'profilePicture',
+      title: 'Profile Picture',
+      type: 'image',
+      options: {
+        source: 'siteSettings',
+        hotspot: 'true',
+      },
     }),
     defineField({
       name: 'bookingAndContact',
       title: 'Booking & Contact',
-      type: 'object',
+      type: 'document',
       fields: [
         defineField({
           name: 'email',
@@ -53,7 +47,7 @@ export const siteSettings = defineType({
     defineField({
       name: 'contact',
       title: 'Contact',
-      type: 'object',
+      type: 'document',
       fields: [
         defineField({
           name: 'address',
@@ -63,8 +57,7 @@ export const siteSettings = defineType({
         defineField({
           name: 'socialLinks',
           title: 'Social Links',
-          type: 'array',
-          of: [{type: 'url'}],
+          type: 'text',
         }),
       ],
     }),
