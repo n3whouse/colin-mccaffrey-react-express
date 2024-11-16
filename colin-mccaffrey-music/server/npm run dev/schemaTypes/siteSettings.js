@@ -1,4 +1,5 @@
 import {defineField, defineType} from 'sanity'
+import {bookingAndContactInfo} from './bookingAndContactInfo'
 
 export const siteSettings = defineType({
   name: 'siteSettings',
@@ -23,35 +24,15 @@ export const siteSettings = defineType({
       title: 'Profile Picture',
       type: 'image',
       options: {
-        source: 'siteSettings',
-        hotspot: 'true',
+        hotspot: true,
       },
       group: 'bio',
     }),
     defineField({
-      name: 'email',
-      title: 'Email',
-      type: 'string',
-      validation: (rule) => rule.required().email().error('A valid email is required.'),
-      group: 'bookingAndContact',
-    }),
-    defineField({
-      name: 'phone',
-      title: 'Phone',
-      type: 'string',
-      validation: (rule) => rule.required().min(1).error('A valid phone number is required'),
-      group: 'bookingAndContact',
-    }),
-    defineField({
-      name: 'address',
-      title: 'Address',
-      type: 'string',
-      group: 'bookingAndContact',
-    }),
-    defineField({
-      name: 'socialLinks',
-      title: 'Social Links',
-      type: 'text',
+      name: 'bookingAndContactInfo', // Reference to the Booking & Contact Info document
+      title: 'Booking & Contact',
+      type: 'reference', // Use reference type
+      to: [{type: 'bookingAndContactInfo'}], // Reference to the bookingContactInfo document
       group: 'bookingAndContact',
     }),
   ],

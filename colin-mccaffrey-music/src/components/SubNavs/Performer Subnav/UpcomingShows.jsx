@@ -37,7 +37,7 @@ const UpcomingShows = () => {
 
   return (
     <div className="table-container">
-      <h1>Upcoming Shows</h1>
+      <h1>Upcoming Shows (UNDER TESTING - NOT REAL DATES)</h1>
       <table>
         <thead>
           <tr>

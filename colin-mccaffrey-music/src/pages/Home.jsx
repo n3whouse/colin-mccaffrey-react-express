@@ -5,6 +5,7 @@ import Bio from "../components/Bio";
 import Performer from "../components/Performer";
 import Engineer from "../components/Engineer";
 import Songwriter from "../components/Songwriter";
+import BookingAndContact from '../components/BookingAndContact';
 import Store from "../pages/Store";
 import { Link } from "react-router-dom";
 
@@ -40,6 +41,7 @@ function Home() {
 
               {activeComponent === "bio" && <Bio />}
               {activeComponent === "store" && <Store />}
+              {activeComponent === "booking" && <BookingAndContact />}
               {activeComponent === "performer" && <Performer />}
               {activeComponent === "engineer" && <Engineer />}
               {activeComponent === "songwriter" && <Songwriter />}
