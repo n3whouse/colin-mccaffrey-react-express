@@ -7,14 +7,16 @@ export const siteSettings = defineType({
   __experimental_formPreviewTitle: false,
   groups: [
     {name: 'bio', title: 'Bio'},
-    {name: 'booking', title: 'Booking'},
+    {name: 'bookingAndContact', title: 'Booking & Contact'},
   ],
   fields: [
     defineField({
       name: 'bio',
       title: 'Bio',
-      type: 'text',
+      type: 'array',
+      of: [{type: 'block'}],
       validation: (rule) => rule.required().min(1).error('Bio cannot be blank.'),
+      group: 'bio',
     }),
     defineField({
       name: 'profilePicture',
@@ -24,42 +26,33 @@ export const siteSettings = defineType({
         source: 'siteSettings',
         hotspot: 'true',
       },
+      group: 'bio',
     }),
     defineField({
-      name: 'bookingAndContact',
-      title: 'Booking & Contact',
-      type: 'document',
-      fields: [
-        defineField({
-          name: 'email',
-          title: 'Email',
-          type: 'string',
-          validation: (rule) => rule.required().email().error('A valid email is required.'),
-        }),
-        defineField({
-          name: 'phone',
-          title: 'Phone',
-          type: 'string',
-          validation: (rule) => rule.required().min(1).error('A valid phone number is required'),
-        }),
-      ],
+      name: 'email',
+      title: 'Email',
+      type: 'string',
+      validation: (rule) => rule.required().email().error('A valid email is required.'),
+      group: 'bookingAndContact',
     }),
     defineField({
-      name: 'contact',
-      title: 'Contact',
-      type: 'document',
-      fields: [
-        defineField({
-          name: 'address',
-          title: 'Address',
-          type: 'string',
-        }),
-        defineField({
-          name: 'socialLinks',
-          title: 'Social Links',
-          type: 'text',
-        }),
-      ],
+      name: 'phone',
+      title: 'Phone',
+      type: 'string',
+      validation: (rule) => rule.required().min(1).error('A valid phone number is required'),
+      group: 'bookingAndContact',
+    }),
+    defineField({
+      name: 'address',
+      title: 'Address',
+      type: 'string',
+      group: 'bookingAndContact',
+    }),
+    defineField({
+      name: 'socialLinks',
+      title: 'Social Links',
+      type: 'text',
+      group: 'bookingAndContact',
     }),
   ],
 })
