@@ -1,10 +1,11 @@
 import type {StructureResolver} from 'sanity/structure'
-import {CalendarIcon, UsersIcon, PinIcon} from '@sanity/icons'
+import {CalendarIcon, AddDocumentIcon, UsersIcon, PinIcon} from '@sanity/icons'
 import {eventType} from '../schemaTypes/eventType'
 import {artistType} from '../schemaTypes/artistType'
 import {venueType} from '../schemaTypes/venueType'
+import {siteSettings} from '../schemaTypes/siteSettings'
 
-export const schemaTypes = [artistType, eventType, venueType]
+export const schemaTypes = [artistType, eventType, venueType, siteSettings]
 
 export const structure: StructureResolver = (
   S, //defines a constant 'structure' that is a function (a StructureResolver) which takes a param 'S' (the structure builder) to create the content structure.
@@ -27,4 +28,9 @@ export const structure: StructureResolver = (
       S.divider(), //divide the "root" component into 2.
       S.documentTypeListItem('artist').title('Artists').icon(UsersIcon),
       S.documentTypeListItem('venue').title('Venues').icon(PinIcon),
+      S.divider(),
+      S.documentTypeListItem('siteSettings')
+        .title('Site Settings')
+        .icon(AddDocumentIcon)
+        .child(S.document().schemaType('siteSettings').documentId('siteSettings')),
     ]) //... and put artists and venues on the other side of the divider with the UsersIcon and PinIcon representing them graphically, respectively
