@@ -1,6 +1,7 @@
 import {defineField, defineType} from 'sanity'
 import {bookingAndContactInfo} from './bookingAndContactInfo'
 
+
 export const siteSettings = defineType({
   name: 'siteSettings',
   title: 'Site Settings',
@@ -10,6 +11,7 @@ export const siteSettings = defineType({
     {name: 'bio', title: 'Bio'},
     {name: 'bookingAndContact', title: 'Booking & Contact'},
   ],
+  // Beginning of "Bio" field ----------------------------
   fields: [
     defineField({
       name: 'bio',
