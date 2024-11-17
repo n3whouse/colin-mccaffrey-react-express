@@ -1,31 +1,36 @@
 import React, { useEffect, useState } from "react";
+import client from "../sanity/client";
 import "../styles/Store.css";
+import imageUrlBuilder from '@sanity/image-url';
 
-/* 
-⁡⁢⁣⁣NEXT UP...
-I have added at least one release to the database via Insomnia. This means that the endpoints are working. There is CRUD functionality. The problem is that when we were serving from the static 'releases.js' helper file before we established the endpoints, the store items were displaying just fine. Now the issue is trying to get the releases to come back up on the store again.⁡
-*/
+
+
 
 function Store() {
-  const [releases, setReleases] = useState([]); //the reason the map wasn't working was because I was trying to initiate it as an object and maps only work on arrays.
+  const [releases, setReleases] = useState([]);
   const [selectedItem, setSelectedItem] = useState(null);
-
+  
+  const builder = imageUrlBuilder(client);
+  
+  function urlFor(source) {
+    return builder.image(source);
+  }
+  
   useEffect(() => {
-    fetch(`${process.env.REACT_APP_RELEASES_API_URL}`)
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("Network response was not ok");
-        }
-        return response.json();
-      })
-      .then((data) => {
-        console.log("Parsed Data", data);
-        setReleases(data);
-        console.log("Updated State:", data);
-      })
-      .catch((error) => {
-        console.error("Error fetching data: ", error);
-      });
+    const fetchStoreItems = async () => {
+
+      const data = await client.fetch(`*[_type == 'release']{
+        _id,
+        releaseTitle,
+        coverArt,
+        releaseDescription,
+        purchaseLink,
+        }`)
+      
+      
+      setReleases(data)
+    };
+    fetchStoreItems();
   }, []);
 
   const handleItemClick = (item) => {
@@ -56,17 +61,17 @@ function Store() {
             onClick={() => handleItemClick(release._id)}
           >
             <img
-              src={release.imageUrl}
+              src={urlFor(release.coverArt).url()}
               className={`album-art`}
-              alt={release.title}
+              alt={release.releaseTitle}
             />
 
             {selectedItem === release._id && (
               <div className="album-details">
                 <button>Buy Now</button>
                 <button>See Credits</button>
-                <h2>{release.title}</h2>
-                <p>{release.description}</p>
+                <h2>{release.releaseTitle}</h2>
+                <p>{release.releaseDescription}</p>
               </div>
             )}
           </div>

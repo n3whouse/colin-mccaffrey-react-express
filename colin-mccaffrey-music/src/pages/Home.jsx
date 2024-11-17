@@ -25,18 +25,18 @@ function Home() {
 
         <div className="bodyContainer">
 
-          <img src={BannerImage} alt="Colin with his Telecaster" />
+          <img id = "headshot" src={BannerImage} alt="Colin with his Telecaster" />
           <div className="bioContainer">
             <h1 className="header">Colin McCaffrey</h1>
             <div className="bio nav" >
               <h1>
                 <Link to="#" className={`component ${selectedComponent === 'bio' ? 'bold' : 'faded'}`} onClick={() => handleLinkClick("bio")
-                }>BIO</Link> |
-                <Link to="#" className={`component ${selectedComponent === "store" ? 'bold' : 'faded'}`} onClick={() => handleLinkClick("store")}> STORE</Link> |
-                <Link to="#" className={`component ${selectedComponent === "booking" ? 'bold' : 'faded'}`} onClick={() => handleLinkClick("booking")}> BOOKING & CONTACT</Link><br />
-                <Link to="#" className={`component ${selectedComponent === "performer" ? 'bold' : 'faded'}`} onClick={() => handleLinkClick("performer")}> PERFORMER</Link> |
-                <Link to="#" className={`component ${selectedComponent === "engineer" ? 'bold' : 'faded'}`} onClick={() => handleLinkClick("engineer")}> ENGINEER</Link> |
-                <Link to="#" className={`component ${selectedComponent === "songwriter" ? 'bold' : 'faded'}`} onClick={() => handleLinkClick("songwriter")}> SONGWRITER</Link>
+                }>BIO</Link> <span className="divider">|</span>
+                <Link to="#" className={`component ${selectedComponent === "store" ? 'bold' : 'faded'}`} onClick={() => handleLinkClick("store")}> STORE</Link> <span className="divider">|</span>
+                <Link to="#" className={`component ${selectedComponent === "booking" ? 'bold' : 'faded'}`} onClick={() => handleLinkClick("booking")}> BOOKING & CONTACT</Link><span className="divider"><br /></span>
+                <Link to="#" className={`component ${selectedComponent === "performer" ? 'bold' : 'faded'}`} onClick={() => handleLinkClick("performer")}> PERFORMER</Link>  <span className="divider">|</span>
+                <Link to="#" className={`component ${selectedComponent === "engineer" ? 'bold' : 'faded'}`} onClick={() => handleLinkClick("engineer")}> ENGINEER</Link> <span className="divider">|</span>
+                <Link to="#" className={`component ${selectedComponent === "songwriter" ? 'bold' : 'faded'}`} onClick={() => handleLinkClick("songwriter")}> SONGWRITER</Link> 
               </h1>
 
               {activeComponent === "bio" && <Bio />}
@@ -50,16 +50,6 @@ function Home() {
 
           </div>
 
-          {/* <div className="bioGridContainer">
-
-            <div className="performer title">performer</div>
-            <div className="producer title">producer</div>
-            <div className="songwriter title">songwriter</div>
-            <div className="performer item">info</div>
-            <div className="producer item">info</div>
-            <div className="songwriter item">info</div>
-
-          </div> */}
         </div>
 
       </div >

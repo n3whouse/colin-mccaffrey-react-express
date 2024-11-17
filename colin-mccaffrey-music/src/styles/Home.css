@@ -7,7 +7,7 @@ html {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
   width: 100%;
 }
 
@@ -17,7 +17,81 @@ html {
   margin: auto;
   box-shadow: 0 0 3px 0;
   opacity: 98%;
+}
 
+.bio .nav {
+  display: flex;
+  flex-direction: row; /* Default layout for larger screens */
+  justify-content: center;
+}
+
+.bio .nav a {
+  padding: 10px; /* Add some padding for better touch target */
+}
+
+.bio .nav .divider {
+  display: inline; /* Default display for desktop */
+}
+
+hr {
+  display: none;
+}
+
+.bio .nav a:not(:last-child) {
+  margin-right: 10px; /* Space between links */
+}
+
+@media (max-width: 768px) {
+  .bodyContainer {
+    width: 100%;
+    display: flex;
+  }
+  .bioContainer {
+    width: 100%;
+  }
+  .header {
+    display: none;
+  }
+  a {
+    display: flex;
+    flex-direction: column;
+  }
+  #headshot {
+    display: none;
+  }
+
+  .bio .nav {
+    flex-direction: column;
+    /* Change to column layout on mobile */
+    align-items: stretch;
+    /* Make links stretch to full width */
+  }
+
+  .bio .nav a {
+    width: 100%;
+    /* Full width for each link */
+    text-align: center;
+    /* Center text */
+    border: none;
+    /* Remove any borders */
+    margin: 0;
+    /* Remove margin */
+  }
+
+  .divider {
+    display: none; /* Hide dividers on mobile */
+  }
+
+  hr {
+    display: block;
+  }
+  .bio .nav a:not(:last-child) {
+    margin-right: 0;
+    /* Remove right margin on mobile */
+  }
+  .bio .nav a:not(:last-child) {
+    margin-right: 0; /* Remove right margin on mobile */
+  }
 }
 
 .header {
@@ -30,7 +104,6 @@ html {
   box-shadow: 0 0 0 0;
   padding: 25px;
   margin: auto;
-
 }
 
 .faded {
@@ -43,7 +116,6 @@ html {
   transform: translateX(100px);
   transition: opacity 0.5s, transform 0.5s;
 }
-
 
 .animate-in.active {
   opacity: 1;
@@ -86,6 +158,16 @@ img {
   margin: 25px;
 }
 
+@media (max-width: 768px) {
+  .greenRoom,
+  .portrait {
+    display: flex;
+    width: 100%;
+    position: relative;
+    margin: auto;
+  }
+}
+
 p {
   padding: 10px;
 }
@@ -95,24 +177,11 @@ p {
   flex-direction: column;
   width: 70dvh;
   margin: auto;
-
 }
 
 #spotifyPlayer {
   width: 100%;
   height: 70dvh;
-}
-
-.bioGridContainer {
-  width: 130dvh;
-  height: 100dvh;
-  margin: auto;
-  display: grid;
-  grid-gap: 10px;
-  /* background-color: gray; */
-  grid: 150px / auto auto auto;
-  padding: 20px;
-
 }
 
 .title,
@@ -123,7 +192,7 @@ p {
   align-items: center;
   justify-content: center;
   text-align: center;
-  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
   font-weight: 700;
   font-size: 30px;
   box-shadow: 5px 5px 0 0;

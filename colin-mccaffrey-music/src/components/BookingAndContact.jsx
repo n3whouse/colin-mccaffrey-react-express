@@ -16,8 +16,10 @@ function BookingAndContact() {
   });
 
   useEffect(() => {
-    const fetchContactInfo = async () => {
-  const data = await client.fetch(`*[_type == 'siteSettings'][0]{
+
+  const fetchContactInfo = async () => {
+    
+    const data = await client.fetch(`*[_type == 'siteSettings'][0]{
     email,
     phone,
     address,

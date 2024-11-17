@@ -12,10 +12,10 @@ function Performer() {
   return (
     <>
       <div>
-
+        <hr />
         <h2>
           <Link to="#" className={`component ${selectedComponent === 'upcoming shows' ? 'bold' : 'faded'}`} onClick={() => handlePerformerLinks("upcoming shows")
-          }>Upcoming Shows</Link> |
+          }>Upcoming Shows</Link> <span className="divider">|</span>
           <Link to="#" className={`component ${selectedComponent === "media" ? 'bold' : 'faded'}`} onClick={() => handlePerformerLinks("media")}> Media</Link>
         </h2>
         {/* <Link to="#" className={`component ${selectedComponent === "credits" ? 'bold' : 'faded'}`} onClick={() => handlePerformerLinks("credits")}> Credits </Link></h2> */}

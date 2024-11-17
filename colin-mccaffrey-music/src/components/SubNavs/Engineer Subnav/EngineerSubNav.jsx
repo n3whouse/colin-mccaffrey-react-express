@@ -15,9 +15,10 @@ function EngineerSubNav() {
   }
   return (
     <div className="engineer subnav">
+      
       <h2><Link to="#" className={`component ${selectedItem === 'studio' ? 'bold' : 'faded'}`} onClick={() => handleItemClick("studio")
-      }>STUDIO</Link> |
-        <Link to="#" className={`component ${selectedItem === "gear and programs" ? 'bold' : 'faded'}`} onClick={() => handleItemClick("gear and programs")}> GEAR & PROGRAMS</Link> |
+      }>STUDIO</Link> <span className="divider">|</span>
+        <Link to="#" className={`component ${selectedItem === "gear and programs" ? 'bold' : 'faded'}`} onClick={() => handleItemClick("gear and programs")}> GEAR & PROGRAMS</Link> <span className="divider">|</span>
         <Link to="#" className={`component ${selectedItem === "credits" ? 'bold' : 'faded'}`} onClick={() => handleItemClick("credits")}> CREDITS</Link></h2>
 
       {activeMenuItem === "studio" && <Studio />}

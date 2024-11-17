@@ -10,8 +10,9 @@ function Songwriter() {
   }
   return (
     <div>
+      <hr />
       <h2><Link to="#" className={`component ${selectedComponent === 'streaming' ? 'bold' : 'faded'}`} onClick={() => handleSongwriterLinks("streaming")
-      }>Streaming</Link> |
+      }>Streaming</Link> <span className="divider">|</span>
 
         <Link to="#" className={`component ${selectedComponent === "credits" ? 'bold' : 'faded'}`} onClick={() => handleSongwriterLinks("credits")}> Credits</Link>
 
