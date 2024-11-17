@@ -9,6 +9,7 @@ import BookingAndContact from '../components/BookingAndContact';
 import Store from "../pages/Store";
 import { Link } from "react-router-dom";
 
+
 function Home() {
   const [activeComponent, setActiveComponent] = useState("bio");
   const [selectedComponent, setSelectedComponent] = useState(null);
