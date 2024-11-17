@@ -1,5 +1,7 @@
 import React from 'react'
 import GreenRoom from '../../../assets/Greenroom2.jpg';
+import '../subnav-styles/Studio.css'
+import '../../../styles/Home.css'
 function Studio() {
   return (
     <div className="studio info">

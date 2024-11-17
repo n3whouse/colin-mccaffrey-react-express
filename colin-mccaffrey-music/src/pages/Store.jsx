@@ -26,17 +26,24 @@ function Store() {
         releaseDescription,
         purchaseLink,
         }`)
-      
-      
-      setReleases(data)
-    };
-    fetchStoreItems();
-  }, []);
-
-  const handleItemClick = (item) => {
-    setSelectedItem(selectedItem === item ? null : item); // for toggling selection logic
+        
+        
+        setReleases(data)
+      };
+      fetchStoreItems();
+    }, []);
+    
+    
+    const handleItemClick = (item, release) => {
+      setSelectedItem(selectedItem === item ? null : item); // for toggling selection logic
   };
-
+  
+    
+    const handleCloseModal = () => {
+      setSelectedItem(null);
+  }
+  const selectedRelease = releases.find(release => release._id === selectedItem);
+  
   useEffect(() => {
     const handleClickOut = (e) => {
       if (selectedItem && !e.target.closest(`.item${selectedItem}`)) {
@@ -48,7 +55,8 @@ function Store() {
       document.removeEventListener("click", handleClickOut);
     };
   }, [selectedItem]);
-
+  
+  
   return (
     <>
       <div className="gridContainer">
@@ -66,17 +74,32 @@ function Store() {
               alt={release.releaseTitle}
             />
 
-            {selectedItem === release._id && (
-              <div className="album-details">
-                <button>Buy Now</button>
-                <button>See Credits</button>
-                <h2>{release.releaseTitle}</h2>
-                <p>{release.releaseDescription}</p>
-              </div>
-            )}
+            {/* {selectedItem === release._id && (
+              <div className="album-details ">
+              <h2>{release.releaseTitle}</h2>
+              <p>{release.releaseDescription}</p>
+              </div> */}
+            
           </div>
         ))}
       </div>
+
+        {selectedRelease && ( // Render modal if a release is selected
+        <div className="modal-overlay" onClick={handleCloseModal}>
+          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+            <img
+              src={urlFor(selectedRelease.coverArt).url()}
+              className={`album-art`}
+              alt={selectedRelease.releaseTitle}
+              />
+            
+            <h2>{selectedRelease.releaseTitle}</h2>
+            <a href={selectedRelease.purchaseLink} target="_blank" rel="noopener noreferrer"><button className="btn">Buy Now</button></a>
+            <p>{selectedRelease.releaseDescription}</p>
+            <button className="btn" onClick={handleCloseModal}>Close</button>
+          </div>
+        </div>
+      )}
     </>
   );
 }

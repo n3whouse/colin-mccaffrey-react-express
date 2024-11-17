@@ -23,18 +23,80 @@
 .gridItem img {
   width: auto;
   height: auto;
-  object-fit: fit;
+  object-fit: cover;
   border-radius: 3px;
   margin: auto auto 0 auto;
 }
 
 .gridItem.selected {
-  transform: scale(1.2);
-  opacity: 1;
+  display: flex;
+  transform: scale(1.5);
+  object-fit: contain;
+  opacity: 80%;
   box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.5);
   z-index: 1;
-  background-color: blanchedalmond;
-  height: 120%;
+  background-color: rgb(240, 237, 233);
+  height: auto;
+  width: auto;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; /* Ensure it appears above other content */
+}
+
+.modal-content {
+  background: white;
+  opacity: 80%;
+  padding: 20px;
+  border-radius: 8px;
+  max-width: 50%; /* Responsive width */
+  max-height: auto; /* Responsive height */
+  overflow-y: auto; /* Scroll if content is too tall */
+  position: relative; /* For positioning close button */
+}
+
+@media (max-width: 768px) {
+  .gridContainer {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(1, 2fr);
+  }
+
+  .modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    flex-direction: column;
+    background: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* Ensure it appears above other content */
+  }
+
+  .modal-content {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    max-width: 90%; /* Responsive width */
+    max-height: 90%; /* Responsive height */
+    overflow-y: auto; /* Scroll if content is too tall */
+    position: relative; /* For positioning close button */
+  }
 }
 
 .gridItem:not(.selected) {
@@ -58,19 +120,36 @@
 
 .album-art {
   max-height: 200px;
- 
+  width: auto;
+  object-fit: contain;
 }
 
-
 .album-art:hover:not(.selected) {
-   transform: scale(1.2);
- }
+  transform: scale(1.2);
+}
 
- p {
-  font-size: 1.0rem;
- }
+p {
+  font-size: 1rem;
+}
 
- button {
+button {
   position: sticky;
   margin: 5px;
- }
+}
+
+.album-details {
+  text-align: center; /* Center text */
+}
+
+.btn {
+  margin: auto;
+  background-color: bisque;
+  font-weight: normal;
+  width: 15dvh;
+  height: auto;
+  font-size: 20px;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}

@@ -41,7 +41,9 @@ const Bio = () => {
           alt="Headshot of Colin smiling while holding his electric guitar"
         />
       )}
-      <PortableText value={bio} />
+      <div className="bio-text">
+       <p><PortableText value={bio} /></p>
+      </div>
     </>
   );
 };

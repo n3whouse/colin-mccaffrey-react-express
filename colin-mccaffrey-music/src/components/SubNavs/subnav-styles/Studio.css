@@ -1,0 +1,15 @@
+.studio {
+  display: flex;
+  flex-direction: column;
+}
+
+.bioContainer {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  width: 100%;
+}
+
+.greenRoom {
+  width: 100%;
+}

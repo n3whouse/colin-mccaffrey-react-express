@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import UpcomingShows from './SubNavs/Performer Subnav/UpcomingShows';
 import Media from './SubNavs/Performer Subnav/Media';
+import '../styles/Home.css';
 
 function Performer() {
   const [selectedComponent, setSelectedComponent] = useState("upcoming shows");
@@ -24,8 +25,6 @@ function Performer() {
         {selectedComponent === "media" && <Media />}
         {/* {selectedComponent === "credits" && <Credits />} */}
 
-        <div data-events-calendar-app data-project-id="proj_bxCpMFt26M5XU9etGkMv4" ></div>
-        <script type="text/javascript" src="//dist.eventscalendar.co/embed.js"></script>
       </div>
 
     </>

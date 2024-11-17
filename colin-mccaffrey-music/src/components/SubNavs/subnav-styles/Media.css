@@ -1,0 +1,12 @@
+.mediaContainer {
+  display: flex;
+  flex-direction: column;
+  max-width: 100dvh;
+}
+
+@media (max-width: 768px) {
+  .mediaContainer {
+    max-width: 100%;
+    margin: 0;
+  }
+}
