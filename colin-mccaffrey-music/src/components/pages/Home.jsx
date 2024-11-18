@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import "../styles/Home.css";
-import BannerImage from "../assets/ColinTeleBarnBust.png";
-import Bio from "../components/Bio";
-import Performer from "../components/Performer";
-import Engineer from "../components/Engineer";
-import Songwriter from "../components/Songwriter";
-import BookingAndContact from '../components/BookingAndContact';
-import Store from "../pages/Store";
+import BannerImage from "../../assets/ColinTeleBarnBust.png";
+import Bio from "./Bio";
+import Performer from "../SubNavs/Performer Subnav/Performer";
+import Engineer from "../SubNavs/Engineer Subnav/Engineer";
+import Songwriter from "../SubNavs/Songwriter Subnav/Songwriter";
+import BookingAndContact from './BookingAndContact';
+import Store from "./Store";
 import { Link } from "react-router-dom";
 
 

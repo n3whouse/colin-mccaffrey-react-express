@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import client from '../../../sanity/client.js';
-import "../subnav-styles/UpcomingShows.css";
+import client from '../../../../sanity/client.js';
+import "../styles/UpcomingShows.css";
 
 console.log(process.env)
 

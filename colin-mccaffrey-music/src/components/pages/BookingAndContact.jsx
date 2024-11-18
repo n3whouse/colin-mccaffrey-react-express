@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import client from '../sanity/client';
+import client from '../../sanity/client';
 import { FaFacebook, FaYoutube, FaLinkedin } from 'react-icons/fa';
-import '../App.css';
+import '../../App.css';
 
 function BookingAndContact() {
   const [contactInfo, setContactInfo] = useState({

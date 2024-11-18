@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom';
-import Streaming from './SubNavs/Songwriter Subnav/Streaming';
+import Streaming from './pages/Streaming';
 
 function Songwriter() {
   const [selectedComponent, setSelectedComponent] = useState("streaming");

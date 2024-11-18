@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import UpcomingShows from './SubNavs/Performer Subnav/UpcomingShows';
-import Media from './SubNavs/Performer Subnav/Media';
-import '../styles/Home.css';
+import UpcomingShows from './pages/UpcomingShows';
+import Media from './pages/Media';
+import '../../styles/Home.css';
 
 function Performer() {
   const [selectedComponent, setSelectedComponent] = useState("upcoming shows");

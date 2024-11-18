@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import '../styles/Home.css';
-import client from '../sanity/client';
+import client from '../../sanity/client';
 import { PortableText } from '@portabletext/react';
 import imageUrlBuilder from '@sanity/image-url';
 

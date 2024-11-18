@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { Link } from "react-router-dom";
-import Studio from './Studio';
-import '../../../styles/Home.css';
-import Credits from './Credits';
-import GearAndPrograms from './GearAndPrograms';
-function EngineerSubNav() {
+import Studio from './pages/Studio';
+import '../../styles/Home.css';
+import Credits from './pages/Credits';
+import GearAndPrograms from './pages/GearAndPrograms';
 
-  const [activeMenuItem, setActiveMenuItem] = useState("studio");
+function Engineer() {
+const [activeMenuItem, setActiveMenuItem] = useState("studio");
   const [selectedItem, setSelectedItem] = useState(null);
 
   const handleItemClick = (item) => {
@@ -28,4 +28,4 @@ function EngineerSubNav() {
   )
 }
 
-export default EngineerSubNav
+export default Engineer
