@@ -4,6 +4,7 @@
   "version": "1.0.0",
   "main": "package.json",
   "license": "UNLICENSED",
+  "homepage": "https://colinmccaffrey.com/admin",
   "scripts": {
     "dev": "sanity dev",
     "start": "sanity start",

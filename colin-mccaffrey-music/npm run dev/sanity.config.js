@@ -11,6 +11,8 @@ export default defineConfig({
 
   projectId: 'p3o500d1',
   dataset: 'product',
+  studioHost: 'colin-mccaffrey-music',
+  basePath: '/admin',
 
   plugins: [
     structureTool({
@@ -19,7 +21,6 @@ export default defineConfig({
     }),
     visionTool(),
   ],
-
   schema: {
     types: schemaTypes,
   },

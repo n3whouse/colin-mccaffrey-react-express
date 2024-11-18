@@ -8,6 +8,9 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/admin" component={() => {
+            window.location.href = 'https://colin-mccaffrey-music.sanity.studio/';
+          }} />
         </Routes>
       </Router>
     </div>
