@@ -26,9 +26,6 @@ html {
   .home {
     width: 100%;
   }
-  .bodyContainer {
-    width: ;
-  }
 }
 
 .nav .bio {
@@ -43,10 +40,6 @@ html {
 
 .nav .bio .divider {
   display: inline;
-}
-
-hr {
-  display: none;
 }
 
 .bio .nav a:not(:last-child) {
@@ -88,7 +81,7 @@ hr {
   }
 
   hr {
-    display: block;
+    display: none;
   }
   .bio .nav a:not(:last-child) {
     margin-right: 0;
@@ -123,12 +116,6 @@ hr {
 .animate-in.active {
   opacity: 1;
   transform: translateX(0);
-}
-
-iframe {
-  display: flex;
-  margin: auto;
-  align-items: center;
 }
 
 .bio {

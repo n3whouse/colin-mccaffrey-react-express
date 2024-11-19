@@ -1,12 +1,27 @@
 .mediaContainer {
   display: flex;
   flex-direction: column;
+  margin: auto;
   max-width: 100dvh;
+  height: auto;
+  /* margin-bottom: 5dvh; */
+}
+
+iframe {
+  display: flex;
+
+  margin: auto;
+  margin-bottom: auto;
+  align-items: center;
+  width: 60%;
+  height: 50dvh;
+  /* padding: 10px; */
 }
 
 @media (max-width: 768px) {
-  .mediaContainer {
-    max-width: 100%;
-    margin: 0;
+  iframe {
+    display: block;
+    flex-direction: column;
+    width: 100%;
   }
 }
