@@ -12,6 +12,9 @@ html {
 }
 
 .bodyContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   background-color: white;
   width: 80%;
   margin: auto;
@@ -19,18 +22,27 @@ html {
   opacity: 98%;
 }
 
-.bio .nav {
+@media (max-width: 768px) {
+  .home {
+    width: 100%;
+  }
+  .bodyContainer {
+    width: ;
+  }
+}
+
+.nav .bio {
   display: flex;
-  flex-direction: row; /* Default layout for larger screens */
+  flex-direction: column;
   justify-content: center;
 }
 
-.bio .nav a {
-  padding: 10px; /* Add some padding for better touch target */
+.nav .bio a {
+  padding: 10px;
 }
 
-.bio .nav .divider {
-  display: inline; /* Default display for desktop */
+.nav .bio .divider {
+  display: inline;
 }
 
 hr {
@@ -38,17 +50,18 @@ hr {
 }
 
 .bio .nav a:not(:last-child) {
-  margin-right: 10px; /* Space between links */
+  margin-right: 10px;
 }
 
 @media (max-width: 768px) {
+  .home {
+    width: 100%;
+  }
   .bodyContainer {
     width: 100%;
     display: flex;
   }
-  .bioContainer {
-    width: 100%;
-  }
+
   .header {
     display: none;
   }
@@ -62,24 +75,16 @@ hr {
 
   .bio .nav {
     flex-direction: column;
-    /* Change to column layout on mobile */
     align-items: stretch;
-    /* Make links stretch to full width */
   }
 
   .bio .nav a {
     width: 100%;
-    /* Full width for each link */
     text-align: center;
-    /* Center text */
-    border: none;
-    /* Remove any borders */
-    margin: 0;
-    /* Remove margin */
   }
 
   .divider {
-    display: none; /* Hide dividers on mobile */
+    display: none;
   }
 
   hr {
@@ -87,10 +92,9 @@ hr {
   }
   .bio .nav a:not(:last-child) {
     margin-right: 0;
-    /* Remove right margin on mobile */
   }
   .bio .nav a:not(:last-child) {
-    margin-right: 0; /* Remove right margin on mobile */
+    margin-right: 0;
   }
 }
 
@@ -98,7 +102,6 @@ hr {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  /* background-color: lightgray; */
   color: black;
   font-size: 10dvh;
   box-shadow: 0 0 0 0;
@@ -128,33 +131,20 @@ iframe {
   align-items: center;
 }
 
-.bioContainer {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 0% 5% 5% 5%;
-  width: 100dvh;
-  margin: auto;
-}
-
 .bio {
   font-size: 20px;
 }
 
-img {
-  width: 50%;
-  height: 50%;
-  display: flex;
+#headshot {
+  width: 40%;
+  height: 40%;
   margin: 30px auto auto auto;
-  /* padding: 10dvh 10dvh 3dvh 10dvh; */
-  object-fit: contain;
   border-radius: 6px;
   box-shadow: 0 0 10px -1px;
 }
 
 .greenRoom,
 .portrait {
-  float: left;
   margin: 25px;
 }
 
@@ -166,10 +156,6 @@ img {
     position: relative;
     margin: auto;
   }
-}
-
-p {
-  padding: 10px;
 }
 
 .playerContainer {
@@ -201,7 +187,6 @@ p {
 
 .item {
   margin-top: 20px;
-  /* background-color: */
 }
 
 h1,
@@ -217,4 +202,21 @@ a {
 a:hover {
   color: gray;
   text-decoration: none;
+}
+
+.footer {
+  display: block;
+  background-color: white;
+  width: 80%;
+  opacity: 30%;
+  margin: auto;
+  font-size: x-small;
+  padding: 5px;
+}
+
+@media (max-width: 768px) {
+  .footer {
+    width: 100%;
+    padding: 2px;
+  }
 }

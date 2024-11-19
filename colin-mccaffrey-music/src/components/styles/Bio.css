@@ -1,0 +1,74 @@
+.bioContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* padding: 0% 5% 5% 5%; */
+  width: 90%;
+  margin: auto;
+  font-size: large;
+}
+
+.portrait {
+  display: block;
+  float: left;
+  width: 30dvh;
+  height: auto;
+  margin: 40px 20px 0 0;
+  border-radius: 6px;
+  box-shadow: 0 0 6px -1px;
+}
+
+p {
+  display: block;
+  width: 85%;
+  font-size: 20px;
+}
+
+.bio-text {
+  max-width: 100%;
+  margin: auto;
+}
+
+@media (max-width: 768px) {
+  .bioContainer {
+    /* position: relative; */
+    /* width: 100dvw; */
+    height: 100%;
+    width: auto;
+    margin: auto;
+  }
+  .portrait {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    margin: 0 0 20px 0;
+  }
+
+  p {
+    margin: 10px;
+  }
+
+  .bio-text {
+  }
+}
+
+p {
+  padding: 10px;
+}
+
+.bio {
+  padding: 10px;
+}
+
+.bio .divider {
+  display: inline;
+}
+
+hr {
+  display: none;
+}
+
+.bio .nav a:not(:last-child) {
+  margin-right: 10px; /* Space between links */
+}

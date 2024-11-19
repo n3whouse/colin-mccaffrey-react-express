@@ -128,10 +128,6 @@
   transform: scale(1.2);
 }
 
-p {
-  font-size: 1rem;
-}
-
 button {
   position: sticky;
   margin: 5px;

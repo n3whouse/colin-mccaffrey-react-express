@@ -8,6 +8,7 @@ import Songwriter from "../SubNavs/Songwriter Subnav/Songwriter";
 import BookingAndContact from './BookingAndContact';
 import Store from "./Store";
 import { Link } from "react-router-dom";
+import Footer from "../Footer";
 
 
 function Home() {
@@ -27,9 +28,8 @@ function Home() {
         <div className="bodyContainer">
 
           <img id = "headshot" src={BannerImage} alt="Colin with his Telecaster" />
-          <div className="bioContainer">
             <h1 className="header">Colin McCaffrey</h1>
-            <div className="bio nav" >
+            <div className="nav" >
               <h1>
                 <Link to="#" className={`component ${selectedComponent === 'bio' ? 'bold' : 'faded'}`} onClick={() => handleLinkClick("bio")
                 }>BIO</Link> <span className="divider">|</span>
@@ -52,9 +52,7 @@ function Home() {
           </div>
 
         </div>
-
-      </div >
-
+<Footer />
     </>
 
 

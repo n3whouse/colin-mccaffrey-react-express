@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import client from "../../sanity/client";
 import "../styles/Store.css";
+import "../styles/Home.css";
 import imageUrlBuilder from '@sanity/image-url';
 
 

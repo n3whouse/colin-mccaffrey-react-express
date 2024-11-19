@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import '../styles/Home.css';
-import client from '../../sanity/client';
+import '../../components/styles/Bio.css';
+import { client } from '../../sanity/client';
 import { PortableText } from '@portabletext/react';
 import imageUrlBuilder from '@sanity/image-url';
 
@@ -34,16 +34,22 @@ const Bio = () => {
 
   return (
     <>
+      <div className="bioContainer">
+        <div className="bio-text">
       {bioPic && (
-        <img
-          src={urlFor(bioPic).url()} // Use urlFor with the image object
+    <img
+          src={urlFor(bioPic).url()}
           className="portrait"
           alt="Headshot of Colin smiling while holding his electric guitar"
-        />
-      )}
-      <div className="bio-text">
-       <p><PortableText value={bio} /></p>
+          />
+        )}
+        <PortableText value={bio} />
+        </div>
+
       </div>
+    
+        
+
     </>
   );
 };
