@@ -29,10 +29,10 @@ export const siteSettings = defineType({
       group: 'bio',
     }),
     defineField({
-      name: 'bookingAndContactInfo', // Reference to the Booking & Contact Info document
+      name: 'bookingAndContactInfo', 
       title: 'Booking & Contact',
-      type: 'reference', // Use reference type
-      to: [{type: 'bookingAndContactInfo'}], // Reference to the bookingContactInfo document
+      type: 'reference', 
+      to: [{type: 'bookingAndContactInfo'}], 
       group: 'bookingAndContact',
     }),
   ],

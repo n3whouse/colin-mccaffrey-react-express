@@ -5,8 +5,16 @@ import {artistType} from '../schemaTypes/artistType'
 import {venueType} from '../schemaTypes/venueType'
 import {siteSettings} from '../schemaTypes/siteSettings'
 import {releaseType} from '../schemaTypes/releaseType'
+import {engineerType} from '../schemaTypes/engineerType'
 
-export const schemaTypes = [artistType, eventType, venueType, siteSettings, releaseType]
+export const schemaTypes = [
+  artistType,
+  eventType,
+  venueType,
+  siteSettings,
+  releaseType,
+  engineerType,
+]
 
 export const structure: StructureResolver = (
   S, //defines a constant 'structure' that is a function (a StructureResolver) which takes a param 'S' (the structure builder) to create the content structure.
@@ -38,4 +46,9 @@ export const structure: StructureResolver = (
         .title('Releases')
         .icon(AddDocumentIcon)
         .child(S.documentTypeList('release').title('Releases')),
+      S.divider(),
+      S.listItem()
+        .title('Engineer')
+        .icon(AddDocumentIcon)
+        .child(S.document().schemaType('engineer').documentId('engineer')),
     ]) //... and put artists and venues on the other side of the divider with the UsersIcon and PinIcon representing them graphically, respectively

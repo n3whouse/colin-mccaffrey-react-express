@@ -1,14 +1,14 @@
-import React, { useState, useEffect } from 'react';
-import '../../components/styles/Bio.css';
-import { client } from '../../sanity/client';
-import { PortableText } from '@portabletext/react';
-import imageUrlBuilder from '@sanity/image-url';
+import React, { useState, useEffect } from "react";
+import "../../components/styles/Bio.css";
+import { client } from "../../sanity/client";
+import { PortableText } from "@portabletext/react";
+import imageUrlBuilder from "@sanity/image-url";
 
 const builder = imageUrlBuilder(client);
 
 const Bio = () => {
-  const [bio, setBio] = useState('');
-  const [bioPic, setBioPic] = useState(null); // Initialize as null
+  const [bio, setBio] = useState("");
+  const [bioPic, setBioPic] = useState(null);
 
   function urlFor(source) {
     return builder.image(source);
@@ -25,7 +25,7 @@ const Bio = () => {
           setBioPic(data.profilePicture); // Set the entire object, not just the URL
         }
       } catch (error) {
-        console.error({ message: 'bio fetch failed', error });
+        console.error({ message: "bio fetch failed", error });
       }
     };
 
@@ -36,20 +36,16 @@ const Bio = () => {
     <>
       <div className="bioContainer">
         <div className="bio-text">
-      {bioPic && (
-    <img
-          src={urlFor(bioPic).url()}
-          className="portrait"
-          alt="Headshot of Colin smiling while holding his electric guitar"
-          />
-        )}
-        <PortableText value={bio} />
+          {bioPic && (
+            <img
+              src={urlFor(bioPic).url()}
+              className="portrait"
+              alt="Headshot of Colin smiling while holding his electric guitar"
+            />
+          )}
+          <PortableText value={bio} />
         </div>
-
       </div>
-    
-        
-
     </>
   );
 };

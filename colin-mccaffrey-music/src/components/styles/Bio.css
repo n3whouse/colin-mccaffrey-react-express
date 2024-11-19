@@ -1,35 +1,38 @@
 .bioContainer {
-  display: flex;
-  flex-direction: column;
+  /* display: flex; */
+  /* flex-direction: column; */
   justify-content: center;
   position: static;
   /* padding: 0% 5% 5% 5%; */
   width: 100%;
   font-size: large;
+  margin: auto;
 }
 
 .portrait {
   display: flex;
   float: left;
-  width: 26dvh;
+  width: 23dvh;
   height: 80%;
-  margin: 3dvh 3dvh 0 11dvw;
+  margin: 2dvh 2dvh 0dvh 4dvw;
   border-radius: 6px;
   box-shadow: 0 0 6px -1px;
   /* object-fit: cover; */
 }
 
-p {
-  display: block;
-  width: 90%;
-  font-size: 20px;
-}
-
 .bio-text .nav {
-  display: flex;
+  display: block;
   align-items: center;
   width: 100%;
-  margin: 0;
+  /* margin: auto auto auto auto; */
+}
+p {
+  margin: auto;
+  /* position: relative; */
+  /* width: 20%; */
+  font-size: 20px;
+  /* margin: auto; */
+  margin: auto auto 10dvh auto;
 }
 
 @media (max-width: 768px) {
