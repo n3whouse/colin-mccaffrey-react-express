@@ -8,9 +8,48 @@ export const siteSettings = defineType({
   groups: [
     {name: 'bio', title: 'Bio'},
     {name: 'bookingAndContact', title: 'Booking & Contact'},
+    {name: 'customization', title: 'Customization'},
   ],
   // Beginning of "Bio" field ----------------------------
   fields: [
+    defineField({
+      name: 'linkNames',
+      title: 'Link Names',
+      type: 'document',
+      fields: [
+        defineField({
+          name: 'linkOne',
+          title: 'Link One',
+          type: 'string',
+        }),
+        defineField({
+          name: 'linkTwo',
+          title: 'Link Two',
+          type: 'string',
+        }),
+        defineField({
+          name: 'linkThree',
+          title: 'Link Three',
+          type: 'string',
+        }),
+        defineField({
+          name: 'linkFour',
+          title: 'Link Four',
+          type: 'string',
+        }),
+        defineField({
+          name: 'linkFive',
+          title: 'Link Five',
+          type: 'string',
+        }),
+        defineField({
+          name: 'linkSix',
+          title: 'Link Six',
+          type: 'string',
+        }),
+      ],
+      group: 'customization',
+    }),
     defineField({
       name: 'bio',
       title: 'Bio',
@@ -29,10 +68,10 @@ export const siteSettings = defineType({
       group: 'bio',
     }),
     defineField({
-      name: 'bookingAndContactInfo', 
+      name: 'bookingAndContactInfo',
       title: 'Booking & Contact',
-      type: 'reference', 
-      to: [{type: 'bookingAndContactInfo'}], 
+      type: 'reference',
+      to: [{type: 'bookingAndContactInfo'}],
       group: 'bookingAndContact',
     }),
   ],

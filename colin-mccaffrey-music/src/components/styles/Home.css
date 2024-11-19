@@ -22,10 +22,18 @@ html {
   opacity: 98%;
 }
 
+.component {
+  padding: 10px;
+}
+
 @media (max-width: 768px) {
   .home {
     width: 100%;
   }
+}
+
+.nav {
+  font-size: x-large;
 }
 
 .nav .bio {

@@ -43,7 +43,7 @@ const Bio = () => {
               alt="Headshot of Colin smiling while holding his electric guitar"
             />
           )}
-          <PortableText value={bio} />
+          <PortableText className="bioBody" value={bio} />
         </div>
       </div>
     </>

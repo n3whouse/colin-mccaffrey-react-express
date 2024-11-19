@@ -38,7 +38,9 @@ const UpcomingShows = () => {
 
   return (
     <div className="table-container">
-      <h1>Upcoming Shows (UNDER TESTING - NOT REAL DATES)</h1>
+      <h1 className="showsTitle">Upcoming Shows</h1>
+      <h3 className="showsSubtitle">(UNDER TESTING - NOT REAL DATES)</h3>
+      <p className="showsBlurb"></p>
       <table>
         <thead>
           <tr>
@@ -61,7 +63,6 @@ const UpcomingShows = () => {
               </td>
               <td>{show.price > 0 ? "$" + show.price : "Free"}</td>
               <td>
-                <button id="rsvp">RSVP</button>
                 <button id="tickets">
                   <a
                     href={show.tickets}

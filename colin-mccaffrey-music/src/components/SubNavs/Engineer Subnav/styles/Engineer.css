@@ -1,7 +1,14 @@
 @import "../../../styles/Bio.css";
 
 .engineer {
-  margin-bottom: 5dvh;
+  display: flex;
+  flex-direction: column;
+  margin: auto auto 5dvh auto;
+}
+
+.studio .info {
+  display: flex;
+  justify-content: center;
 }
 
 .studioContainer {
@@ -10,8 +17,8 @@
   align-items: center;
   justify-content: center;
   font-size: 30px;
-  width: 60dvw;
-  /* margin: auto; */
+  width: 70%;
+  margin: auto auto 10dvh auto;
 }
 
 .greenRoom {
@@ -20,11 +27,11 @@
 }
 
 p {
-  font-size: 20px;
+  font-size: 25px;
   width: 90%;
   font-weight: 100;
   text-align: center;
-  margin: auto;
+  margin: auto 3.2dvw auto auto;
 }
 
 .gearAndPrograms,
@@ -33,7 +40,7 @@ p {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: 30px;
+  font-size: 24px;
   width: 50dvw;
   margin: auto;
 }
@@ -45,6 +52,7 @@ p {
     height: 100%;
     width: auto;
     margin: auto auto 5dvh auto;
+    font-size: 15px;
   }
   .greenRoom {
     display: flex;
@@ -56,5 +64,6 @@ p {
 
   p {
     margin: auto;
+    font-size: 20px;
   }
 }

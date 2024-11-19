@@ -1,7 +1,7 @@
-/* body {
+/* div {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  justify-content: center;
 } */
 
 .table-container {
@@ -11,12 +11,18 @@
   background-color: #fff;
   border-radius: 10px;
   /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
-  width: 100%;
+  width: 80dvw;
 }
 
 table {
   width: 100%;
   border-collapse: collapse;
+}
+
+.showsTitle,
+.showsSubtitle,
+.showsBlurb {
+  text-align: center;
 }
 
 th,
@@ -42,5 +48,16 @@ tr:hover {
 }
 
 button {
-  background-color: #4caf50;
+  background-color: #d9ddff;
+  color: white;
+}
+
+@media (max-width: 768px) {
+  .table-container {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    margin: auto;
+    width: auto;
+  }
 }

@@ -1,19 +1,16 @@
 .bioContainer {
-  /* display: flex; */
+  display: block;
   /* flex-direction: column; */
   justify-content: center;
-  position: static;
-  /* padding: 0% 5% 5% 5%; */
-  width: 100%;
-  font-size: large;
+  width: 60dvw;
   margin: auto;
 }
 
 .portrait {
   display: flex;
   float: left;
-  width: 23dvh;
-  height: 80%;
+  width: 30dvh;
+  height: 100%;
   margin: 2dvh 2dvh 0dvh 4dvw;
   border-radius: 6px;
   box-shadow: 0 0 6px -1px;
@@ -23,15 +20,14 @@
 .bio-text .nav {
   display: block;
   align-items: center;
-  width: 100%;
+  width: 80%;
   /* margin: auto auto auto auto; */
 }
-p {
-  margin: auto;
-  /* position: relative; */
-  /* width: 20%; */
+
+p,
+.bioBody {
+  width: 30dvw;
   font-size: 20px;
-  /* margin: auto; */
   margin: auto auto 10dvh auto;
 }
 

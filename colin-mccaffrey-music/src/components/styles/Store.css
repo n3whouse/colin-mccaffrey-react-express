@@ -97,14 +97,22 @@ hr {
     justify-content: center;
   }
 
-  .gridItem .releaseTitle:hover:not(.selected) {
+  .releaseTitle:hover:not(.selected) {
     display: none;
+    font-size: 0;
+  }
+
+  .gridItem {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
   }
 
   .gridItem:hover:not(.selected) {
     align-self: center;
     margin: auto;
     width: 100%;
+    display: none;
   }
 
   .modal-overlay {
@@ -174,14 +182,6 @@ hr {
 
 .album-details {
   text-align: center; /* Center text */
-}
-
-@media (max-width: 768px) {
-  .gridItem {
-    display: flex;
-    flex-direction: column;
-    margin: auto;
-  }
 }
 
 .btn {
