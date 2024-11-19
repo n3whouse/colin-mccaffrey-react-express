@@ -6,6 +6,7 @@
   margin: auto;
   grid-gap: 30px;
   justify-content: center;
+  margin-bottom: 5dvh;
 }
 
 .gridItem {
@@ -41,23 +42,24 @@
 }
 
 .modal-overlay {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 1000; /* Ensure it appears above other content */
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 1000;
 }
 
 .modal-content {
-  background: white;
+  background: lightgray;
   opacity: 80%;
   padding: 20px;
   border-radius: 8px;
+  margin: auto;
   max-width: 50%; /* Responsive width */
   max-height: auto; /* Responsive height */
   overflow-y: auto; /* Scroll if content is too tall */
@@ -71,16 +73,14 @@
   }
 
   .modal-overlay {
+    display: flex;
+    flex-direction: column;
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    flex-direction: column;
     background: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
-    display: flex;
-    justify-content: center;
-    align-items: center;
     z-index: 1000; /* Ensure it appears above other content */
   }
 
@@ -89,7 +89,7 @@
     align-items: center;
     justify-content: center;
     margin: auto;
-    background: white;
+    background: rgb(255, 248, 248);
     padding: 20px;
     border-radius: 8px;
     max-width: 90%; /* Responsive width */
@@ -119,18 +119,14 @@
 }
 
 .album-art {
+  display: flex;
   max-height: 200px;
-  width: auto;
   object-fit: contain;
+  margin: auto;
 }
 
 .album-art:hover:not(.selected) {
   transform: scale(1.2);
-}
-
-button {
-  position: sticky;
-  margin: 5px;
 }
 
 .album-details {
@@ -139,13 +135,15 @@ button {
 
 .btn {
   margin: auto;
-  background-color: bisque;
+  background-color: white;
   font-weight: normal;
-  width: 15dvh;
+  width: 20dvh;
   height: auto;
-  font-size: 20px;
-  border-radius: 5px;
+  font-size: 15px;
+
+  border-radius: 7px;
   display: flex;
   flex-direction: row;
   justify-content: center;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
 }

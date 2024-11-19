@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
-import client from '../../../../sanity/client.js';
+import client from "../../../../sanity/client.js";
 import "../styles/UpcomingShows.css";
 
-console.log(process.env)
-
+console.log(process.env);
 
 const UpcomingShows = () => {
   const [shows, setShows] = useState([]);
@@ -16,8 +15,10 @@ const UpcomingShows = () => {
       setShows(showsData);
 
       // Extract unique venue IDs
-      const venueIds = [...new Set(showsData.map(show => show.venue._ref))];
-      const venuesData = await client.fetch(`*[_id in $venueIds]`, { venueIds });
+      const venueIds = [...new Set(showsData.map((show) => show.venue._ref))];
+      const venuesData = await client.fetch(`*[_id in $venueIds]`, {
+        venueIds,
+      });
 
       // Map venue data for easy access
       const venuesMap = venuesData.reduce((acc, venue) => {
@@ -27,7 +28,7 @@ const UpcomingShows = () => {
 
       setVenues(venuesMap);
     } catch (error) {
-      console.error('Error fetching shows:', error);
+      console.error("Error fetching shows:", error);
     }
   };
 
@@ -48,24 +49,27 @@ const UpcomingShows = () => {
           </tr>
         </thead>
         <tbody>
-          {shows.map(show => (
+          {shows.map((show) => (
             <tr key={show._id}>
               <td>{new Date(show.date).toLocaleDateString()}</td>
               <td>
-                {venues[show.venue._ref] || 'Venue not specified'} @{" "}
+                {venues[show.venue._ref] || "Venue not specified"} @{" "}
                 {new Date(show.date).toLocaleTimeString("en-US", {
                   hour: "2-digit",
                   minute: "2-digit",
                 })}
               </td>
-              <td>
-                {show.price > 0 ? "$" + show.price
-                  : 'Free'}
-              </td>
+              <td>{show.price > 0 ? "$" + show.price : "Free"}</td>
               <td>
                 <button id="rsvp">RSVP</button>
                 <button id="tickets">
-                  <a href={show.tickets} target="_blank" rel="noopener noreferrer">Buy Tickets</a>
+                  <a
+                    href={show.tickets}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Buy Tickets
+                  </a>
                 </button>
               </td>
             </tr>
@@ -76,8 +80,7 @@ const UpcomingShows = () => {
   );
 };
 
-
-    //--------------------------------
+//--------------------------------
 
 //     <div className="table-container">
 //       <h1>Upcoming Shows</h1>
@@ -86,9 +89,6 @@ const UpcomingShows = () => {
 //           <li key={show._id}>{show.name}</li>
 //         ))}
 //       </ul>
-    //     </div>
-    
-
-    
+//     </div>
 
 export default UpcomingShows;

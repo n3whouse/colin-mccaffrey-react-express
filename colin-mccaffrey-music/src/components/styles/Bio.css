@@ -2,37 +2,38 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  position: static;
   /* padding: 0% 5% 5% 5%; */
-  width: 90%;
-  margin: auto;
+  width: 100%;
   font-size: large;
 }
 
 .portrait {
-  display: block;
+  display: flex;
   float: left;
-  width: 30dvh;
-  height: auto;
+  width: 26dvh;
+  height: 80%;
   margin: 40px 20px 0 0;
   border-radius: 6px;
   box-shadow: 0 0 6px -1px;
+  /* object-fit: cover; */
 }
 
 p {
   display: block;
-  width: 85%;
+  width: 90%;
   font-size: 20px;
 }
 
 .bio-text {
-  max-width: 100%;
-  margin: auto;
+  width: 100%;
+  margin: 0;
 }
 
 @media (max-width: 768px) {
   .bioContainer {
-    /* position: relative; */
     /* width: 100dvw; */
+    /* position: relative; */
     height: 100%;
     width: auto;
     margin: auto;
@@ -45,11 +46,8 @@ p {
     margin: 0 0 20px 0;
   }
 
-  p {
-    margin: 10px;
-  }
-
   .bio-text {
+    margin: auto;
   }
 }
 
@@ -66,7 +64,7 @@ p {
 }
 
 hr {
-  display: none;
+  width: 10dvw;
 }
 
 .bio .nav a:not(:last-child) {
