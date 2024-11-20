@@ -14,38 +14,45 @@ export const siteSettings = defineType({
   fields: [
     defineField({
       name: 'linkNames',
-      title: 'Link Names',
+      title: 'Links',
       type: 'document',
       fields: [
         defineField({
-          name: 'linkOne',
-          title: 'Link One',
-          type: 'string',
-        }),
-        defineField({
-          name: 'linkTwo',
-          title: 'Link Two',
-          type: 'string',
-        }),
-        defineField({
-          name: 'linkThree',
-          title: 'Link Three',
-          type: 'string',
-        }),
-        defineField({
-          name: 'linkFour',
-          title: 'Link Four',
-          type: 'string',
-        }),
-        defineField({
-          name: 'linkFive',
-          title: 'Link Five',
-          type: 'string',
-        }),
-        defineField({
-          name: 'linkSix',
-          title: 'Link Six',
-          type: 'string',
+          name: 'navigationLinks',
+          title: 'Navigation Links',
+          type: 'object',
+          fields: [
+            defineField({
+              name: 'linkOne',
+              title: 'Link One',
+              type: 'string',
+            }),
+            defineField({
+              name: 'linkTwo',
+              title: 'Link Two',
+              type: 'string',
+            }),
+            defineField({
+              name: 'linkThree',
+              title: 'Link Three',
+              type: 'string',
+            }),
+            defineField({
+              name: 'linkFour',
+              title: 'Link Four',
+              type: 'string',
+            }),
+            defineField({
+              name: 'linkFive',
+              title: 'Link Five',
+              type: 'string',
+            }),
+            defineField({
+              name: 'linkSix',
+              title: 'Link Six',
+              type: 'string',
+            }),
+          ],
         }),
       ],
       group: 'customization',

@@ -1,4 +1,5 @@
 import {defineField, defineType} from 'sanity'
+import DynamicPanelName from './components/DynamicPanelName';
 
 export const producerType = defineType({
   name: 'producer',
@@ -11,6 +12,12 @@ export const producerType = defineType({
     {name: 'productionCredits', title: 'Production Credits'},
   ],
   fields: [
+    defineField({
+      name: 'panelName',
+      title: 'Panel Name',
+      type: 'string',
+      inputComponent: DynamicPanelName,
+    }),
     defineField({
       name: 'studio',
       title: 'Studio',

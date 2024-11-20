@@ -5,9 +5,8 @@ export const defaultDocumentNode: DefaultDocumentNodeResolver = (S, {schemaType}
   //this defines a constant 'defaultDocumentNode' that is a function (a DefaultDocumentNodeResolver) which takes params 'S' (structure builder) and 'schemaType' (type of doc being rendered). any time we are rendering a document, if the doctype matches a specific type, then customize the way it's shown. otherwise, show the default
 
   switch (schemaType) {
-    case `artist`: 
+    case `artist`:
       return S.document().views([
-        
         S.view.form(),
         S.view
           .component(DocumentsPane)

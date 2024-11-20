@@ -6,6 +6,7 @@ import {venueType} from '../schemaTypes/venueType'
 import {siteSettings} from '../schemaTypes/siteSettings'
 import {releaseType} from '../schemaTypes/releaseType'
 import {producerType} from '../schemaTypes/producerType'
+import {client} from '../../src/sanity/client'
 
 export const schemaTypes = [
   artistType,
@@ -16,8 +17,14 @@ export const schemaTypes = [
   producerType,
 ]
 
-export const structure: StructureResolver = (S) =>
-  S.list() //show list
+const getLinkNames = async () => {
+  const data = await client.fetch(`*[_type == 'siteSettings']{linkNames}[0]`)
+  return data?.linkNames?.navigationLinks || {}
+  const linkNames = await getLinkNames()
+}
+
+export const structure: StructureResolver = (S, linkNames) => {
+  return S.list() //show list
     .id('root') //.. and give id "root"
     .title('Content') //..and title "Content"
     .items([
@@ -46,7 +53,31 @@ export const structure: StructureResolver = (S) =>
         .child(S.documentTypeList('release').title('Releases')),
       S.divider(),
       S.listItem()
-        .title('Producer')
+
+        .title('Producer') // Use linkFive for Producer
+
         .icon(AddDocumentIcon)
+
         .child(S.document().schemaType('producer').documentId('producer')),
-    ]) //... and put artists and venues on the other side of the divider with the UsersIcon and PinIcon representing them graphically, respectively
+
+      // Performer
+
+      S.listItem()
+
+        .title('Performer') // Use linkFour for Performer
+
+        .icon(AddDocumentIcon)
+
+        .child(S.document().schemaType('performer').documentId('performer')),
+
+      // Songwriter
+
+      S.listItem()
+
+        .title('Songwriter') // Use linkSix for Songwriter
+
+        .icon(AddDocumentIcon)
+
+        .child(S.document().schemaType('songwriter').documentId('songwriter')),
+    ])
+}
