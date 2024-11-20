@@ -3,7 +3,6 @@ import "../styles/Home.css";
 import BannerImage from "../../assets/ColinTeleBarnBust.png";
 import Bio from "./Bio";
 import Performer from "../SubNavs/Performer Subnav/Performer";
-import Engineer from "../SubNavs/Engineer Subnav/Engineer";
 import Songwriter from "../SubNavs/Songwriter Subnav/Songwriter";
 import BookingAndContact from "./BookingAndContact";
 import Store from "./Store";
@@ -11,6 +10,7 @@ import { Link } from "react-router-dom";
 import { client } from "../../sanity/client";
 import Footer from "../Footer";
 import UnderConstruction from "./UnderConstruction";
+import Producer from "../SubNavs/Producer Subnav/Producer";
 
 function Home() {
   const [activeComponent, setActiveComponent] = useState("bio");
@@ -132,13 +132,13 @@ function Home() {
             </h1>
 
             {activeComponent === "bio" && <Bio />}
+            {activeComponent === "store" && <Store />}
+            {activeComponent === "booking" && <BookingAndContact />}
+            {activeComponent === "performer" && <Performer />}
+            {activeComponent === "producer" && <Producer />}
             {activeComponent === "songwriter" && <Songwriter />}
 
             {/* UNDER CONSTRUCTION ----------- */}
-            {activeComponent === "booking" && <UnderConstruction />}
-            {activeComponent === "store" && <UnderConstruction />}
-            {activeComponent === "producer" && <UnderConstruction />}
-            {activeComponent === "performer" && <UnderConstruction />}
           </div>
         </div>
       </div>

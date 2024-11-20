@@ -5,7 +5,7 @@ import "../../styles/Home.css";
 import ProductionCredits from "./pages/ProductionCredits";
 import GearAndPrograms from "./pages/GearAndPrograms";
 
-function Engineer() {
+function Producer() {
   const [activeMenuItem, setActiveMenuItem] = useState("studio");
   const [selectedItem, setSelectedItem] = useState(null);
 
@@ -57,4 +57,4 @@ function Engineer() {
   );
 }
 
-export default Engineer;
+export default Producer;
