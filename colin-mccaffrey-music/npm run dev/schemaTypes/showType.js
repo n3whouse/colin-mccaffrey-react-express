@@ -1,9 +1,9 @@
 import {defineField, defineType} from 'sanity'
 import {CalendarIcon} from '@sanity/icons'
 import {DoorsOpenInput} from './components/DoorsOpenInput'
-export const eventType = defineType({
-  name: 'event',
-  title: 'Event',
+export const showType = defineType({
+  name: 'show',
+  title: 'Show',
   icon: CalendarIcon,
   type: 'document',
   groups: [
@@ -12,7 +12,7 @@ export const eventType = defineType({
   ],
   fields: [
     defineField({
-      name: 'eventType',
+      name: 'showType',
       type: 'string',
       options: {
         list: ['in-person', 'virtual'],

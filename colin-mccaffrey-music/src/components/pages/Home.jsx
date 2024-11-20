@@ -10,6 +10,7 @@ import Store from "./Store";
 import { Link } from "react-router-dom";
 import { client } from "../../sanity/client";
 import Footer from "../Footer";
+import UnderConstruction from "./UnderConstruction";
 
 function Home() {
   const [activeComponent, setActiveComponent] = useState("bio");
@@ -66,7 +67,9 @@ function Home() {
               >
                 {firstLinkName}
               </Link>
+
               <span className="divider">|</span>
+
               <Link
                 to="#"
                 className={`component ${
@@ -76,7 +79,9 @@ function Home() {
               >
                 {secondLinkName}
               </Link>
+
               <span className="divider">|</span>
+
               <Link
                 to="#"
                 className={`component ${
@@ -86,9 +91,11 @@ function Home() {
               >
                 {thirdLinkName}
               </Link>
+
               <span className="divider">
                 <br />
               </span>
+
               <Link
                 to="#"
                 className={`component ${
@@ -98,17 +105,21 @@ function Home() {
               >
                 {fourthLinkName}
               </Link>
+
               <span className="divider">|</span>
+
               <Link
                 to="#"
                 className={`component ${
-                  selectedComponent === "engineer" ? "bold" : "faded"
+                  selectedComponent === "producer" ? "bold" : "faded"
                 }`}
-                onClick={() => handleLinkClick("engineer")}
+                onClick={() => handleLinkClick("producer")}
               >
                 {fifthLinkName}
               </Link>
+
               <span className="divider">|</span>
+
               <Link
                 to="#"
                 className={`component ${
@@ -121,11 +132,13 @@ function Home() {
             </h1>
 
             {activeComponent === "bio" && <Bio />}
-            {activeComponent === "store" && <Store />}
-            {activeComponent === "booking" && <BookingAndContact />}
-            {activeComponent === "performer" && <Performer />}
-            {activeComponent === "engineer" && <Engineer />}
             {activeComponent === "songwriter" && <Songwriter />}
+
+            {/* UNDER CONSTRUCTION ----------- */}
+            {activeComponent === "booking" && <UnderConstruction />}
+            {activeComponent === "store" && <UnderConstruction />}
+            {activeComponent === "producer" && <UnderConstruction />}
+            {activeComponent === "performer" && <UnderConstruction />}
           </div>
         </div>
       </div>

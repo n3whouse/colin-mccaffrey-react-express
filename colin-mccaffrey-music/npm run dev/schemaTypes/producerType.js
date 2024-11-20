@@ -1,8 +1,8 @@
 import {defineField, defineType} from 'sanity'
 
-export const engineerType = defineType({
-  name: 'engineer',
-  title: 'Engineer',
+export const producerType = defineType({
+  name: 'producer',
+  title: 'Producer',
   type: 'document',
   __experimental_formPreviewTitle: false,
   groups: [
