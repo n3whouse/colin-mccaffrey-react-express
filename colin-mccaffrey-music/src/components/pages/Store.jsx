@@ -22,20 +22,21 @@ function Store() {
         coverArt,
         releaseDescription,
         purchaseLink,
-        }`);
+      }`);
 
       setReleases(data);
     };
     fetchStoreItems();
   }, []);
 
-  const handleItemClick = (item, release) => {
-    setSelectedItem(selectedItem === item ? null : item); // for toggling selection logic
+  const handleItemClick = (item) => {
+    setSelectedItem(selectedItem === item ? null : item);
   };
 
   const handleCloseModal = () => {
     setSelectedItem(null);
   };
+
   const selectedRelease = releases.find(
     (release) => release._id === selectedItem
   );
@@ -72,17 +73,11 @@ function Store() {
               />
               <div className="releaseTitle">{release.releaseTitle}</div>
             </div>
-
-            {/* {selectedItem === release._id && (
-              <div className="album-details ">
-              <h2>{release.releaseTitle}</h2>
-              <p>{release.releaseDescription}</p>
-              </div> */}
           </div>
         ))}
       </div>
 
-      {selectedRelease && ( // Render modal if a release is selected
+      {selectedRelease && (
         <div className="modal-overlay" onClick={handleCloseModal}>
           <div className="modal-content" onClick={(e) => e.stopPropagation()}>
             <img
@@ -99,7 +94,22 @@ function Store() {
             >
               <button className="btn">Buy Now</button>
             </a>
-            <p>{selectedRelease.releaseDescription}</p>
+            {selectedRelease.releaseDescription && (
+              <div className="description-container">
+                {selectedRelease.releaseDescription.map((block) => {
+                  switch (block._type) {
+                    case "block":
+                      return (
+                        <p key={block._key} className={block.style}>
+                          {block.children.map((child) => child.text).join("")}
+                        </p>
+                      );
+                    default:
+                      return null;
+                  }
+                })}
+              </div>
+            )}
             <button className="btn" onClick={handleCloseModal}>
               Close
             </button>

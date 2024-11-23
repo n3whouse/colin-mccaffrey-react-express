@@ -25,7 +25,8 @@ export const releaseType = defineType({
     defineField({
       name: 'releaseDescription',
       title: 'Release Description',
-      type: 'text',
+      type: 'array',
+      of: [{type: 'block'}],
       group: 'releaseInfo',
     }),
     defineType({

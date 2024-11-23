@@ -49,7 +49,7 @@ tr:hover {
 
 button {
   background-color: #d9ddff;
-  color: white;
+  color: black;
 }
 
 @media (max-width: 768px) {
@@ -60,4 +60,25 @@ button {
     margin: auto;
     width: auto;
   }
+}
+
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  text-align: center;
+}
+
+.modal-content {
+  text-align: center;
+  justify-content: center;
+  margin: auto;
+}
+
+.showDetails {
+  display: flex;
+  align-items: center;
+  margin: auto;
 }

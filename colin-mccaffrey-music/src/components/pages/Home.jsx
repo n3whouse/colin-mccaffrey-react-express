@@ -135,10 +135,10 @@ function Home() {
             {activeComponent === "performer" && <Performer />}
             {activeComponent === "producer" && <Producer />}
             {activeComponent === "songwriter" && <Songwriter />}
+            {activeComponent === "store" && <Store />}
 
             {/* UNDER CONSTRUCTION ----------- */}
             {activeComponent === "booking" && <UnderConstruction />}
-            {activeComponent === "store" && <UnderConstruction />}
           </div>
         </div>
       </div>

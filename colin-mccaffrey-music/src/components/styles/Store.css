@@ -67,10 +67,17 @@
   padding: 20px;
   border-radius: 8px;
   margin: auto;
-  max-width: 50%; /* Responsive width */
-  max-height: auto; /* Responsive height */
-  overflow-y: auto; /* Scroll if content is too tall */
-  position: relative; /* For positioning close button */
+  max-width: 50%;
+  max-height: auto;
+  overflow-y: auto;
+  position: relative;
+}
+
+.description-container {
+  max-height: 400px;
+  overflow-y: auto;
+  padding: 10px;
+  border: 1px solid #ccc;
 }
 
 hr {

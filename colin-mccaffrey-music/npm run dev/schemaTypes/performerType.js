@@ -3,8 +3,8 @@ import {defineField, defineType} from 'sanity'
 export const performerType = defineType({
   name: 'performer',
   title: 'Performer',
-  __experimental_formPreviewTitle: false,
   type: 'document',
+  __experimental_formPreviewTitle: false,
   groups: [
     {name: 'upcomingShows', title: 'Upcoming Shows'},
     {name: 'media', title: 'Media'},
@@ -24,8 +24,7 @@ export const performerType = defineType({
         defineField({
           name: 'upcomingShowsSubtitle',
           title: 'Subtitle',
-          type: 'array',
-          of: [{type: 'block'}],
+          type: 'string',
         }),
         defineField({
           name: 'addShow',
@@ -39,64 +38,69 @@ export const performerType = defineType({
     defineField({
       name: 'media',
       title: 'Media',
-      type: 'object',
-      fields: [
+      type: 'array',
+      of: [
         defineField({
-          name: 'mediaHeadline',
-          title: 'Headline',
-          type: 'string',
-          validation: (Rule) => Rule.required(),
-        }),
-        defineField({
-          name: 'mediaType',
-          title: 'Media Type',
-          type: 'string',
-          options: {
-            list: [
-              {title: 'Audio (MP3)', value: 'audio'},
-              {title: 'Video (MP4)', value: 'video'},
-              {title: 'YouTube', value: 'youtube'},
-            ],
-          },
-          validation: (Rule) => Rule.required(),
-        }),
-        defineField({
-          name: 'audioFile',
-          title: 'Audio File',
-          type: 'file',
-          options: {
-            accept: 'audio/mp3',
-          },
-          hidden: ({document}) => document?.media?.mediaType !== 'audio',
-        }),
-        defineField({
-          name: 'videoFile',
-          title: 'Video File',
-          type: 'file',
-          options: {
-            accept: 'video/mp4',
-          },
-          hidden: ({document}) => document?.media?.mediaType !== 'video',
-        }),
-        defineField({
-          name: 'youtubeUrl',
-          title: 'YouTube URL',
-          type: 'url',
-          validation: (Rule) =>
-            Rule.uri({
-              scheme: ['http', 'https'],
+          type: 'object',
+          fields: [
+            defineField({
+              name: 'mediaHeadline',
+              title: 'Headline',
+              type: 'string',
+              validation: (Rule) => Rule.required(),
             }),
-          hidden: ({document}) => document?.media?.mediaType !== 'youtube',
-        }),
-        defineField({
-          name: 'description',
-          title: 'Description',
-          type: 'text',
-        }),
-        defineField({
-          name: 'publishedAt',
-          title: 'Published At',
-          type: 'datetime',
+            defineField({
+              name: 'mediaType',
+              title: 'Media Type',
+              type: 'string',
+              options: {
+                list: [
+                  {title: 'Audio (MP3)', value: 'audio'},
+                  {title: 'Video (MP4)', value: 'video'},
+                  {title: 'YouTube', value: 'youtube'},
+                ],
+              },
+              validation: (Rule) => Rule.required(),
+            }),
+            defineField({
+              name: 'audioFile',
+              title: 'Audio File',
+              type: 'file',
+              options: {
+                accept: 'audio/mp3',
+              },
+              hidden: ({document, parent}) => parent?.mediaType !== 'audio',
+            }),
+            defineField({
+              name: 'videoFile',
+              title: 'Video File',
+              type: 'file',
+              options: {
+                accept: 'video/mp4',
+              },
+              hidden: ({document, parent}) => parent?.mediaType !== 'video',
+            }),
+            defineField({
+              name: 'youtubeUrl',
+              title: 'YouTube URL',
+              type: 'url',
+              validation: (Rule) =>
+                Rule.uri({
+                  scheme: ['http', 'https'],
+                }),
+              hidden: ({document, parent}) => parent?.mediaType !== 'youtube',
+            }),
+            defineField({
+              name: 'description',
+              title: 'Description',
+              type: 'text',
+            }),
+            defineField({
+              name: 'publishedAt',
+              title: 'Published At',
+              type: 'datetime',
+            }),
+          ],
         }),
       ],
       group: 'media',

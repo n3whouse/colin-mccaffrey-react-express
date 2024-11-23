@@ -7,22 +7,10 @@ function Media() {
 
   useEffect(() => {
     const fetchMedia = async () => {
-      const data = await client.fetch(`*[_type == 'performer']{
-        media {
-        mediaHeadline,
-        mediaType,
-        audioFile { asset => { url } },
-        videoFile { asset => { url } },
-        youtubeUrl,
-        description,
-        publishedAt,
-        }
-      }`);
-
-      const flattenedMediaItems = data.flatMap((performer) =>
-        performer.media ? [performer.media] : []
+      const data = await client.fetch(`*[_type == 'performer']{media}`);
+      const flattenedMediaItems = data.flatMap(
+        (performer) => performer.media || []
       );
-      console.log("Fetched Media: ", flattenedMediaItems);
       setMediaItems(flattenedMediaItems);
     };
     fetchMedia();
@@ -30,25 +18,25 @@ function Media() {
 
   const getYouTubeVideoId = (url) => {
     const regex =
-      /(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^&\n]{11})/;
+      /(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:[^/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^&\n]{11})/;
     const matches = url.match(regex);
     return matches ? matches[1] : null;
   };
 
   return (
     <div className="mediaContainer">
-      {mediaItems.map((media) => (
-        <div key={media._id} className="mediaItem">
+      {mediaItems.map((media, index) => (
+        <div key={index} className="mediaItem">
           <h2>{media.mediaHeadline}</h2>
           {media.mediaType === "audio" && (
             <audio controls>
-              <source src={media.audioFile.asset.url} type="audio/mp3" />
+              <source src={media.audioFile?.asset?.url} type="audio/mp3" />
               Your browser does not support this audio element.
             </audio>
           )}
           {media.mediaType === "video" && (
             <video controls>
-              <source src={media.videoFile.asset.url} type="video/mp4" />
+              <source src={media.videoFile?.asset?.url} type="video/mp4" />
               Your browser does not support this video element.
             </video>
           )}
@@ -73,21 +61,6 @@ function Media() {
       ))}
     </div>
   );
-}
-
-{
-  /* <h2>
-        Watch Colin McCaffrey & Doug Perkins' Thursday Rumney Barn Session at
-        Fable Farm:
-      </h2>
-      <iframe
-        src="https://www.youtube.com/embed/sJzfhZcWQ50?si=RC56bNFeAs8lbE5J"
-        title="YouTube video player"
-        frameborder="0"
-        allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        referrerpolicy="strict-origin-when-cross-origin"
-        allowfullscreen
-      ></iframe> */
 }
 
 export default Media;
