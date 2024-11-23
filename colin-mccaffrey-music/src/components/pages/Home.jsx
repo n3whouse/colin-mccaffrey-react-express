@@ -3,7 +3,7 @@ import "../styles/Home.css";
 import BannerImage from "../../assets/ColinTeleBarnBust.png";
 import Bio from "./Bio";
 import Performer from "../SubNavs/Performer Subnav/Performer";
-import Engineer from "../SubNavs/Engineer Subnav/Engineer";
+import Producer from "../SubNavs/Producer Subnav/Producer";
 import Songwriter from "../SubNavs/Songwriter Subnav/Songwriter";
 import BookingAndContact from "./BookingAndContact";
 import Store from "./Store";
@@ -132,13 +132,13 @@ function Home() {
             </h1>
 
             {activeComponent === "bio" && <Bio />}
+            {activeComponent === "performer" && <Performer />}
+            {activeComponent === "producer" && <Producer />}
             {activeComponent === "songwriter" && <Songwriter />}
 
             {/* UNDER CONSTRUCTION ----------- */}
             {activeComponent === "booking" && <UnderConstruction />}
             {activeComponent === "store" && <UnderConstruction />}
-            {activeComponent === "producer" && <UnderConstruction />}
-            {activeComponent === "performer" && <UnderConstruction />}
           </div>
         </div>
       </div>

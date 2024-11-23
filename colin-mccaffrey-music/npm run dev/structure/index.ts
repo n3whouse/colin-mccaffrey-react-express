@@ -6,6 +6,7 @@ import {venueType} from '../schemaTypes/venueType'
 import {siteSettings} from '../schemaTypes/siteSettings'
 import {releaseType} from '../schemaTypes/releaseType'
 import {producerType} from '../schemaTypes/producerType'
+import {performerType} from '../schemaTypes/performerType'
 
 export const schemaTypes = [
   artistType,
@@ -14,6 +15,7 @@ export const schemaTypes = [
   siteSettings,
   releaseType,
   producerType,
+  performerType,
 ]
 
 export const structure: StructureResolver = (S) =>
@@ -49,4 +51,8 @@ export const structure: StructureResolver = (S) =>
         .title('Producer')
         .icon(AddDocumentIcon)
         .child(S.document().schemaType('producer').documentId('producer')),
+      S.listItem()
+        .title('Performer')
+        .icon(AddDocumentIcon)
+        .child(S.document().schemaType('performer').documentId('performer')),
     ]) //... and put artists and venues on the other side of the divider with the UsersIcon and PinIcon representing them graphically, respectively

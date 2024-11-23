@@ -5,6 +5,7 @@ import {siteSettings} from './siteSettings'
 import {bookingAndContactInfo} from './bookingAndContactInfo'
 import {releaseType} from './releaseType'
 import {producerType} from './producerType'
+import {performerType} from './performerType'
 
 export const schemaTypes = [
   showType,
@@ -14,4 +15,5 @@ export const schemaTypes = [
   bookingAndContactInfo,
   releaseType,
   producerType,
+  performerType,
 ]

@@ -2,8 +2,6 @@ import React, { useState, useEffect } from "react";
 import client from "../../../../sanity/client.js";
 import "../styles/UpcomingShows.css";
 
-console.log(process.env);
-
 const UpcomingShows = () => {
   const [shows, setShows] = useState([]);
   const [venues, setVenues] = useState({});
