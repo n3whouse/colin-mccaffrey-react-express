@@ -16,12 +16,14 @@ function Store() {
 
   useEffect(() => {
     const fetchStoreItems = async () => {
-      const data = await client.fetch(`*[_type == 'release']{
+      const data =
+        await client.fetch(`*[_type == 'release'] | order(order asc) {
         _id,
         releaseTitle,
         coverArt,
         releaseDescription,
         purchaseLink,
+        order,
       }`);
 
       setReleases(data);

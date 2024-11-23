@@ -18,6 +18,15 @@ iframe {
   /* padding: 10px; */
 }
 
+#publishDate {
+  font-size: 12px;
+}
+
+hr {
+  display: block;
+  width: 80%;
+}
+
 @media (max-width: 768px) {
   iframe {
     display: block;

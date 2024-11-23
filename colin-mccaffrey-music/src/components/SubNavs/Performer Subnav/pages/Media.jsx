@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "../styles/Media.css";
 import { client } from "../../../../sanity/client";
+import SanityBlockContent from "@sanity/block-content-to-react";
 
 function Media() {
   const [mediaItems, setMediaItems] = useState([]);
@@ -27,7 +28,13 @@ function Media() {
     <div className="mediaContainer">
       {mediaItems.map((media, index) => (
         <div key={index} className="mediaItem">
-          <h2>{media.mediaHeadline}</h2>
+          <h2>
+            <SanityBlockContent
+              blocks={media.mediaHeadline}
+              projectId="yourProjectId"
+              dataset="yourDataset"
+            />
+          </h2>
           {media.mediaType === "audio" && (
             <audio controls>
               <source src={media.audioFile?.asset?.url} type="audio/mp3" />
@@ -51,12 +58,15 @@ function Media() {
               allowFullScreen
             ></iframe>
           )}
-          {media.description && <p>{media.description}</p>}
+          {media.description && (
+            <SanityBlockContent blocks={media.description} />
+          )}
           {media.publishedAt && (
-            <p>
+            <p id="publishDate">
               Published on: {new Date(media.publishedAt).toLocaleDateString()}
             </p>
           )}
+          <hr />
         </div>
       ))}
     </div>

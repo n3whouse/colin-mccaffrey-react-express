@@ -46,7 +46,8 @@ export const performerType = defineType({
             defineField({
               name: 'mediaHeadline',
               title: 'Headline',
-              type: 'string',
+              type: 'array',
+              of: [{type: 'block'}],
               validation: (Rule) => Rule.required(),
             }),
             defineField({
@@ -93,7 +94,8 @@ export const performerType = defineType({
             defineField({
               name: 'description',
               title: 'Description',
-              type: 'text',
+              type: 'array',
+              of: [{type: 'block'}],
             }),
             defineField({
               name: 'publishedAt',

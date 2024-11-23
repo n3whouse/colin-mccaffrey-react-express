@@ -7,6 +7,7 @@ import {siteSettings} from '../schemaTypes/siteSettings'
 import {releaseType} from '../schemaTypes/releaseType'
 import {producerType} from '../schemaTypes/producerType'
 import {performerType} from '../schemaTypes/performerType'
+import {songwriterType} from '../schemaTypes/songwriterType'
 
 export const schemaTypes = [
   artistType,
@@ -16,6 +17,7 @@ export const schemaTypes = [
   releaseType,
   producerType,
   performerType,
+  songwriterType,
 ]
 
 export const structure: StructureResolver = (S) =>
@@ -23,18 +25,17 @@ export const structure: StructureResolver = (S) =>
     .id('root') //.. and give id "root"
     .title('Content') //..and title "Content"
     .items([
-      //...to the following items
-      S.listItem() //List item 1:
-        .title('Upcoming Shows') //call it Upcoming Events
-        .schemaType('show') //and display the "event" schematype
-        .icon(CalendarIcon) //use the CalendarIcon for the picture
-        .child(S.documentList().title('Upcoming Shows').filter('date >= now()')), //and only include dates > now (future)
-      S.listItem() //List Item 2
-        .title('Past Shows') //call it Past Events
-        .schemaType('show') // same as above
-        .icon(CalendarIcon) // same as above
-        .child(S.documentList().title('Past Shows').filter('date < now()')), // and only include dates < now (past)
-      S.divider(), //divide the "root" component into 2.
+      S.listItem()
+        .title('Upcoming Shows')
+        .schemaType('show')
+        .icon(CalendarIcon)
+        .child(S.documentList().title('Upcoming Shows').filter('date >= now()')),
+      S.listItem()
+        .title('Past Shows')
+        .schemaType('show')
+        .icon(CalendarIcon)
+        .child(S.documentList().title('Past Shows').filter('date < now()')),
+      S.divider(),
       S.documentTypeListItem('artist').title('Artists').icon(UsersIcon),
       S.documentTypeListItem('venue').title('Venues').icon(PinIcon),
       S.divider(),
@@ -55,4 +56,8 @@ export const structure: StructureResolver = (S) =>
         .title('Performer')
         .icon(AddDocumentIcon)
         .child(S.document().schemaType('performer').documentId('performer')),
-    ]) //... and put artists and venues on the other side of the divider with the UsersIcon and PinIcon representing them graphically, respectively
+      S.listItem()
+        .title('Songwriter')
+        .icon(AddDocumentIcon)
+        .child(S.document().schemaType('songwriter').documentId('songwriter')),
+    ])
