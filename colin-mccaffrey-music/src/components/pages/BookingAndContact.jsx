@@ -18,21 +18,21 @@ function BookingAndContact() {
   useEffect(() => {
     const fetchContactInfo = async () => {
       const data = await client.fetch(`*[_type == 'siteSettings'][0]{
-    email,
-    phone,
-    address,
-    bookingAndContactInfo->{
-      email,
-      phone,
-      address,
-      socialLinks
-    }
-  }`);
+        email,
+        phone,
+        address,
+        bookingAndContactInfo->{
+          email,
+          phone,
+          address,
+          socialLinks
+        }
+      }`);
 
-      console.log(data); // Log the fetched data to see its structure
+      console.log(data);
 
       setContactInfo({
-        email: data.bookingAndContactInfo?.email || "", // Use optional chaining and default value
+        email: data.bookingAndContactInfo?.email || "",
         phone: data.bookingAndContactInfo?.phone || "",
         address: data.bookingAndContactInfo?.address || "",
         socialLinks: data.bookingAndContactInfo?.socialLinks || {},
@@ -45,20 +45,21 @@ function BookingAndContact() {
     <>
       <h2>Contact Information</h2>
       <div className="contactInfo">
-        <p className="contactDetails">
-          <strong>Email:</strong>
-          <br />
-          {contactInfo.email}
-        </p>
-        <p className="contactDetails">
-          <strong>Phone:</strong>
-          <br />
-          {contactInfo.phone}
-        </p>
+        {contactInfo.email && (
+          <p className="contactDetails">
+            <p className="contactDetailHeader">Email:</p>
+            {contactInfo.email}
+          </p>
+        )}
+        {contactInfo.phone && (
+          <p className="contactDetails">
+            <p className="contactDetailHeader">Phone:</p>
+            {contactInfo.phone}
+          </p>
+        )}
         {contactInfo.address && (
           <p className="contactDetails">
-            <strong>Address:</strong>
-            <br />
+            <p className="contactDetailHeader">Address:</p>
             {contactInfo.address}
           </p>
         )}

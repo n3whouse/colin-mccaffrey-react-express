@@ -14,6 +14,25 @@
   width: 80dvw;
 }
 
+#headliner {
+  font-size: 14px;
+}
+
+#modalVenue {
+  font-size: 1.4rem;
+  font-weight: bold;
+}
+
+#modalAddress {
+  font-size: 1.2rem;
+}
+
+#modalVenue,
+#modalAddress,
+#modalPrice {
+  margin: auto;
+}
+
 table {
   width: 100%;
   border-collapse: collapse;
@@ -31,6 +50,10 @@ td {
   border-bottom: 1px solid #ddd;
   padding: 10px;
   text-align: center;
+}
+
+tr {
+  width: 100%;
 }
 
 th {

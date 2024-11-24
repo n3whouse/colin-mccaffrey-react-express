@@ -7,14 +7,19 @@
   /* margin-bottom: 5dvh; */
 }
 
+#mediaHeadline {
+  display: flex;
+  justify-content: center;
+}
+
 iframe {
   display: flex;
 
   margin: auto;
   margin-bottom: auto;
-  align-items: center;
-  width: 60%;
-  height: 50dvh;
+  /* align-items: center; */
+  /* width: 60%; */
+  /* height: 50dvh; */
   /* padding: 10px; */
 }
 

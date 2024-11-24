@@ -28,12 +28,10 @@ function Media() {
     <div className="mediaContainer">
       {mediaItems.map((media, index) => (
         <div key={index} className="mediaItem">
-          <h2>
-            <SanityBlockContent
-              blocks={media.mediaHeadline}
-              projectId="yourProjectId"
-              dataset="yourDataset"
-            />
+          <h2 id="mediaHeadline">
+            {media.mediaHeadline && (
+              <SanityBlockContent blocks={media.mediaHeadline} />
+            )}
           </h2>
           {media.mediaType === "audio" && (
             <audio controls>

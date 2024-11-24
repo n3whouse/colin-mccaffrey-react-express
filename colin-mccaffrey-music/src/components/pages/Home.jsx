@@ -132,13 +132,13 @@ function Home() {
             </h1>
 
             {activeComponent === "bio" && <Bio />}
+            {activeComponent === "booking" && <BookingAndContact />}
             {activeComponent === "performer" && <Performer />}
             {activeComponent === "producer" && <Producer />}
             {activeComponent === "songwriter" && <Songwriter />}
             {activeComponent === "store" && <Store />}
 
             {/* UNDER CONSTRUCTION ----------- */}
-            {activeComponent === "booking" && <UnderConstruction />}
           </div>
         </div>
       </div>

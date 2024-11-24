@@ -20,6 +20,11 @@ body {
   justify-content: space-between;
   font-size: x-large;
 }
+
+.contactDetailHeader {
+  font-weight: bold;
+}
+
 .socialLinks {
   display: flex;
   margin: auto auto 20px;

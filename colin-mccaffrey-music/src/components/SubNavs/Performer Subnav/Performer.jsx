@@ -51,7 +51,6 @@ function Performer() {
             Media
           </Link>
         </h2>
-        {/* <Link to="#" className={`component ${selectedComponent === "credits" ? 'bold' : 'faded'}`} onClick={() => handlePerformerLinks("credits")}> Credits </Link></h2> */}
 
         {selectedComponent === "upcoming shows" && <UpcomingShows />}
         {selectedComponent === "media" && <Media />}

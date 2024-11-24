@@ -5,59 +5,39 @@ import ShowModal from "./ShowModal"; // Import the modal component
 
 const UpcomingShows = () => {
   const [shows, setShows] = useState([]);
-  const [venues, setVenues] = useState({});
-  const [performerData, setPerformerData] = useState(null);
+  const [artistNames, setArtistNames] = useState({});
   const [selectedShow, setSelectedShow] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const fetchData = async () => {
-    try {
-      // Fetch shows first
-      const showsData = await client.fetch(`*[_type == 'show']{
-      _id,
-      name,
-      date,
-      price,
-      tickets,
-      details,
-      venue-> {
+  useEffect(() => {
+    const fetchData = async () => {
+      const showData = await client.fetch(`*[_type == 'show']{
         _id,
         name,
-        address,
-        city,
-        state,
-        link
-      }
-    }`);
-      setShows(showsData);
-
-      // Fetch performer data
-      const performerData = await client.fetch(`*[_type == 'performer'][0]{
-        upcomingShows {
-          upcomingShowsHeadline,
-          upcomingShowsSubtitle
+        date,
+        price,
+        tickets,
+        details,
+        venue-> {
+          _id,
+          name,
+          address,
+          city,
+          state,
+          link
+        },
+        headline-> {
+          name
         }
       }`);
-      setPerformerData(performerData);
 
-      // Extract unique venue IDs from shows
-      const venueIds = showsData.map((show) => show.venue._ref);
-      const venuesData = await client.fetch(`*[_id in $venueIds]`, {
-        venueIds,
-      });
+      const artistData = await client.fetch(`*[_type == 'artist']{name}`);
 
-      // Map venue data for easy access
-      const venuesMap = venuesData.reduce((acc, venue) => {
-        acc[venue._id] = venue.name;
-        return acc;
-      }, {});
-      setVenues(venuesMap);
-    } catch (error) {
-      console.error("Error fetching data:", error);
-    }
-  };
-
-  useEffect(() => {
+      // Create a mapping of artist IDs to names
+      const names = artistData.map((artist) => artist.name);
+      setArtistNames(names);
+      setShows(showData);
+    };
     fetchData();
   }, []);
 
@@ -73,12 +53,7 @@ const UpcomingShows = () => {
 
   return (
     <div className="table-container">
-      <h1 className="showsTitle">
-        {performerData?.upcomingShows?.upcomingShowsHeadline}
-      </h1>
-      <h3 className="showsSubtitle">
-        {performerData?.upcomingShows?.upcomingShowsSubtitle}
-      </h3>
+      <h1 className="showsTitle">Upcoming Shows</h1>
       <table>
         <thead>
           <tr>
@@ -97,7 +72,12 @@ const UpcomingShows = () => {
                 {new Date(show.date).toLocaleTimeString("en-US", {
                   hour: "2-digit",
                   minute: "2-digit",
-                })}
+                })}{" "}
+                {show.headline ? (
+                  <p id="headliner">with {show.headline.name}</p>
+                ) : (
+                  ""
+                )}
               </td>
               <td>{show.price > 0 ? `$${show.price}` : "Free"}</td>
               <td>
@@ -115,7 +95,6 @@ const UpcomingShows = () => {
           ))}
         </tbody>
       </table>
-
       {isModalOpen && selectedShow && (
         <ShowModal show={selectedShow} onClose={handleCloseModal} />
       )}
