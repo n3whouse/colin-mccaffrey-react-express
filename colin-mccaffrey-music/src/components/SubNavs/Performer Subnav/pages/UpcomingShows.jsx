@@ -53,21 +53,22 @@ const UpcomingShows = () => {
 
   return (
     <div className="table-container">
-      <h1 className="showsTitle">Upcoming Shows</h1>
+      <h1 className="showsTitle">Calendar</h1>
       <table>
         <thead>
-          <tr>
+          {/* <tr>
             <th>Date</th>
             <th>Venue</th>
             <th>Price</th>
             <th>Actions</th>
-          </tr>
+          </tr> */}
         </thead>
         <tbody>
           {shows.map((show) => (
             <tr key={show._id} onClick={() => handleShowClick(show)}>
               <td>{new Date(show.date).toLocaleDateString()}</td>
-              <td>
+              <td id="venue">
+                <p id="showName">{show.name}</p>
                 {show.venue?.name || "Venue not specified"} @{" "}
                 {new Date(show.date).toLocaleTimeString("en-US", {
                   hour: "2-digit",

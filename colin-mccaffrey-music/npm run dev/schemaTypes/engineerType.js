@@ -1,13 +1,13 @@
 import {defineField, defineType} from 'sanity'
 
-export const producerType = defineType({
-  name: 'producer',
-  title: 'Producer',
+export const engineerType = defineType({
+  name: 'engineer',
+  title: 'Engineer',
   type: 'document',
   __experimental_formPreviewTitle: false,
   groups: [
     {name: 'studio', title: 'Studio'},
-    {name: 'gearAndPrograms', title: 'Gear & Programs'},
+    {name: 'gearAndSoftware', title: 'Gear & Software'},
     {name: 'productionCredits', title: 'Production Credits'},
     {name: 'customization', title: 'Customization'},
   ],
@@ -44,7 +44,7 @@ export const producerType = defineType({
     }),
     defineField({
       name: 'gearAndPrograms',
-      title: 'Gear & Programs',
+      title: 'Gear & Software',
       type: 'object',
       fields: [
         defineField({
@@ -67,7 +67,7 @@ export const producerType = defineType({
           of: [{type: 'block'}],
         }),
       ],
-      group: 'gearAndPrograms',
+      group: 'gearAndSoftware',
     }),
     defineField({
       name: 'productionCredits',

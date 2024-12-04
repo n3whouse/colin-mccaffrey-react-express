@@ -33,9 +33,9 @@ function Songwriter() {
         <Link
           to="#"
           className={`component ${
-            selectedComponent === "streaming" ? "bold" : "faded"
+            selectedComponent === "credits" ? "bold" : "faded"
           }`}
-          onClick={() => handleSongwriterLinks("streaming")}
+          onClick={() => handleSongwriterLinks("credits")}
         >
           {linkNames.linkOne}
         </Link>{" "}
@@ -43,9 +43,9 @@ function Songwriter() {
         <Link
           to="#"
           className={`component ${
-            selectedComponent === "credits" ? "bold" : "faded"
+            selectedComponent === "streaming" ? "bold" : "faded"
           }`}
-          onClick={() => handleSongwriterLinks("credits")}
+          onClick={() => handleSongwriterLinks("streaming")}
         >
           {linkNames.linkTwo}
         </Link>

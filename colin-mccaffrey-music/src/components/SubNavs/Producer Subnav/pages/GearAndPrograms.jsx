@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "../styles/Producer.css";
+import "../styles/Engineer.css";
 import { client } from "../../../../sanity/client";
 import { PortableText } from "@portabletext/react";
 import imageUrlBuilder from "@sanity/image-url";
@@ -22,7 +22,7 @@ function GearAndPrograms() {
         setGearAndPrograms(data.gearAndPrograms);
       } catch (error) {
         console.error({
-          message: "Error fetching Gear and Programs page: ",
+          message: "Error fetching page: ",
           error,
         });
       }
@@ -31,12 +31,10 @@ function GearAndPrograms() {
   }, []);
 
   return (
-    <div className="gearAndPrograms">
-      <div className="studioContainer">
-        <h2>{gearAndPrograms.gearHeadline}</h2>
-      </div>
+    <div className="studioContainer">
+      <h2>{gearAndPrograms.gearHeadline}</h2>
 
-      <PortableText value={gearAndPrograms.gearDescription} />
+      <PortableText value={gearAndPrograms.gearDetails} />
     </div>
   );
 }

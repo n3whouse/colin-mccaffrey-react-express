@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "../styles/Producer.css";
+import "../styles/Engineer.css";
 import { client } from "../../../../sanity/client";
 import imageUrlBuilder from "@sanity/image-url";
 

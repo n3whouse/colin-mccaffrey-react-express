@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from "react";
 import "../../components/styles/Bio.css";
+import "../styles/Home.css";
 import { client } from "../../sanity/client";
 import { PortableText } from "@portabletext/react";
 import imageUrlBuilder from "@sanity/image-url";
+import Home from "./Home";
+import Navigation from "./Navigation";
 
 const builder = imageUrlBuilder(client);
 
@@ -34,7 +37,7 @@ const Bio = () => {
 
   return (
     <>
-      <div className="bioContainer">
+      <div className="bodyContainer">
         <div className="bio-text">
           {bioPic && (
             <img

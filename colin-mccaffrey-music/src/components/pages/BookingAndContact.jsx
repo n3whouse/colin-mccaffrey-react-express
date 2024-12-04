@@ -1,6 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { client } from "../../sanity/client";
-import { FaFacebook, FaYoutube, FaLinkedin } from "react-icons/fa";
+import {
+  FaFacebook,
+  FaYoutube,
+  FaLinkedin,
+  FaInstagramSquare,
+} from "react-icons/fa";
 import "../../App.css";
 
 function BookingAndContact() {
@@ -43,8 +48,8 @@ function BookingAndContact() {
 
   return (
     <>
-      <h2>Contact Information</h2>
-      <div className="contactInfo">
+      <div className="contactInfo bodyContainer">
+        <h2>Contact Information</h2>
         {contactInfo.email && (
           <p className="contactDetails">
             <p className="contactDetailHeader">Email:</p>
@@ -63,40 +68,49 @@ function BookingAndContact() {
             {contactInfo.address}
           </p>
         )}
-      </div>
 
-      <hr />
-      {contactInfo.socialLinks && (
-        <div className="socialLinks">
-          {contactInfo.socialLinks.facebook && (
-            <a
-              href={contactInfo.socialLinks.facebook}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <FaFacebook size={50} />
-            </a>
-          )}
-          {contactInfo.socialLinks.youtube && (
-            <a
-              href={contactInfo.socialLinks.youtube}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <FaYoutube size={50} />
-            </a>
-          )}
-          {contactInfo.socialLinks.linkedin && (
-            <a
-              href={contactInfo.socialLinks.linkedin}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <FaLinkedin size={50} />
-            </a>
-          )}
-        </div>
-      )}
+        <hr />
+        {contactInfo.socialLinks && (
+          <div id="socialLinks">
+            {contactInfo.socialLinks.facebook && (
+              <a
+                href={contactInfo.socialLinks.facebook}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <FaFacebook size={50} />
+              </a>
+            )}
+            {contactInfo.socialLinks.youtube && (
+              <a
+                href={contactInfo.socialLinks.youtube}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <FaYoutube size={50} />
+              </a>
+            )}
+            {contactInfo.socialLinks.linkedin && (
+              <a
+                href={contactInfo.socialLinks.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <FaLinkedin size={50} />
+              </a>
+            )}
+            {contactInfo.socialLinks.instagram && (
+              <a
+                href={contactInfo.socialLinks.instagram}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <FaInstagramSquare size={50} />
+              </a>
+            )}
+          </div>
+        )}
+      </div>
     </>
   );
 }

@@ -10,6 +10,45 @@ export const songwriterType = defineType({
     {name: 'linkTwo', title: 'Link Two'},
   ],
   fields: [
+    defineField({
+      name: 'credits',
+      title: 'Credits',
+      type: 'object',
+      fields: [
+        defineField({
+          name: 'linkTwoHeadline',
+          title: 'Headline',
+          type: 'string',
+        }),
+        defineField({
+          name: 'details',
+          title: 'Details',
+          type: 'array',
+          of: [{type: 'block'}],
+          validation: (Rule) => Rule.required(),
+        }),
+      ],
+      group: 'linkTwo',
+    }),
+    defineField({
+      name: 'subnavLinks',
+      title: 'Subnav Links',
+      type: 'object',
+      fields: [
+        defineField({
+          name: 'linkOne',
+          title: 'Link One',
+          type: 'string',
+          validation: (Rule) => Rule.required(),
+        }),
+        defineField({
+          name: 'linkTwo',
+          title: 'Link Two',
+          type: 'string',
+          validation: (Rule) => Rule.required(),
+        }),
+      ],
+    }),
     defineType({
       name: 'streaming',
       title: 'Streaming',
@@ -76,45 +115,6 @@ export const songwriterType = defineType({
         }),
       ],
       group: 'linkOne',
-    }),
-    defineField({
-      name: 'credits',
-      title: 'Credits',
-      type: 'object',
-      fields: [
-        defineField({
-          name: 'linkTwoHeadline',
-          title: 'Headline',
-          type: 'string',
-        }),
-        defineField({
-          name: 'details',
-          title: 'Details',
-          type: 'array',
-          of: [{type: 'block'}],
-          validation: (Rule) => Rule.required(),
-        }),
-      ],
-      group: 'linkTwo',
-    }),
-    defineField({
-      name: 'subnavLinks',
-      title: 'Subnav Links',
-      type: 'object',
-      fields: [
-        defineField({
-          name: 'linkOne',
-          title: 'Link One',
-          type: 'string',
-          validation: (Rule) => Rule.required(),
-        }),
-        defineField({
-          name: 'linkTwo',
-          title: 'Link Two',
-          type: 'string',
-          validation: (Rule) => Rule.required(),
-        }),
-      ],
     }),
   ],
 })

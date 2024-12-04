@@ -5,7 +5,7 @@ import {artistType} from '../schemaTypes/artistType'
 import {venueType} from '../schemaTypes/venueType'
 import {siteSettings} from '../schemaTypes/siteSettings'
 import {releaseType} from '../schemaTypes/releaseType'
-import {producerType} from '../schemaTypes/producerType'
+import {engineerType} from '../schemaTypes/engineerType'
 import {performerType} from '../schemaTypes/performerType'
 import {songwriterType} from '../schemaTypes/songwriterType'
 
@@ -15,7 +15,7 @@ export const schemaTypes = [
   venueType,
   siteSettings,
   releaseType,
-  producerType,
+  engineerType,
   performerType,
   songwriterType,
 ]
@@ -49,9 +49,9 @@ export const structure: StructureResolver = (S) =>
         .child(S.documentTypeList('release').title('Releases')),
       S.divider(),
       S.listItem()
-        .title('Producer')
+        .title('Engineer')
         .icon(AddDocumentIcon)
-        .child(S.document().schemaType('producer').documentId('producer')),
+        .child(S.document().schemaType('engineer').documentId('engineer')),
       S.listItem()
         .title('Performer')
         .icon(AddDocumentIcon)

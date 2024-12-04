@@ -19,12 +19,17 @@ const ShowModal = ({ show, onClose }) => {
     <>
       <div className="modal-overlay" onClick={onClose}>
         <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-          <h1>
-            {show.headline.name
-              ? `${show.headline.name}: ${show.name}`
-              : show.headline.name}
-          </h1>
-          <hr />
+          <div id="modalShowTitle">
+            <h1>{show.name}</h1>
+            <br />
+            <h3>
+              {show.headline.name
+                ? `with ${show.headline?.name}`
+                : show.headline.name}
+            </h3>
+          </div>
+          <br />
+          <hr id="titleDivider" />
 
           <a
             id="modalVenue"
@@ -43,7 +48,7 @@ const ShowModal = ({ show, onClose }) => {
           <div className="showDetails">
             {show.details && show.details.map(renderBlock)}
           </div>
-          <p>{new Date(show.date).toLocaleString()}</p>
+          <p id="modalTime">{new Date(show.date).toLocaleString()}</p>
           <p id="modalPrice">{show.price > 0 ? `$${show.price}` : "Free"}</p>
           <button className="btn">
             <a href={show.tickets} target="_blank" rel="noopener noreferrer">

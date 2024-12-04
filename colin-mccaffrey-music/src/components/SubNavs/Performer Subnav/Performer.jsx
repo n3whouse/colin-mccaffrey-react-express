@@ -27,7 +27,7 @@ function Performer() {
   };
   return (
     <>
-      <div>
+      <div className="bodyContainer">
         <hr />
         <h2>
           <Link
@@ -37,7 +37,7 @@ function Performer() {
             }`}
             onClick={() => handlePerformerLinks("upcoming shows")}
           >
-            Upcoming Shows
+            Calendar
           </Link>{" "}
           <span className="divider">|</span>
           <Link
@@ -51,7 +51,6 @@ function Performer() {
             Media
           </Link>
         </h2>
-
         {selectedComponent === "upcoming shows" && <UpcomingShows />}
         {selectedComponent === "media" && <Media />}
         {/* {selectedComponent === "credits" && <Credits />} */}

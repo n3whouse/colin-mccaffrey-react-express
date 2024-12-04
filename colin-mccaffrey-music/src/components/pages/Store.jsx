@@ -58,25 +58,27 @@ function Store() {
   return (
     <>
       <hr />
-      <div className="gridCard">
-        {releases.map((release) => (
-          <div
-            key={release._id}
-            className={`gridItem item${release._id} ${
-              selectedItem === release._id ? "selected" : ""
-            }`}
-            onClick={() => handleItemClick(release._id)}
-          >
-            <div>
-              <img
-                src={urlFor(release.coverArt).url()}
-                className={`album-art`}
-                alt={release.releaseTitle}
-              />
-              <div className="releaseTitle">{release.releaseTitle}</div>
+      <div className="bodyContainer">
+        <div className="gridCard">
+          {releases.map((release) => (
+            <div
+              key={release._id}
+              className={`gridItem item${release._id} ${
+                selectedItem === release._id ? "selected" : ""
+              }`}
+              onClick={() => handleItemClick(release._id)}
+            >
+              <div>
+                <img
+                  src={urlFor(release.coverArt).url()}
+                  className={`album-art`}
+                  alt={release.releaseTitle}
+                />
+                <div className="releaseTitle">{release.releaseTitle}</div>
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
 
       {selectedRelease && (

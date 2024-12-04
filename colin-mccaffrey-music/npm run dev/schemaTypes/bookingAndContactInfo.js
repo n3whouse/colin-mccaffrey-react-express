@@ -42,6 +42,11 @@ export const bookingAndContactInfo = defineType({
           title: 'LinkedIn',
           type: 'url',
         }),
+        defineField({
+          name: 'instagram',
+          title: 'Instagram',
+          type: 'url',
+        }),
       ],
     }),
   ],

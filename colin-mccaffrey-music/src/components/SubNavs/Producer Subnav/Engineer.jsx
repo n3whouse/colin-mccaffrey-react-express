@@ -2,12 +2,12 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Studio from "./pages/Studio";
 import "../../styles/Home.css";
-import "./styles/Producer.css";
+import "./styles/Engineer.css";
 import ProductionCredits from "./pages/ProductionCredits";
 import GearAndPrograms from "./pages/GearAndPrograms";
 import { client } from "../../../sanity/client";
 
-function Producer() {
+function Engineer() {
   const [activeMenuItem, setActiveMenuItem] = useState("studio");
   const [selectedItem, setSelectedItem] = useState(null);
 
@@ -32,7 +32,7 @@ function Producer() {
     setSelectedItem(item);
   };
   return (
-    <div className="producer subnav">
+    <div className="producer subnav bodyContainer">
       <hr />
       <h2>
         <Link
@@ -75,4 +75,4 @@ function Producer() {
   );
 }
 
-export default Producer;
+export default Engineer;

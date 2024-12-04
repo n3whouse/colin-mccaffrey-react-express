@@ -3,10 +3,12 @@
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(2, 1fr);
   max-width: 80dvh;
-  margin: 10dvh auto auto auto;
+  max-height: 100dvh;
+  margin: auto;
   grid-gap: 30px;
   justify-content: center;
-  margin-bottom: 5dvh;
+  /* margin-bottom: 5dvh; */
+  padding: 5% 0 10% 0;
 }
 
 .gridItem {
@@ -179,6 +181,7 @@ hr {
   object-fit: contain;
   box-shadow: 0 1px 5px 0;
   margin: auto;
+  margin-top: 5%;
 }
 
 .album-art:hover:not(.selected),
