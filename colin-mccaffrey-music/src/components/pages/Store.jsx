@@ -57,8 +57,8 @@ function Store() {
 
   return (
     <>
-      <hr />
       <div className="bodyContainer">
+        <hr />
         <div className="gridCard">
           {releases.map((release) => (
             <div
@@ -86,11 +86,11 @@ function Store() {
           <div className="modal-content" onClick={(e) => e.stopPropagation()}>
             <img
               src={urlFor(selectedRelease.coverArt).url()}
-              className={`album-art`}
+              id={`modal-album-art`}
               alt={selectedRelease.releaseTitle}
             />
 
-            <h2>{selectedRelease.releaseTitle}</h2>
+            <h4>{selectedRelease.releaseTitle}</h4>
             <a
               href={selectedRelease.purchaseLink}
               target="_blank"
@@ -98,6 +98,7 @@ function Store() {
             >
               <button className="btn">Buy Now</button>
             </a>
+            <br />
             {selectedRelease.releaseDescription && (
               <div className="description-container">
                 {selectedRelease.releaseDescription.map((block) => {
@@ -114,6 +115,7 @@ function Store() {
                 })}
               </div>
             )}
+            <br />
             <button className="btn" onClick={handleCloseModal}>
               Close
             </button>

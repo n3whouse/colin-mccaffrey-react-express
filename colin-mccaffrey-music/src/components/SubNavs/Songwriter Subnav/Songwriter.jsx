@@ -6,7 +6,7 @@ import { client } from "../../../sanity/client"; // Adjust the path as necessary
 import "./Songwriter.css";
 
 function Songwriter() {
-  const [selectedComponent, setSelectedComponent] = useState("streaming");
+  const [selectedComponent, setSelectedComponent] = useState("credits");
   const [linkNames, setLinkNames] = useState({ streaming: "", credits: "" });
 
   useEffect(() => {
@@ -27,7 +27,7 @@ function Songwriter() {
   };
 
   return (
-    <div>
+    <div className="bodyContainer">
       <hr />
       <h2>
         <Link

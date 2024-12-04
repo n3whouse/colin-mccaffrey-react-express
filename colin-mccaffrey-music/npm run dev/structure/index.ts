@@ -5,14 +5,10 @@ import {artistType} from '../schemaTypes/artistType'
 import {venueType} from '../schemaTypes/venueType'
 import {siteSettings} from '../schemaTypes/siteSettings'
 import {releaseType} from '../schemaTypes/releaseType'
-<<<<<<< HEAD
-import {producerType} from '../schemaTypes/producerType'
-import {client} from '../../src/sanity/client'
-=======
 import {engineerType} from '../schemaTypes/engineerType'
 import {performerType} from '../schemaTypes/performerType'
 import {songwriterType} from '../schemaTypes/songwriterType'
->>>>>>> 14236bab68ee23a52e33e463aea92fde5972ae71
+import {client} from '../../src/sanity/client'
 
 export const schemaTypes = [
   artistType,
@@ -60,36 +56,6 @@ export const structure: StructureResolver = (S, linkNames) => {
         .child(S.documentTypeList('release').title('Releases')),
       S.divider(),
       S.listItem()
-<<<<<<< HEAD
-
-        .title('Producer') // Use linkFive for Producer
-
-        .icon(AddDocumentIcon)
-
-        .child(S.document().schemaType('producer').documentId('producer')),
-
-      // Performer
-
-      S.listItem()
-
-        .title('Performer') // Use linkFour for Performer
-
-        .icon(AddDocumentIcon)
-
-        .child(S.document().schemaType('performer').documentId('performer')),
-
-      // Songwriter
-
-      S.listItem()
-
-        .title('Songwriter') // Use linkSix for Songwriter
-
-        .icon(AddDocumentIcon)
-
-        .child(S.document().schemaType('songwriter').documentId('songwriter')),
-    ])
-}
-=======
         .title('Engineer')
         .icon(AddDocumentIcon)
         .child(S.document().schemaType('engineer').documentId('engineer')),
@@ -102,4 +68,4 @@ export const structure: StructureResolver = (S, linkNames) => {
         .icon(AddDocumentIcon)
         .child(S.document().schemaType('songwriter').documentId('songwriter')),
     ])
->>>>>>> 14236bab68ee23a52e33e463aea92fde5972ae71
+}

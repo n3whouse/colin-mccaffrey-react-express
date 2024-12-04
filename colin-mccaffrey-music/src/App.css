@@ -10,9 +10,18 @@ body {
   margin: 0;
 }
 
+.bodyContainer {
+  height: 100%;
+  margin: auto;
+}
+
+.contactInfo {
+  margin-bottom: 20%;
+}
+
 .contactInfo,
 .contactDetails {
-  display: flex-grid;
+  display: flex;
   flex-direction: column;
   gap: 10px;
   margin: auto;
@@ -23,21 +32,22 @@ body {
 
 .contactDetailHeader {
   font-weight: bold;
+  margin: auto;
 }
 
 #socialLinks {
   display: flex;
-  margin: auto auto 20px;
-  width: 30%;
+  margin: auto auto 15% auto;
+  width: 50%;
   justify-content: space-between;
   padding: 10px;
 }
 
-@media (max-width: 768px) {
+/* @media (max-width: 768px) {
   .contactInfo,
   .contactDetails {
     display: flex;
     flex-direction: column;
     align-items: center;
   }
-}
+} */

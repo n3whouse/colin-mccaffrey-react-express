@@ -1,27 +1,19 @@
-@import "../../../styles/Bio.css";
-
-<<<<<<< HEAD
-.engineer {
-  margin-bottom: 10dvh;
-=======
-.producer {
-  display: flex;
-  flex-direction: column;
-  margin: auto auto 5dvh auto;
+p {
+  width: 80%;
+  margin: auto;
 }
 
+/* =========STUDIO PAGE========== */
 .studio .info {
   display: flex;
   justify-content: center;
->>>>>>> 14236bab68ee23a52e33e463aea92fde5972ae71
+  margin-bottom: 20%;
 }
 
 .studioContainer {
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: 30px;
   width: 60dvw;
   margin: auto;
 }
@@ -31,11 +23,7 @@
   width: 20dvw;
 }
 
-p {
-  font-size: 20px;
-  width: 90%;
-  font-weight: 100;
-}
+/* =========GEAR & PROGRAMS========== */
 
 .gearAndPrograms,
 .productionCredits {
@@ -43,7 +31,6 @@ p {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: 30px;
   width: 50dvw;
   margin: auto;
 }

@@ -1,0 +1,92 @@
+.nav {
+  display: flex;
+  flex-direction: column;
+}
+
+.desktop-nav {
+  display: none; /* Hide desktop navigation on mobile */
+}
+
+.mobile-nav {
+  display: flex;
+  flex-direction: column; /* Stack items vertically */
+  align-items: center;
+  /* padding: 10px; */
+  position: relative;
+  margin: auto;
+}
+
+#mobileMenu {
+  display: flex; /* Use flex to align items in a row */
+  justify-content: center;
+  width: 100%;
+  align-items: center;
+  margin: auto;
+  padding-left: 10px;
+}
+
+@media (min-width: 768px) {
+  .desktop-nav {
+    display: flex; /* Show desktop navigation on larger screens */
+    justify-content: center;
+  }
+
+  .mobile-nav {
+    display: none; /* Hide mobile navigation on larger screens */
+  }
+}
+
+.component {
+  color: black;
+  text-decoration: none;
+  padding: 10px;
+  font-size: 25px;
+}
+
+.component:hover {
+  color: black; /* Ensure all links turn black on hover */
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.faded {
+  color: gray;
+}
+
+.selected {
+  display: block;
+  font-weight: bold;
+  margin: auto; /* Center the selected component */
+}
+
+.dropdown-arrow {
+  display: block;
+  cursor: pointer;
+  font-size: smaller;
+  margin-left: 10px; /* Space between selected component and arrow */
+}
+
+.menu-items {
+  background-color: white;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column; /* Stack menu items vertically */
+  top: 100%; /* Position it below the selected component */
+  left: 0; /* Align to the left */
+  right: 0; /* Align to the right */
+  height: calc(100vh - 50px); /* Adjust height to fill the screen */
+  overflow-y: auto; /* Allow scrolling if items exceed screen height */
+  padding: 20px; /* Add padding for better spacing */
+}
+
+.menu-items .component {
+  font-size: 24px; /* Increase font size for better visibility */
+  margin: 10px 0; /* Space between menu items */
+  height: auto; /* Allow height to adjust based on content */
+}
+
+.menu-items .component:hover {
+  background-color: #f0f0f0; /* Highlight on hover */
+}

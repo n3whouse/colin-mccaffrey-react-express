@@ -1,3 +1,6 @@
+@import "../../App.css";
+
+/* ======= General ======= */
 html {
   background-image: url("../../assets/background.jpg");
 }
@@ -10,10 +13,15 @@ html {
   font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
   width: 100%;
   height: 100%;
-  /* margin: auto; */
-  /* margin-bottom: 20%; */
+  font-size: x-large;
 }
 
+.bodyContainer {
+  width: 80%;
+  padding: 0 0 3% 0;
+}
+
+/* ======= Navigation ======= */
 .nav {
   display: flex;
   background-color: white;
@@ -32,15 +40,6 @@ html {
   opacity: 98%;
 }
 
-.bodyContainer {
-  width: 80%;
-  /* padding: 10%; */
-}
-
-.bio-text {
-  padding: 10%;
-}
-
 .component {
   padding: 10px;
 }
@@ -49,16 +48,22 @@ html {
   .home {
     width: 100%;
   }
+  .nav,
+  .bodyContainer {
+    width: 100%;
+    box-shadow: 0 0 1px 0;
+  }
 }
 
 .nav {
-  font-size: x-large;
+  font-size: medium;
 }
 
 .nav .bio {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  width: 100%;
 }
 
 .nav .bio a {
@@ -78,7 +83,6 @@ html {
     width: 100%;
   }
   .bodyContainer {
-    width: 100%;
     display: flex;
   }
 
@@ -88,9 +92,6 @@ html {
   a {
     display: flex;
     flex-direction: column;
-  }
-  #headshot {
-    display: none;
   }
 
   .bio .nav {
@@ -169,6 +170,15 @@ html {
     width: 100%;
     position: relative;
     margin: auto;
+  }
+  #headshot {
+    width: 100%;
+    height: auto;
+  }
+  .header {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20%;
   }
 }
 

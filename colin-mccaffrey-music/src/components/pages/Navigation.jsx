@@ -1,134 +1,178 @@
 import React, { useState, useEffect } from "react";
-import Bio from "./Bio";
-import Performer from "../SubNavs/Performer Subnav/Performer";
-import Engineer from "../SubNavs/Producer Subnav/Engineer";
-import Songwriter from "../SubNavs/Songwriter Subnav/Songwriter";
-import BookingAndContact from "./BookingAndContact";
-import Store from "./Store";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { client } from "../../sanity/client";
-import Footer from "../Footer";
-// import "../styles/Bio.css";
-import UnderConstruction from "./UnderConstruction";
+import "../styles/Navigation.css";
+import { FaChevronDown, FaChevronUp } from "react-icons/fa6";
 
 function Navigation() {
-  const [activeComponent, setActiveComponent] = useState("");
-  const [selectedComponent, setSelectedComponent] = useState(null);
+  const [selectedComponent, setSelectedComponent] = useState("home"); // Default to "bio"
+  const [menuVisible, setMenuVisible] = useState(false);
 
-  const [firstLinkName, setFirstLinkName] = useState("");
-  const [secondLinkName, setSecondLinkName] = useState("");
-  const [thirdLinkName, setThirdLinkName] = useState("");
-  const [fourthLinkName, setFourthLinkName] = useState("");
-  const [fifthLinkName, setFifthLinkName] = useState("");
-  const [sixthLinkName, setSixthLinkName] = useState("");
+  const [linkNames, setLinkNames] = useState({
+    home: "",
+    bio: "",
+    store: "",
+    booking: "",
+    performer: "",
+    engineer: "",
+    songwriter: "",
+  });
 
   useEffect(() => {
     const fetchLinkNames = async () => {
-      // console.log(data);
       const data = await client.fetch(
-        `*[_type == 'siteSettings']{linkNames}[0]`
+        `*[_type == 'siteSettings'][0]{linkNames}`
       );
+
       if (data && data.linkNames) {
-        setFirstLinkName(data.linkNames.linkOne);
-        setSecondLinkName(data.linkNames.linkTwo);
-        setThirdLinkName(data.linkNames.linkThree);
-        setFourthLinkName(data.linkNames.linkFour);
-        setFifthLinkName(data.linkNames.linkFive);
-        setSixthLinkName(data.linkNames.linkSix);
+        setLinkNames({
+          home: data.linkNames.home,
+          bio: data.linkNames.linkOne,
+          store: data.linkNames.linkTwo,
+          booking: data.linkNames.linkThree,
+          performer: data.linkNames.linkFour,
+          engineer: data.linkNames.linkFive,
+          songwriter: data.linkNames.linkSix,
+        });
       }
+      console.log("Home: ", linkNames);
     };
     fetchLinkNames();
   }, []);
 
-  // const handleLinkClick = (component) => {
-  //   setActiveComponent(component);
-  //   setSelectedComponent(component);
-  // };
+  const handleLinkClick = (component) => {
+    setSelectedComponent(component);
+    setMenuVisible(false); // Close the menu when a link is clicked
+  };
+
+  const toggleMenu = () => {
+    setMenuVisible(!menuVisible); // Toggle menu visibility
+  };
 
   return (
     <div className="nav">
-      <h1>
-        <Link
-          to="/bio"
-          className={`component ${
-            selectedComponent === "bio" ? "bold" : "faded"
-          }`}
-          // onClick={() => handleLinkClick("bio")}
-        >
-          {firstLinkName}
-        </Link>
+      <div className="desktop-nav">
+        <h1>
+          <Link
+            to="/"
+            className={`component ${
+              selectedComponent === "home" ? "bold" : "faded"
+            }`}
+            onClick={() => handleLinkClick("home")}
+          >
+            {linkNames.home}
+          </Link>
 
-        <span className="divider">|</span>
+          <span className="divider">|</span>
 
-        <Link
-          to="/store"
-          className={`component ${
-            selectedComponent === "store" ? "bold" : "faded"
-          }`}
-          // onClick={() => handleLinkClick("store")}
-        >
-          {secondLinkName}
-        </Link>
+          <Link
+            to="/bio"
+            className={`component ${
+              selectedComponent === "bio" ? "bold" : "faded"
+            }`}
+            onClick={() => handleLinkClick("bio")}
+          >
+            {linkNames.bio}
+          </Link>
 
-        <span className="divider">|</span>
+          <span className="divider">|</span>
 
-        <Link
-          to="/booking-and-contact"
-          className={`component ${
-            selectedComponent === "booking" ? "bold" : "faded"
-          }`}
-          // onClick={() => handleLinkClick("booking")}
-        >
-          {thirdLinkName}
-        </Link>
+          <Link
+            to="/store"
+            className={`component ${
+              selectedComponent === "store" ? "bold" : "faded"
+            }`}
+            onClick={() => handleLinkClick("store")}
+          >
+            {linkNames.store}
+          </Link>
 
-        <span className="divider">
-          <br />
-        </span>
+          <span className="divider">|</span>
 
-        <Link
-          to="/performer"
-          className={`component ${
-            selectedComponent === "performer" ? "bold" : "faded"
-          }`}
-          // onClick={() => handleLinkClick("performer")}
-        >
-          {fourthLinkName}
-        </Link>
+          <Link
+            to="/booking"
+            className={`component ${
+              selectedComponent === "booking" ? "bold" : "faded"
+            }`}
+            onClick={() => handleLinkClick("booking")}
+          >
+            {linkNames.booking}
+          </Link>
 
-        <span className="divider">|</span>
+          <span className="divider">
+            <br />
+          </span>
 
-        <Link
-          to="/engineer"
-          className={`component ${
-            selectedComponent === "engineer" ? "bold" : "faded"
-          }`}
-          // onClick={() => handleLinkClick("engineer")}
-        >
-          {fifthLinkName}
-        </Link>
+          <Link
+            to="/performer"
+            className={`component ${
+              selectedComponent === "performer" ? "bold" : "faded"
+            }`}
+            onClick={() => handleLinkClick("performer")}
+          >
+            {linkNames.performer}
+          </Link>
 
-        <span className="divider">|</span>
+          <span className="divider">|</span>
 
-        <Link
-          to="/songwriter"
-          className={`component ${
-            selectedComponent === "songwriter" ? "bold" : "faded"
-          }`}
-          // onClick={() => handleLinkClick("songwriter")}
-        >
-          {sixthLinkName}
-        </Link>
-      </h1>
+          <Link
+            to="/engineer"
+            className={`component ${
+              selectedComponent === "engineer" ? "bold" : "faded"
+            }`}
+            onClick={() => handleLinkClick("engineer")}
+          >
+            {linkNames.engineer}
+          </Link>
 
-      {activeComponent === "bio" && <Bio />}
-      {activeComponent === "booking" && <BookingAndContact />}
-      {activeComponent === "performer" && <Performer />}
-      {activeComponent === "engineer" && <Engineer />}
-      {activeComponent === "songwriter" && <Songwriter />}
-      {activeComponent === "store" && <Store />}
+          <span className="divider">|</span>
 
-      {/* UNDER CONSTRUCTION ----------- */}
+          <Link
+            to="/songwriter"
+            className={`component ${
+              selectedComponent === "songwriter" ? "bold" : "faded"
+            }`}
+            onClick={() => handleLinkClick("songwriter")}
+          >
+            {linkNames.songwriter}
+          </Link>
+        </h1>
+      </div>
+
+      <div className="mobile-nav">
+        <h1 id="mobileMenu">
+          <Link
+            to={`/${selectedComponent}`}
+            className="selected component bold"
+          >
+            {linkNames[selectedComponent]}
+          </Link>
+          <div className="dropdown-arrow" onClick={toggleMenu}>
+            {menuVisible ? <FaChevronUp /> : <FaChevronDown />}
+          </div>
+        </h1>
+
+        {/* Show the full menu when the menu is visible */}
+        {menuVisible && (
+          <div className="menu-items">
+            {Object.keys(linkNames).map((key) => {
+              if (key !== selectedComponent) {
+                return (
+                  <Link
+                    to={`/${key === "home" ? "" : key}`}
+                    className="component"
+                    onClick={() => handleLinkClick(key)}
+                    key={key}
+                  >
+                    {linkNames[key]}
+                  </Link>
+                );
+              }
+              return null;
+            })}
+          </div>
+        )}
+      </div>
     </div>
   );
 }

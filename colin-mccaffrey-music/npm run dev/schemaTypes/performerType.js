@@ -1,13 +1,3 @@
-<<<<<<< HEAD
-// import { defineField, defineType } from 'sanity';
-
-// export const performerType = defineType({
-//   name: 'performer',
-//   type: 'document',
-//   fields: [],
-//   groups: [],
-// })
-=======
 import {defineField, defineType} from 'sanity'
 
 export const performerType = defineType({
@@ -119,4 +109,3 @@ export const performerType = defineType({
     }),
   ],
 })
->>>>>>> 14236bab68ee23a52e33e463aea92fde5972ae71

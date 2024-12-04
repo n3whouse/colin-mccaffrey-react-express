@@ -9,6 +9,7 @@ import Navigation from "./components/pages/Navigation";
 import Footer from "./components/Footer";
 import Performer from "./components/SubNavs/Performer Subnav/Performer";
 import Engineer from "./components/SubNavs/Producer Subnav/Engineer";
+import Songwriter from "./components/SubNavs/Songwriter Subnav/Songwriter";
 
 function App() {
   return (
@@ -20,9 +21,10 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/bio" element={<Bio />} />
           <Route path="/store" element={<Store />} />
-          <Route path="/booking-and-contact" element={<BookingAndContact />} />
+          <Route path="/booking" element={<BookingAndContact />} />
           <Route path="/performer" element={<Performer />} />
           <Route path="/engineer" element={<Engineer />} />
+          <Route path="/songwriter" element={<Songwriter />} />
         </Routes>
         <Footer />
       </Router>

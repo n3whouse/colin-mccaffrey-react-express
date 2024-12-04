@@ -4,6 +4,12 @@
   justify-content: center;
   width: 60dvw;
   margin: auto;
+  /* font-style: inherit; */
+}
+
+.bioBody {
+  display: flex;
+  font-size: 25px;
 }
 
 .portrait {
@@ -21,14 +27,6 @@
   display: block;
   align-items: center;
   width: 80%;
-  /* margin: auto auto auto auto; */
-}
-
-p,
-.bioBody {
-  width: 30dvw;
-  font-size: 20px;
-  margin: auto auto 10dvh auto;
 }
 
 @media (max-width: 768px) {
@@ -44,6 +42,7 @@ p,
     flex-direction: column;
     justify-content: center;
     width: 100%;
+    height: auto;
     margin: 0 0 20px 0;
   }
 

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-
+import "../Songwriter.css";
 import { client } from "../../../../sanity/client";
 
 function ColinsCredits() {
@@ -31,8 +31,9 @@ function ColinsCredits() {
 
       {creditsData.details &&
         creditsData.details.map((detail, index) => (
-          <p key={index}>
+          <p id="credit" key={index}>
             {detail.children.map((child) => child.text).join(" ")}
+            <hr id="creditDivider" />
           </p>
         ))}
     </div>
