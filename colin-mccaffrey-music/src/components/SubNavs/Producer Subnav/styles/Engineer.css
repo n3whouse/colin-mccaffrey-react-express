@@ -1,7 +1,19 @@
 @import "../../../styles/Bio.css";
 
+<<<<<<< HEAD
 .engineer {
   margin-bottom: 10dvh;
+=======
+.producer {
+  display: flex;
+  flex-direction: column;
+  margin: auto auto 5dvh auto;
+}
+
+.studio .info {
+  display: flex;
+  justify-content: center;
+>>>>>>> 14236bab68ee23a52e33e463aea92fde5972ae71
 }
 
 .studioContainer {

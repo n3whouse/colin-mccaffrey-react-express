@@ -20,10 +20,15 @@ body {
   justify-content: space-between;
   font-size: x-large;
 }
-.socialLinks {
+
+.contactDetailHeader {
+  font-weight: bold;
+}
+
+#socialLinks {
   display: flex;
   margin: auto auto 20px;
-  max-width: 40dvh;
+  width: 30%;
   justify-content: space-between;
   padding: 10px;
 }

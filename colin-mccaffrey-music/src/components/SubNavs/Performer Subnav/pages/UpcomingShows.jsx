@@ -1,67 +1,86 @@
 import React, { useState, useEffect } from "react";
 import client from "../../../../sanity/client.js";
 import "../styles/UpcomingShows.css";
-
-console.log(process.env);
+import ShowModal from "./ShowModal"; // Import the modal component
 
 const UpcomingShows = () => {
   const [shows, setShows] = useState([]);
-  const [venues, setVenues] = useState({});
-
-  // Function to fetch shows and their corresponding venues
-  const fetchShowsAndVenues = async () => {
-    try {
-      const showsData = await client.fetch(`*[_type == 'event']`);
-      setShows(showsData);
-
-      // Extract unique venue IDs
-      const venueIds = [...new Set(showsData.map((show) => show.venue._ref))];
-      const venuesData = await client.fetch(`*[_id in $venueIds]`, {
-        venueIds,
-      });
-
-      // Map venue data for easy access
-      const venuesMap = venuesData.reduce((acc, venue) => {
-        acc[venue._id] = venue.name; // Assuming venue has a 'name' field
-        return acc;
-      }, {});
-
-      setVenues(venuesMap);
-    } catch (error) {
-      console.error("Error fetching shows:", error);
-    }
-  };
+  const [artistNames, setArtistNames] = useState({});
+  const [selectedShow, setSelectedShow] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
-    fetchShowsAndVenues();
+    const fetchData = async () => {
+      const showData = await client.fetch(`*[_type == 'show']{
+        _id,
+        name,
+        date,
+        price,
+        tickets,
+        details,
+        venue-> {
+          _id,
+          name,
+          address,
+          city,
+          state,
+          link
+        },
+        headline-> {
+          name
+        }
+      }`);
+
+      const artistData = await client.fetch(`*[_type == 'artist']{name}`);
+
+      // Create a mapping of artist IDs to names
+      const names = artistData.map((artist) => artist.name);
+      setArtistNames(names);
+      setShows(showData);
+    };
+    fetchData();
   }, []);
+
+  const handleShowClick = (show) => {
+    setSelectedShow(show);
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+    setSelectedShow(null);
+  };
 
   return (
     <div className="table-container">
-      <h1 className="showsTitle">Upcoming Shows</h1>
-      <h3 className="showsSubtitle">(UNDER TESTING - NOT REAL DATES)</h3>
-      <p className="showsBlurb"></p>
+      <h1 className="showsTitle">Calendar</h1>
       <table>
         <thead>
-          <tr>
+          {/* <tr>
             <th>Date</th>
             <th>Venue</th>
             <th>Price</th>
             <th>Actions</th>
-          </tr>
+          </tr> */}
         </thead>
         <tbody>
           {shows.map((show) => (
-            <tr key={show._id}>
+            <tr key={show._id} onClick={() => handleShowClick(show)}>
               <td>{new Date(show.date).toLocaleDateString()}</td>
-              <td>
-                {venues[show.venue._ref] || "Venue not specified"} @{" "}
+              <td id="venue">
+                <p id="showName">{show.name}</p>
+                {show.venue?.name || "Venue not specified"} @{" "}
                 {new Date(show.date).toLocaleTimeString("en-US", {
                   hour: "2-digit",
                   minute: "2-digit",
-                })}
+                })}{" "}
+                {show.headline ? (
+                  <p id="headliner">with {show.headline.name}</p>
+                ) : (
+                  ""
+                )}
               </td>
-              <td>{show.price > 0 ? "$" + show.price : "Free"}</td>
+              <td>{show.price > 0 ? `$${show.price}` : "Free"}</td>
               <td>
                 <button id="tickets">
                   <a
@@ -77,19 +96,11 @@ const UpcomingShows = () => {
           ))}
         </tbody>
       </table>
+      {isModalOpen && selectedShow && (
+        <ShowModal show={selectedShow} onClose={handleCloseModal} />
+      )}
     </div>
   );
 };
-
-//--------------------------------
-
-//     <div className="table-container">
-//       <h1>Upcoming Shows</h1>
-//       <ul>
-//         {shows.map(show => (
-//           <li key={show._id}>{show.name}</li>
-//         ))}
-//       </ul>
-//     </div>
 
 export default UpcomingShows;

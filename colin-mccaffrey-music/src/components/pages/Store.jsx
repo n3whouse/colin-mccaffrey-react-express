@@ -16,26 +16,29 @@ function Store() {
 
   useEffect(() => {
     const fetchStoreItems = async () => {
-      const data = await client.fetch(`*[_type == 'release']{
+      const data =
+        await client.fetch(`*[_type == 'release'] | order(order asc) {
         _id,
         releaseTitle,
         coverArt,
         releaseDescription,
         purchaseLink,
-        }`);
+        order,
+      }`);
 
       setReleases(data);
     };
     fetchStoreItems();
   }, []);
 
-  const handleItemClick = (item, release) => {
-    setSelectedItem(selectedItem === item ? null : item); // for toggling selection logic
+  const handleItemClick = (item) => {
+    setSelectedItem(selectedItem === item ? null : item);
   };
 
   const handleCloseModal = () => {
     setSelectedItem(null);
   };
+
   const selectedRelease = releases.find(
     (release) => release._id === selectedItem
   );
@@ -55,34 +58,30 @@ function Store() {
   return (
     <>
       <hr />
-      <div className="gridCard">
-        {releases.map((release) => (
-          <div
-            key={release._id}
-            className={`gridItem item${release._id} ${
-              selectedItem === release._id ? "selected" : ""
-            }`}
-            onClick={() => handleItemClick(release._id)}
-          >
-            <div>
-              <img
-                src={urlFor(release.coverArt).url()}
-                className={`album-art`}
-                alt={release.releaseTitle}
-              />
-              <div className="releaseTitle">{release.releaseTitle}</div>
+      <div className="bodyContainer">
+        <div className="gridCard">
+          {releases.map((release) => (
+            <div
+              key={release._id}
+              className={`gridItem item${release._id} ${
+                selectedItem === release._id ? "selected" : ""
+              }`}
+              onClick={() => handleItemClick(release._id)}
+            >
+              <div>
+                <img
+                  src={urlFor(release.coverArt).url()}
+                  className={`album-art`}
+                  alt={release.releaseTitle}
+                />
+                <div className="releaseTitle">{release.releaseTitle}</div>
+              </div>
             </div>
-
-            {/* {selectedItem === release._id && (
-              <div className="album-details ">
-              <h2>{release.releaseTitle}</h2>
-              <p>{release.releaseDescription}</p>
-              </div> */}
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
 
-      {selectedRelease && ( // Render modal if a release is selected
+      {selectedRelease && (
         <div className="modal-overlay" onClick={handleCloseModal}>
           <div className="modal-content" onClick={(e) => e.stopPropagation()}>
             <img
@@ -99,7 +98,22 @@ function Store() {
             >
               <button className="btn">Buy Now</button>
             </a>
-            <p>{selectedRelease.releaseDescription}</p>
+            {selectedRelease.releaseDescription && (
+              <div className="description-container">
+                {selectedRelease.releaseDescription.map((block) => {
+                  switch (block._type) {
+                    case "block":
+                      return (
+                        <p key={block._key} className={block.style}>
+                          {block.children.map((child) => child.text).join("")}
+                        </p>
+                      );
+                    default:
+                      return null;
+                  }
+                })}
+              </div>
+            )}
             <button className="btn" onClick={handleCloseModal}>
               Close
             </button>

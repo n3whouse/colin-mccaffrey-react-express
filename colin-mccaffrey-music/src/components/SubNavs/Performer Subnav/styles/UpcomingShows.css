@@ -4,6 +4,18 @@
   justify-content: center;
 } */
 
+#modalShowTitle {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 0%;
+}
+
+#titleDivider {
+  display: block;
+  width: 80%;
+  margin-bottom: 3%;
+}
+
 .table-container {
   display: flex;
   flex-direction: column;
@@ -12,6 +24,81 @@
   border-radius: 10px;
   /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
   width: 80dvw;
+}
+
+#headliner,
+#showName {
+  font-size: 18px;
+  text-align: center;
+  margin: auto;
+}
+
+#headliner {
+  font-style: italic;
+}
+
+#showName {
+  font-weight: 500;
+}
+
+#venue {
+  font-size: 25px;
+}
+
+#modalAddress {
+  padding: 2%;
+}
+
+.modal-overlay {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 1000;
+  /* padding: 10%; */
+  max-height: 100%;
+}
+
+.showDetails {
+  display: flex;
+  flex-direction: column;
+  background: lightgray;
+  opacity: 80%;
+  /* padding: 8%; */
+  border-radius: 8px;
+  margin: auto;
+  max-width: auto;
+  max-height: 400px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  position: relative;
+}
+
+#modalVenue {
+  font-size: 1.4rem;
+  font-weight: bold;
+}
+
+#modalAddress {
+  font-size: 1.2rem;
+}
+
+#modalVenue,
+#modalAddress,
+#modalPrice {
+  margin: auto;
+  /* padding: 5%; */
+}
+
+#modalTime {
+  padding: 5%;
+  font-style: italic;
 }
 
 table {
@@ -33,6 +120,10 @@ td {
   text-align: center;
 }
 
+tr {
+  width: 100%;
+}
+
 th {
   background-color: #e4f1fc;
   font-weight: bold;
@@ -49,7 +140,7 @@ tr:hover {
 
 button {
   background-color: #d9ddff;
-  color: white;
+  color: black;
 }
 
 @media (max-width: 768px) {
@@ -60,4 +151,25 @@ button {
     margin: auto;
     width: auto;
   }
+}
+
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  text-align: center;
+}
+
+.modal-content {
+  text-align: center;
+  justify-content: center;
+  margin: auto;
+}
+
+.showDetails {
+  display: flex;
+  align-items: center;
+  margin: auto;
 }

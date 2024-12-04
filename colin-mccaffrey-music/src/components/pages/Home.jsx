@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "../styles/Home.css";
 import BannerImage from "../../assets/ColinTeleBarnBust.png";
+<<<<<<< HEAD
 import Bio from "./Bio";
 import Performer from "../SubNavs/Performer Subnav/Performer";
 import Songwriter from "../SubNavs/Songwriter Subnav/Songwriter";
@@ -11,41 +12,21 @@ import { client } from "../../sanity/client";
 import Footer from "../Footer";
 import UnderConstruction from "./UnderConstruction";
 import Producer from "../SubNavs/Producer Subnav/Producer";
+=======
+// import Bio from "./Bio";
+// import Performer from "../SubNavs/Performer Subnav/Performer";
+// import Producer from "../SubNavs/Producer Subnav/Producer";
+// import Songwriter from "../SubNavs/Songwriter Subnav/Songwriter";
+// import BookingAndContact from "./BookingAndContact";
+// import Store from "./Store";
+// import { Link, useNavigate } from "react-router-dom";
+import { client } from "../../sanity/client";
+import Footer from "../Footer";
+// import UnderConstruction from "./UnderConstruction";
+import Navigation from "./Navigation";
+>>>>>>> 14236bab68ee23a52e33e463aea92fde5972ae71
 
 function Home() {
-  const [activeComponent, setActiveComponent] = useState("bio");
-  const [selectedComponent, setSelectedComponent] = useState(null);
-
-  const [firstLinkName, setFirstLinkName] = useState("");
-  const [secondLinkName, setSecondLinkName] = useState("");
-  const [thirdLinkName, setThirdLinkName] = useState("");
-  const [fourthLinkName, setFourthLinkName] = useState("");
-  const [fifthLinkName, setFifthLinkName] = useState("");
-  const [sixthLinkName, setSixthLinkName] = useState("");
-
-  useEffect(() => {
-    const fetchLinkNames = async () => {
-      // console.log(data);
-      const data = await client.fetch(
-        `*[_type == 'siteSettings']{linkNames}[0]`
-      );
-      if (data && data.linkNames) {
-        setFirstLinkName(data.linkNames.linkOne);
-        setSecondLinkName(data.linkNames.linkTwo);
-        setThirdLinkName(data.linkNames.linkThree);
-        setFourthLinkName(data.linkNames.linkFour);
-        setFifthLinkName(data.linkNames.linkFive);
-        setSixthLinkName(data.linkNames.linkSix);
-      }
-    };
-    fetchLinkNames();
-  }, []);
-
-  const handleLinkClick = (component) => {
-    setActiveComponent(component);
-    setSelectedComponent(component);
-  };
-
   return (
     <>
       <div className="home">
@@ -56,6 +37,7 @@ function Home() {
             alt="Colin with his Telecaster"
           />
           <h1 className="header">Colin McCaffrey</h1>
+<<<<<<< HEAD
           <div className="nav">
             <h1>
               <Link
@@ -140,9 +122,10 @@ function Home() {
 
             {/* UNDER CONSTRUCTION ----------- */}
           </div>
+=======
+>>>>>>> 14236bab68ee23a52e33e463aea92fde5972ae71
         </div>
       </div>
-      <Footer />
     </>
   );
 }

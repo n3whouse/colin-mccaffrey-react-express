@@ -21,5 +21,9 @@ export const venueType = defineType({
       name: 'state',
       type: 'string',
     }),
+    defineField({
+      name: 'link',
+      type: 'url',
+    }),
   ],
 })

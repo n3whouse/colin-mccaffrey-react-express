@@ -4,12 +4,29 @@
   margin: auto;
 }
 
+#spotifyPlayer {
+  display: flex;
+  width: 60%;
+}
+
+.streamingContainer {
+  margin: auto;
+  width: 70%;
+}
+
+#streamDivider {
+  display: block;
+  width: 50%;
+}
+
 @media (max-width: 768px) {
   .playerContainer {
     width: 98dvw;
   }
-  #spotifyPlayer {
+  #spotifyPlayer,
+  .streamingContainer {
     display: flex;
+    flex-direction: column;
     width: 100%;
     margin: auto;
   }

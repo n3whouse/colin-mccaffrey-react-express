@@ -1,0 +1,6 @@
+
+
+RewriteEngine On
+
+# Redirect /admin 
+RewriteRule ^admin/?$ https://colin-mccaffrey-music.sanity.studio/ [R=301,L]

@@ -1,15 +1,31 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Streaming from "./pages/Streaming";
 import ColinsCredits from "./pages/ColinsCredits";
+import { client } from "../../../sanity/client"; // Adjust the path as necessary
 import "./Songwriter.css";
 
 function Songwriter() {
   const [selectedComponent, setSelectedComponent] = useState("streaming");
+  const [linkNames, setLinkNames] = useState({ streaming: "", credits: "" });
+
+  useEffect(() => {
+    const fetchLinkNames = async () => {
+      const data = await client.fetch(`*[_type == 'songwriter'][0]`);
+      if (data && data.subnavLinks) {
+        setLinkNames({
+          linkOne: data.subnavLinks.linkOne,
+          linkTwo: data.subnavLinks.linkTwo,
+        });
+      }
+    };
+    fetchLinkNames();
+  }, []);
 
   const handleSongwriterLinks = (component) => {
     setSelectedComponent(component);
   };
+
   return (
     <div>
       <hr />
@@ -17,22 +33,21 @@ function Songwriter() {
         <Link
           to="#"
           className={`component ${
-            selectedComponent === "streaming" ? "bold" : "faded"
+            selectedComponent === "credits" ? "bold" : "faded"
           }`}
-          onClick={() => handleSongwriterLinks("streaming")}
+          onClick={() => handleSongwriterLinks("credits")}
         >
-          Streaming
+          {linkNames.linkOne}
         </Link>{" "}
         <span className="divider">|</span>
         <Link
           to="#"
           className={`component ${
-            selectedComponent === "credits" ? "bold" : "faded"
+            selectedComponent === "streaming" ? "bold" : "faded"
           }`}
-          onClick={() => handleSongwriterLinks("credits")}
+          onClick={() => handleSongwriterLinks("streaming")}
         >
-          {" "}
-          Credits
+          {linkNames.linkTwo}
         </Link>
         {selectedComponent === "streaming" && <Streaming />}
         {selectedComponent === "credits" && <ColinsCredits />}

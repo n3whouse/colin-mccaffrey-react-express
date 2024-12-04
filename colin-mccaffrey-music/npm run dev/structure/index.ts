@@ -5,8 +5,14 @@ import {artistType} from '../schemaTypes/artistType'
 import {venueType} from '../schemaTypes/venueType'
 import {siteSettings} from '../schemaTypes/siteSettings'
 import {releaseType} from '../schemaTypes/releaseType'
+<<<<<<< HEAD
 import {producerType} from '../schemaTypes/producerType'
 import {client} from '../../src/sanity/client'
+=======
+import {engineerType} from '../schemaTypes/engineerType'
+import {performerType} from '../schemaTypes/performerType'
+import {songwriterType} from '../schemaTypes/songwriterType'
+>>>>>>> 14236bab68ee23a52e33e463aea92fde5972ae71
 
 export const schemaTypes = [
   artistType,
@@ -14,7 +20,9 @@ export const schemaTypes = [
   venueType,
   siteSettings,
   releaseType,
-  producerType,
+  engineerType,
+  performerType,
+  songwriterType,
 ]
 
 const getLinkNames = async () => {
@@ -28,18 +36,17 @@ export const structure: StructureResolver = (S, linkNames) => {
     .id('root') //.. and give id "root"
     .title('Content') //..and title "Content"
     .items([
-      //...to the following items
-      S.listItem() //List item 1:
-        .title('Upcoming Shows') //call it Upcoming Events
-        .schemaType('show') //and display the "event" schematype
-        .icon(CalendarIcon) //use the CalendarIcon for the picture
-        .child(S.documentList().title('Upcoming Shows').filter('date >= now()')), //and only include dates > now (future)
-      S.listItem() //List Item 2
-        .title('Past Shows') //call it Past Events
-        .schemaType('show') // same as above
-        .icon(CalendarIcon) // same as above
-        .child(S.documentList().title('Past Shows').filter('date < now()')), // and only include dates < now (past)
-      S.divider(), //divide the "root" component into 2.
+      S.listItem()
+        .title('Upcoming Shows')
+        .schemaType('show')
+        .icon(CalendarIcon)
+        .child(S.documentList().title('Upcoming Shows').filter('date >= now()')),
+      S.listItem()
+        .title('Past Shows')
+        .schemaType('show')
+        .icon(CalendarIcon)
+        .child(S.documentList().title('Past Shows').filter('date < now()')),
+      S.divider(),
       S.documentTypeListItem('artist').title('Artists').icon(UsersIcon),
       S.documentTypeListItem('venue').title('Venues').icon(PinIcon),
       S.divider(),
@@ -53,6 +60,7 @@ export const structure: StructureResolver = (S, linkNames) => {
         .child(S.documentTypeList('release').title('Releases')),
       S.divider(),
       S.listItem()
+<<<<<<< HEAD
 
         .title('Producer') // Use linkFive for Producer
 
@@ -81,3 +89,17 @@ export const structure: StructureResolver = (S, linkNames) => {
         .child(S.document().schemaType('songwriter').documentId('songwriter')),
     ])
 }
+=======
+        .title('Engineer')
+        .icon(AddDocumentIcon)
+        .child(S.document().schemaType('engineer').documentId('engineer')),
+      S.listItem()
+        .title('Performer')
+        .icon(AddDocumentIcon)
+        .child(S.document().schemaType('performer').documentId('performer')),
+      S.listItem()
+        .title('Songwriter')
+        .icon(AddDocumentIcon)
+        .child(S.document().schemaType('songwriter').documentId('songwriter')),
+    ])
+>>>>>>> 14236bab68ee23a52e33e463aea92fde5972ae71

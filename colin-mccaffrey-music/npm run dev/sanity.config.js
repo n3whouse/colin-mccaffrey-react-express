@@ -11,6 +11,7 @@ export default defineConfig({
 
   projectId: 'p3o500d1',
   dataset: 'product',
+  // dataset: 'development',
   studioHost: 'colin-mccaffrey-music',
 
   plugins: [
