@@ -27,7 +27,7 @@ function ColinsCredits() {
 
   return (
     <div className="creditsContainer">
-      <h3>{creditsData.linkTwoHeadline || "Colin's Credits"}</h3>
+      <h2>{creditsData.linkTwoHeadline || "Colin's Credits"}</h2>
 
       {creditsData.details &&
         creditsData.details.map((detail, index) => (

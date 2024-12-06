@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "../styles/Media.css";
 import { client } from "../../../../sanity/client";
-import SanityBlockContent from "@sanity/block-content-to-react";
+import { PortableText } from "@portabletext/react";
 
 function Media() {
   const [mediaItems, setMediaItems] = useState([]);
@@ -25,12 +25,14 @@ function Media() {
   };
 
   return (
-    <div className="mediaContainer">
+    <div className="bodyContainer">
+      {/* <PerformerNavigation /> */}
+      <h1>Media</h1>
       {mediaItems.map((media, index) => (
         <div key={index} className="mediaItem">
           <h2 id="mediaHeadline">
             {media.mediaHeadline && (
-              <SanityBlockContent blocks={media.mediaHeadline} />
+              <PortableText blocks={media.mediaHeadline} />
             )}
           </h2>
           {media.mediaType === "audio" && (
@@ -56,9 +58,7 @@ function Media() {
               allowFullScreen
             ></iframe>
           )}
-          {media.description && (
-            <SanityBlockContent blocks={media.description} />
-          )}
+          {media.description && <PortableText blocks={media.description} />}
           {media.publishedAt && (
             <p id="publishDate">
               Published on: {new Date(media.publishedAt).toLocaleDateString()}

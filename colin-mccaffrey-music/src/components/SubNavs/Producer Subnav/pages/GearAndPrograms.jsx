@@ -32,7 +32,7 @@ function GearAndPrograms() {
 
   return (
     <div className="studioContainer">
-      <h2>{gearAndPrograms.gearHeadline}</h2>
+      <h1>{gearAndPrograms.gearHeadline}</h1>
 
       <PortableText value={gearAndPrograms.gearDetails} />
     </div>

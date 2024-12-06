@@ -1,77 +1,62 @@
-import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-import Studio from "./pages/Studio";
+import React from "react";
+import { Outlet, useLocation } from "react-router-dom";
 import "../../styles/Home.css";
 import "./styles/Engineer.css";
-import ProductionCredits from "./pages/ProductionCredits";
+import EngineerNavigation from "./EngineerNavigation";
+import Studio from "./pages/Studio";
 import GearAndPrograms from "./pages/GearAndPrograms";
-import { client } from "../../../sanity/client";
+import ProductionCredits from "./pages/ProductionCredits";
+import DocumentMeta from "react-document-meta";
 
 function Engineer() {
-  const [activeMenuItem, setActiveMenuItem] = useState("studio");
-  const [selectedItem, setSelectedItem] = useState(null);
-
-  const [firstSublinkName, setFirstSublinkName] = useState("");
-  const [secondSublinkName, setSecondSublinkName] = useState("");
-  const [thirdSublinkName, setThirdSublinkName] = useState("");
-
-  useEffect(() => {
-    const fetchLinkNames = async () => {
-      const data = await client.fetch(`*[_type == 'producer'][0]`);
-      if (data && data.subnavLinks) {
-        setFirstSublinkName(data.subnavLinks.subLinkOne);
-        setSecondSublinkName(data.subnavLinks.subLinkTwo);
-        setThirdSublinkName(data.subnavLinks.subLinkThree);
-      }
-    };
-    fetchLinkNames();
-  }, []);
-
-  const handleItemClick = (item) => {
-    setActiveMenuItem(item);
-    setSelectedItem(item);
+  const meta = {
+    title: "Colin McCaffrey: Engineer",
+    description:
+      "Colin McCaffrey is a highly-skilled and award winning recording engineer with a long list of works. Here you can get a peek of the studio, his equipment, and his production resume.",
+    canonical: "https://colinmccaffrey.com/engineer",
+    meta: {
+      charset: "utf-8",
+      name: {
+        keywords:
+          "Colin McCaffrey, performer, calendar, shows, videos, audio, media clips, upcoming shows",
+      },
+      property: {
+        "og:title": "Colin McCaffrey: Engineer",
+        "og:description":
+          "Colin McCaffrey is a highly-skilled and award winning recording engineer with a long list of works. Here you can get a peek of the studio, his equipment, and his production resume.",
+        "og:image": `https://colinmccaffrey.com/static/media/ColinTeleBarnBust.9e8f0e7a98f8872e4385.png`, //change to dynamic url if possible once home page has a link to change img
+        "og:type": "website",
+        "og:url": "https://colinmccaffrey.com/engineer",
+      },
+    },
   };
-  return (
-    <div className="producer subnav bodyContainer">
-      <hr />
-      <h2>
-        <Link
-          to="#"
-          className={`component ${
-            selectedItem === "studio" ? "bold" : "faded"
-          }`}
-          onClick={() => handleItemClick("studio")}
-        >
-          {firstSublinkName}
-        </Link>{" "}
-        <span className="divider">|</span>
-        <Link
-          to="#"
-          className={`component ${
-            selectedItem === "gear and programs" ? "bold" : "faded"
-          }`}
-          onClick={() => handleItemClick("gear and programs")}
-        >
-          {" "}
-          {secondSublinkName}
-        </Link>{" "}
-        <span className="divider">|</span>
-        <Link
-          to="#"
-          className={`component ${
-            selectedItem === "credits" ? "bold" : "faded"
-          }`}
-          onClick={() => handleItemClick("credits")}
-        >
-          {" "}
-          {thirdSublinkName}
-        </Link>
-      </h2>
 
-      {activeMenuItem === "studio" && <Studio />}
-      {activeMenuItem === "gear and programs" && <GearAndPrograms />}
-      {activeMenuItem === "credits" && <ProductionCredits />}
-    </div>
+  const location = useLocation();
+
+  const isStudioSelected = location.pathname === "/engineer/studio";
+  const isGearSelected = location.pathname === "/engineer/gear";
+  const isProductionCreditsSelected =
+    location.pathname === "/engineer/production-credits";
+
+  return (
+    <>
+      <EngineerNavigation />
+      <DocumentMeta {...meta}>
+        <div className="producer subnav bodyContainer">
+          {!isStudioSelected &&
+            !isGearSelected &&
+            !isProductionCreditsSelected && (
+              <>
+                <Studio />
+                <GearAndPrograms />
+                <ProductionCredits />
+              </>
+            )}
+          <hr />
+          <Outlet />
+        </div>
+      </DocumentMeta>
+    </>
   );
 }
 

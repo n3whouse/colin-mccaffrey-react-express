@@ -6,8 +6,14 @@
   /* max-width: 80dvh; */
   /* max-height: 100dvh; */
   margin: auto;
-  grid-gap: 100px;
+  grid-gap: 80px;
   justify-content: center;
+  width: inherit;
+}
+
+.bodyContainer {
+  display: flex;
+  width: 80dvw;
 }
 
 /* Grid Item Styles */

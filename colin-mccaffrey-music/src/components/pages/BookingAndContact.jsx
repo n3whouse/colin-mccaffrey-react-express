@@ -7,6 +7,7 @@ import {
   FaInstagramSquare,
 } from "react-icons/fa";
 import "../../App.css";
+import DocumentMeta from "react-document-meta";
 
 function BookingAndContact() {
   const [contactInfo, setContactInfo] = useState({
@@ -19,6 +20,26 @@ function BookingAndContact() {
       linkedin: "",
     },
   });
+
+  const meta = {
+    title: "Colin McCaffrey: Booking & Contact",
+    description:
+      "Contact and booking information for Vermont singer-songwriter Colin McCaffrey",
+    canonical: "https://colinmccaffrey.com/booking",
+    meta: {
+      charSet: "utf-8",
+      name: {
+        keywords: "Colin, McCaffrey, engineer, producer, booking, contact",
+      },
+      property: {
+        "og:title": "Colin McCaffrey: Booking & Contact",
+        "og:description":
+          "Contact and booking information for Vermont singer-songwriter Colin McCaffrey",
+        "og:type": "website",
+        "og:url": "https://colinmccaffrey.com/booking",
+      },
+    },
+  };
 
   useEffect(() => {
     const fetchContactInfo = async () => {
@@ -47,7 +68,7 @@ function BookingAndContact() {
   }, []);
 
   return (
-    <>
+    <DocumentMeta {...meta}>
       <div className="contactInfo bodyContainer">
         <h2>Contact Information</h2>
         {contactInfo.email && (
@@ -111,7 +132,7 @@ function BookingAndContact() {
           </div>
         )}
       </div>
-    </>
+    </DocumentMeta>
   );
 }
 

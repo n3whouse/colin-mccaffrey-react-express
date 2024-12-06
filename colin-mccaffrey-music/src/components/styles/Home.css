@@ -3,6 +3,7 @@
 /* ======= General ======= */
 html {
   background-image: url("../../assets/background.jpg");
+  overflow-x: hidden;
 }
 
 .home {
@@ -53,6 +54,9 @@ html {
     width: 100%;
     box-shadow: 0 0 1px 0;
   }
+  .bodyContainer {
+    width: auto;
+  }
 }
 
 .nav {
@@ -80,14 +84,12 @@ html {
 
 @media (max-width: 768px) {
   .home {
-    width: 100%;
-  }
-  .bodyContainer {
-    display: flex;
+    /* width: 100%; */
   }
 
   .header {
     display: none;
+    text-align: center;
   }
   a {
     display: flex;

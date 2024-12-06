@@ -1,9 +1,4 @@
-/* div {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-} */
-
+/* Modal and general styling remains unchanged */
 #modalShowTitle {
   display: flex;
   flex-direction: column;
@@ -22,8 +17,65 @@
   margin: auto;
   background-color: #fff;
   border-radius: 10px;
-  /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
   width: 80dvw;
+}
+
+@media (max-width: 768px) {
+  /* Adjust table container to make it scrollable */
+  .table-container {
+    width: 100%;
+    /* overflow-x: auto; */
+  }
+
+  table {
+    display: block; /* Makes the table block-level to enable scrolling */
+    white-space: nowrap; /* Prevent text from wrapping in cells */
+    text-align: center;
+  }
+
+  th,
+  td {
+    width: auto;
+    font-size: 12px; /* Reduce font size for smaller screens */
+    /* padding: 8px; */
+  }
+
+  /* Hide the "Actions" column on small screens if needed */
+  td:last-child,
+  th:last-child {
+    display: none;
+  }
+
+  /* Show names and venues with smaller font size */
+  #showName,
+  #headliner {
+    font-size: 13px; /* Smaller font size for mobile */
+  }
+
+  #venue {
+    display: flex;
+    flex-direction: column;
+    font-size: 14px; /* Smaller font size for venue */
+    text-align: center;
+    margin: auto 30% auto auto;
+    justify-content: center;
+    align-items: center;
+  }
+  #venueDetails {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    font-size: smaller;
+    width: auto;
+  }
+  #headliner {
+    width: auto;
+  }
+  /* Reduce padding on the whole table for better fitting */
+  .table-container {
+    display: flex;
+    justify-content: center;
+  }
 }
 
 #headliner,
@@ -35,10 +87,13 @@
 
 #headliner {
   font-style: italic;
+  font-size: large;
+  margin: auto;
 }
 
 #showName {
   font-weight: 500;
+  font-size: 14px;
 }
 
 #venue {
@@ -61,7 +116,6 @@
   bottom: 0;
   background: rgba(0, 0, 0, 0.7);
   z-index: 1000;
-  /* padding: 10%; */
   max-height: 100%;
 }
 
@@ -70,7 +124,6 @@
   flex-direction: column;
   background: lightgray;
   opacity: 80%;
-  /* padding: 8%; */
   border-radius: 8px;
   margin: auto;
   max-width: auto;
@@ -93,7 +146,6 @@
 #modalAddress,
 #modalPrice {
   margin: auto;
-  /* padding: 5%; */
 }
 
 #modalTime {
@@ -104,6 +156,7 @@
 table {
   width: 100%;
   border-collapse: collapse;
+  /* text-align: center; */
 }
 
 .showsTitle,
@@ -114,7 +167,6 @@ table {
 
 th,
 td {
-  /* width: 100%; */
   border-bottom: 1px solid #ddd;
   padding: 10px;
   text-align: center;
@@ -143,33 +195,93 @@ button {
   color: black;
 }
 
+/* Keep the table responsive for mobile */
 @media (max-width: 768px) {
   .table-container {
     display: flex;
+    flex-direction: column;
     text-align: center;
     justify-content: center;
-    margin: auto;
-    width: auto;
+    width: 100%;
+  }
+  .bodyContainer {
+    width: 100%;
+  }
+
+  /* Style for table rows in mobile */
+  table {
+    width: 100%;
+    display: block;
+    white-space: nowrap;
+  }
+
+  tr {
+    display: flex;
+    flex-direction: column; /* Stack contents in mobile view */
+    margin: 10px 0;
+    border: none;
+  }
+
+  th {
+    display: none; /* Hide headers in mobile view */
+  }
+
+  td {
+    display: block;
+    width: 100%;
+    text-align: left;
+    padding: 8px 10px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #ddd;
+  }
+
+  /* Adjust table cell content */
+  .showName,
+  .showVenue,
+  .showPrice,
+  .showDate {
+    font-size: 14px;
+    margin-bottom: 5px;
+  }
+
+  .showName {
+    font-weight: 600;
+  }
+
+  .showPrice {
+    font-size: 16px;
+    font-weight: bold;
+  }
+
+  .showDate {
+    font-size: 18px;
+    font-weight: bold;
+  }
+
+  button {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    font-size: 14px;
   }
 }
 
-h2,
-h3,
-h4,
-h5,
-h6,
-p {
-  text-align: center;
-}
-
-.modal-content {
-  text-align: center;
-  justify-content: center;
-  margin: auto;
-}
-
-.showDetails {
-  display: flex;
-  align-items: center;
-  margin: auto;
+@media (max-width: 801px) {
+  .nav {
+    width: 100dvw;
+  }
+  .bodyContainer {
+    width: 100dvw;
+  }
+  #venue {
+    width: inherit;
+  }
+  #venueDetails {
+    width: 100%;
+    margin: auto;
+  }
+  tr {
+    display: flex;
+    width: 100dvw;
+  }
 }

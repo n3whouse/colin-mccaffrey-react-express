@@ -4,6 +4,7 @@ import "../styles/Home.css";
 import { client } from "../../sanity/client";
 import { PortableText } from "@portabletext/react";
 import imageUrlBuilder from "@sanity/image-url";
+import DocumentMeta from "react-document-meta";
 
 const builder = imageUrlBuilder(client);
 
@@ -14,6 +15,24 @@ const Bio = () => {
   function urlFor(source) {
     return builder.image(source);
   }
+
+  const meta = {
+    title: "Colin McCaffrey: Bio",
+    description: "About Colin McCaffrey",
+    canonical: "https://colinmccaffrey.com/bio",
+    meta: {
+      charSet: "utf-8",
+      name: {
+        keywords: "Colin, McCaffrey, engineer, producer, biography, bio",
+      },
+      property: {
+        "og:title": "Colin McCaffrey: Bio",
+        "og:description": "About Colin McCaffrey",
+        "og:type": "website",
+        "og:url": "https://colinmccaffrey.com/bio",
+      },
+    },
+  };
 
   useEffect(() => {
     const fetchBioAndBioPic = async () => {
@@ -34,7 +53,7 @@ const Bio = () => {
   }, []);
 
   return (
-    <>
+    <DocumentMeta {...meta}>
       <div className="bodyContainer">
         <div className="bio-text">
           {bioPic && (
@@ -47,7 +66,7 @@ const Bio = () => {
           <PortableText className="bioBody" value={bio} />
         </div>
       </div>
-    </>
+    </DocumentMeta>
   );
 };
 

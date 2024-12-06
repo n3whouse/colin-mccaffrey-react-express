@@ -13,9 +13,19 @@ function Navigation() {
     bio: "",
     store: "",
     booking: "",
+
     performer: "",
+    calendar: "",
+    media: "",
+
     engineer: "",
+    studio: "",
+    gear: "",
+    productionCredits: "",
+
     songwriter: "",
+    colinsCredits: "",
+    streaming: "",
   });
 
   useEffect(() => {
@@ -30,15 +40,24 @@ function Navigation() {
           bio: data.linkNames.linkOne,
           store: data.linkNames.linkTwo,
           booking: data.linkNames.linkThree,
+
           performer: data.linkNames.linkFour,
+          // calendar: data.linkNames.linkFour.subLinkOne || "Calendar",
+          // media: data.linkNames.linkFour.subLinkTwo || "Media",
+
           engineer: data.linkNames.linkFive,
+          // studio: data.linkNames.linkFive.subLinkOne,
+          // gear: data.linkNames.linkFive.subLinkTwo,
+          // productionCredits: data.linkNames.linkFive.subLinkThree,
+
           songwriter: data.linkNames.linkSix,
+          // colinsCredits: data.linkNames.linkSix.subLinkOne,
+          // streaming: data.linkNames.linkSix.subLinkTwo,
         });
       }
-      console.log("Home: ", linkNames);
     };
     fetchLinkNames();
-  }, []);
+  });
 
   const handleLinkClick = (component) => {
     setSelectedComponent(component);
@@ -53,8 +72,9 @@ function Navigation() {
     <div className="nav">
       <div className="desktop-nav">
         <h1>
+          {/* Begin Main Links */}
           <Link
-            to="/"
+            to="#"
             className={`component ${
               selectedComponent === "home" ? "bold" : "faded"
             }`}
@@ -102,7 +122,7 @@ function Navigation() {
           <span className="divider">
             <br />
           </span>
-
+          {/* Performer Subnav */}
           <Link
             to="/performer"
             className={`component ${
@@ -114,7 +134,7 @@ function Navigation() {
           </Link>
 
           <span className="divider">|</span>
-
+          {/* Engineer Subnav */}
           <Link
             to="/engineer"
             className={`component ${
@@ -126,7 +146,7 @@ function Navigation() {
           </Link>
 
           <span className="divider">|</span>
-
+          {/* Songwriter Subnav */}
           <Link
             to="/songwriter"
             className={`component ${
