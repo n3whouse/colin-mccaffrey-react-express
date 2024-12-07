@@ -25,7 +25,7 @@ function EngineerNavigation() {
 
   return (
     <>
-      <div className="bodyContainer nav">
+      <div className="nav">
         <h2>
           <Link
             to="/producer/studio"

@@ -25,11 +25,9 @@ function SongwriterNavigation() {
     <div className="nav">
       <h2>
         <Link
-          to="colins-credits"
+          to="songwriter/credits"
           className={`component ${
-            location.pathname === "/songwriter/colins-credits"
-              ? "bold"
-              : "faded"
+            location.pathname === "/songwriter/credits" ? "bold" : "faded"
           }`}
         >
           {"Colin's Credits" || firstSublinkName}

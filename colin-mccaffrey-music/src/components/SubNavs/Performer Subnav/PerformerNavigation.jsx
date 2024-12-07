@@ -1,11 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import Media from "./pages/Media";
 import "../../styles/Home.css";
 import "../../styles/Navigation.css";
 import { client } from "../../../sanity/client";
-import Calendar from "./pages/Calendar";
-import Performer from "./Performer";
 
 function PerformerNavigation() {
   const [firstSublinkName, setFirstSublinkName] = useState("");
@@ -24,6 +21,7 @@ function PerformerNavigation() {
     fetchLinkNames();
   }, []);
 
+  console.log(firstSublinkName);
   return (
     <>
       <div className="nav">
@@ -33,7 +31,6 @@ function PerformerNavigation() {
             className={`component ${
               location.pathname === "/performer/calendar" ? "bold" : "faded"
             }`}
-            // element={<Calendar />}
           >
             {firstSublinkName || "Calendar"}
           </Link>{" "}
@@ -43,7 +40,6 @@ function PerformerNavigation() {
             className={`component ${
               location.pathname === "/performer/media" ? "bold" : "faded"
             }`}
-            // element={<Media />}
           >
             {" "}
             {secondSublinkName || "Media"}

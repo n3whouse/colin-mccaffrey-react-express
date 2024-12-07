@@ -29,12 +29,11 @@ function Songwriter() {
 
   const location = useLocation();
 
-  const isCreditsSelected = location.pathname === "/songwriter/colins-credits";
+  const isCreditsSelected = location.pathname === "/songwriter/credits";
   const isStreamingSelected = location.pathname === "/songwriter/streaming";
 
   return (
     <>
-      <SongwriterNavigation />
       <DocumentMeta {...meta}>
         <div className="bodyContainer">
           {!isCreditsSelected && !isStreamingSelected && (

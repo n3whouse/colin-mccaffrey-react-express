@@ -34,11 +34,15 @@ html {
   flex-direction: column;
   justify-content: center;
   background-color: white;
-  width: 80%;
+  width: auto;
   height: 100%;
   margin: auto;
-  box-shadow: 1px 1px 0px 1px;
+
   opacity: 98%;
+}
+
+.bodyContainer {
+  box-shadow: 0 0 10px -1px;
 }
 
 .component {

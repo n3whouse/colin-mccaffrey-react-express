@@ -1,11 +1,7 @@
 import React from "react";
-// import { Link } from "react-router-dom";
-import Media from "./pages/Media";
-import "../../styles/Home.css";
-// import { client } from "../../../sanity/client";
-import Calendar from "./pages/Calendar";
-// import PerformerNavigation from "./PerformerNavigation";
 import { Outlet, useLocation } from "react-router-dom";
+import Media from "./pages/Media";
+import Calendar from "./pages/Calendar";
 import DocumentMeta from "react-document-meta";
 
 function Performer() {
@@ -24,7 +20,7 @@ function Performer() {
         "og:title": "Colin McCaffrey: Performer",
         "og:description":
           "Colin McCaffrey is a seasoned veteran of the Vermont music scene. Here you can find a collection of videos, audio files, and other tidbits of his work.",
-        "og:image": `https://colinmccaffrey.com/static/media/ColinTeleBarnBust.9e8f0e7a98f8872e4385.png`, //change to dynamic url if possible once home page has a link to change img
+        "og:image": `https://colinmccaffrey.com/static/media/ColinTeleBarnBust.9e8f0e7a98f8872e4385.png`,
         "og:type": "website",
         "og:url": "https://colinmccaffrey.com/performer",
       },
@@ -33,21 +29,21 @@ function Performer() {
 
   const location = useLocation();
 
+  // Determine which component to display based on the current path
   const isCalendarSelected = location.pathname === "/performer/calendar";
   const isMediaSelected = location.pathname === "/performer/media";
 
   return (
     <>
-      
       <DocumentMeta {...meta}>
         <div className="bodyContainer">
-          {!isCalendarSelected && !isMediaSelected && (
+          {/* Render both components if on the main performer page */}
+          {location.pathname === "/performer" && (
             <>
               <Calendar />
               <Media />
             </>
           )}
-
           <Outlet />
         </div>
       </DocumentMeta>

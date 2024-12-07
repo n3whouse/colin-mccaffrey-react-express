@@ -57,7 +57,7 @@ function App() {
     gear = "gear",
     productionCredits = "production-credits",
   } = linkFive;
-  const { colinsCredits = "colins-credits", streaming = "streaming" } = linkSix;
+  const { colinsCredits = "credits", streaming = "streaming" } = linkSix;
 
   // Meta info for SEO
   const meta = {
@@ -82,7 +82,7 @@ function App() {
       },
     },
   };
-
+  console.log(colinsCredits);
   return (
     <DocumentMeta {...meta}>
       <div className="home">
@@ -91,19 +91,19 @@ function App() {
           <Routes>
             {/* Main pages */}
             <Route path="/" element={<Home />} />
-            <Route path={`/${home}`} element={<Home />} />
-            <Route path={`/${bio}`} element={<Bio />} />
-            <Route path={`/${store}`} element={<Store />} />
-            <Route path={`/${booking}`} element={<BookingAndContact />} />
+            <Route path={`${home}`} element={<Home />} />
+            <Route path={`${bio}`} element={<Bio />} />
+            <Route path={`${store}`} element={<Store />} />
+            <Route path={`${booking}`} element={<BookingAndContact />} />
 
             {/* Performer Subnav */}
-            <Route path={`/${linkFour}`} element={<Performer />}>
+            <Route path={`/${linkFour.mainLink}`} element={<Performer />}>
               <Route path={`${calendar}`} element={<Calendar />} />
               <Route path={`${media}`} element={<Media />} />
             </Route>
 
             {/* Engineer Subnav */}
-            <Route path={`/${linkFive}`} element={<Engineer />}>
+            <Route path={`${linkFive.mainLink}`} element={<Engineer />}>
               <Route path={`${studio}`} element={<Studio />} />
               <Route path={`${gear}`} element={<GearAndPrograms />} />
               <Route
@@ -113,9 +113,9 @@ function App() {
             </Route>
 
             {/* Songwriter Subnav */}
-            <Route path={`/${linkSix}`} element={<Songwriter />}>
-              <Route path={`colins-credits`} element={<ColinsCredits />} />
-              <Route path={`streaming`} element={<Streaming />} />
+            <Route path={`${linkSix.mainLink}`} element={<Songwriter />}>
+              <Route path={`${colinsCredits}`} element={<ColinsCredits />} />
+              <Route path={`${streaming}`} element={<Streaming />} />
             </Route>
           </Routes>
           <Footer />

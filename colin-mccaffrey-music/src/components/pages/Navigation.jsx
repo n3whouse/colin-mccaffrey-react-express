@@ -3,13 +3,21 @@ import { Link } from "react-router-dom";
 import { client } from "../../sanity/client";
 import "../styles/Navigation.css";
 import { FaChevronDown, FaChevronUp } from "react-icons/fa6";
-import PerformerNavigation from "../SubNavs//Performer Subnav/PerformerNavigation";
+import Performer from "../SubNavs/Performer Subnav/Performer";
+import Engineer from "../SubNavs/Producer Subnav/Engineer";
+import Songwriter from "../SubNavs/Songwriter Subnav/Songwriter";
+import PerformerNavigation from "../SubNavs/Performer Subnav/PerformerNavigation";
 import EngineerNavigation from "../SubNavs/Producer Subnav/EngineerNavigation";
 import SongwriterNavigation from "../SubNavs/Songwriter Subnav/SongwriterNavigation";
 
 function Navigation() {
   const [selectedComponent, setSelectedComponent] = useState("home"); // Default to "home"
+  const [selectedSubnav, setSelectedSubnav] = useState(null);
   const [menuVisible, setMenuVisible] = useState(false);
+  const [performerSubLinks, setPerformerSubLinks] = useState({
+    subLinkOne: "Calendar",
+    subLinkTwo: "Media",
+  });
 
   const [linkNames, setLinkNames] = useState({
     home: "",
@@ -35,17 +43,14 @@ function Navigation() {
           bio: data.linkNames.linkOne,
           store: data.linkNames.linkTwo,
           booking: data.linkNames.linkThree,
-          performer: data.linkNames.linkFour.mainLink,
           linkFour: {
             mainLink: data.linkNames.linkFour.mainLink,
             subLinks: data.linkNames.linkFour.subLinks || [],
           },
-          producer: data.linkNames.linkFive.mainLink,
           linkFive: {
             mainLink: data.linkNames.linkFive.mainLink,
             subLinks: data.linkNames.linkFive.subLinks || [],
           },
-          songwriter: data.linkNames.linkSix.mainLink,
           linkSix: {
             mainLink: data.linkNames.linkSix.mainLink,
             subLinks: data.linkNames.linkSix.subLinks || [],
@@ -58,6 +63,7 @@ function Navigation() {
 
   const handleLinkClick = (component) => {
     setSelectedComponent(component);
+    setSelectedSubnav(component);
     setMenuVisible(false); // Close the menu when a link is clicked
   };
 
@@ -66,7 +72,7 @@ function Navigation() {
   };
 
   return (
-    <div className="nav">
+    <div className="bodyContainer nav">
       <div className="desktop-nav">
         <h1>
           {/* Main Navigation Links */}
@@ -112,7 +118,7 @@ function Navigation() {
           >
             {linkNames.booking}
           </Link>
-
+          <br />
           {/* Conditional rendering of subnav links for Performer, Engineer, and Songwriter */}
           <Link
             to={`/${linkNames.linkFour.mainLink.toLowerCase()}`}
@@ -172,7 +178,7 @@ function Navigation() {
       </div>
 
       {/* Mobile Navigation */}
-      <div className="mobile-nav">
+      <div className="mobileNav">
         <h1 id="mobileMenu">
           <Link
             to={`/${selectedComponent}`}
@@ -210,13 +216,13 @@ function Navigation() {
 
               // Render the sub-navigation components if applicable
               if (key === "linkFour" && linkNames[key]?.subLinks) {
-                return <PerformerNavigation key={key} />;
+                return <Performer key={key} />;
               }
               if (key === "linkFive" && linkNames[key]?.subLinks) {
-                return <EngineerNavigation key={key} />;
+                return <Engineer key={key} />;
               }
               if (key === "linkSix" && linkNames[key]?.subLinks) {
-                return <SongwriterNavigation key={key} />;
+                return <Songwriter key={key} />;
               }
 
               return null;
