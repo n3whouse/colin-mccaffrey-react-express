@@ -6,7 +6,7 @@ export const performerType = defineType({
   type: 'document',
   __experimental_formPreviewTitle: false,
   groups: [
-    {name: 'upcomingShows', title: 'Upcoming Shows'},
+    {name: 'calendar', title: 'Calendar'},
     {name: 'media', title: 'Media'},
     {name: 'customization', title: 'Customization'},
   ],
@@ -33,7 +33,7 @@ export const performerType = defineType({
           to: [{type: 'show'}],
         }),
       ],
-      group: 'upcomingShows',
+      group: 'calendar',
     }),
     defineField({
       name: 'media',

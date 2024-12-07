@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "../styles/Media.css";
+import "../styles/Calendar.css";
 import { client } from "../../../../sanity/client";
 import { PortableText } from "@portabletext/react";
 

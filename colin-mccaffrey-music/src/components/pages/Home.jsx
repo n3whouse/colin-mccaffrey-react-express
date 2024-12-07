@@ -8,7 +8,7 @@ function Home() {
     title: "Colin McCaffrey",
     description:
       "Official website of Vermont native and award-winning singer-songwriter and recording engineer, Colin McCaffrey.",
-    canonical: "https://colinmccaffrey.com",
+    canonical: "https://colinmccaffrey.com/home",
     meta: {
       charset: "utf-8",
       name: {
@@ -21,7 +21,7 @@ function Home() {
           "Official website of Vermont native and award-winning singer-songwriter and recording engineer, Colin McCaffrey.",
         "og:image": `https://colinmccaffrey.com/static/media/ColinTeleBarnBust.9e8f0e7a98f8872e4385.png`, //change to dynamic url if possible once home page has a link to change img
         "og:type": "website",
-        "og:url": "https://colinmccaffrey.com",
+        "og:url": "https://colinmccaffrey.com/home",
       },
     },
   };

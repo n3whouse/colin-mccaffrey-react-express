@@ -3,9 +3,12 @@ import { Link } from "react-router-dom";
 import { client } from "../../sanity/client";
 import "../styles/Navigation.css";
 import { FaChevronDown, FaChevronUp } from "react-icons/fa6";
+import PerformerNavigation from "../SubNavs//Performer Subnav/PerformerNavigation";
+import EngineerNavigation from "../SubNavs/Producer Subnav/EngineerNavigation";
+import SongwriterNavigation from "../SubNavs/Songwriter Subnav/SongwriterNavigation";
 
 function Navigation() {
-  const [selectedComponent, setSelectedComponent] = useState("home"); // Default to "bio"
+  const [selectedComponent, setSelectedComponent] = useState("home"); // Default to "home"
   const [menuVisible, setMenuVisible] = useState(false);
 
   const [linkNames, setLinkNames] = useState({
@@ -13,19 +16,12 @@ function Navigation() {
     bio: "",
     store: "",
     booking: "",
-
     performer: "",
-    calendar: "",
-    media: "",
-
-    engineer: "",
-    studio: "",
-    gear: "",
-    productionCredits: "",
-
+    producer: "",
     songwriter: "",
-    colinsCredits: "",
-    streaming: "",
+    linkFour: { mainLink: "", subLinks: [] },
+    linkFive: { mainLink: "", subLinks: [] },
+    linkSix: { mainLink: "", subLinks: [] },
   });
 
   useEffect(() => {
@@ -33,31 +29,32 @@ function Navigation() {
       const data = await client.fetch(
         `*[_type == 'siteSettings'][0]{linkNames}`
       );
-
       if (data && data.linkNames) {
         setLinkNames({
           home: data.linkNames.home,
           bio: data.linkNames.linkOne,
           store: data.linkNames.linkTwo,
           booking: data.linkNames.linkThree,
-
-          performer: data.linkNames.linkFour,
-          // calendar: data.linkNames.linkFour.subLinkOne || "Calendar",
-          // media: data.linkNames.linkFour.subLinkTwo || "Media",
-
-          engineer: data.linkNames.linkFive,
-          // studio: data.linkNames.linkFive.subLinkOne,
-          // gear: data.linkNames.linkFive.subLinkTwo,
-          // productionCredits: data.linkNames.linkFive.subLinkThree,
-
-          songwriter: data.linkNames.linkSix,
-          // colinsCredits: data.linkNames.linkSix.subLinkOne,
-          // streaming: data.linkNames.linkSix.subLinkTwo,
+          performer: data.linkNames.linkFour.mainLink,
+          linkFour: {
+            mainLink: data.linkNames.linkFour.mainLink,
+            subLinks: data.linkNames.linkFour.subLinks || [],
+          },
+          producer: data.linkNames.linkFive.mainLink,
+          linkFive: {
+            mainLink: data.linkNames.linkFive.mainLink,
+            subLinks: data.linkNames.linkFive.subLinks || [],
+          },
+          songwriter: data.linkNames.linkSix.mainLink,
+          linkSix: {
+            mainLink: data.linkNames.linkSix.mainLink,
+            subLinks: data.linkNames.linkSix.subLinks || [],
+          },
         });
       }
     };
     fetchLinkNames();
-  });
+  }, []);
 
   const handleLinkClick = (component) => {
     setSelectedComponent(component);
@@ -72,9 +69,9 @@ function Navigation() {
     <div className="nav">
       <div className="desktop-nav">
         <h1>
-          {/* Begin Main Links */}
+          {/* Main Navigation Links */}
           <Link
-            to="#"
+            to={`/${linkNames.home.toLowerCase()}`}
             className={`component ${
               selectedComponent === "home" ? "bold" : "faded"
             }`}
@@ -82,11 +79,10 @@ function Navigation() {
           >
             {linkNames.home}
           </Link>
-
           <span className="divider">|</span>
 
           <Link
-            to="/bio"
+            to={`/${linkNames.bio.toLowerCase()}`}
             className={`component ${
               selectedComponent === "bio" ? "bold" : "faded"
             }`}
@@ -94,11 +90,10 @@ function Navigation() {
           >
             {linkNames.bio}
           </Link>
-
           <span className="divider">|</span>
 
           <Link
-            to="/store"
+            to={`/${linkNames.store.toLowerCase()}`}
             className={`component ${
               selectedComponent === "store" ? "bold" : "faded"
             }`}
@@ -106,11 +101,10 @@ function Navigation() {
           >
             {linkNames.store}
           </Link>
-
           <span className="divider">|</span>
 
           <Link
-            to="/booking"
+            to={`/${linkNames.booking.toLowerCase()}`}
             className={`component ${
               selectedComponent === "booking" ? "bold" : "faded"
             }`}
@@ -119,46 +113,65 @@ function Navigation() {
             {linkNames.booking}
           </Link>
 
-          <span className="divider">
-            <br />
-          </span>
-          {/* Performer Subnav */}
+          {/* Conditional rendering of subnav links for Performer, Engineer, and Songwriter */}
           <Link
-            to="/performer"
+            to={`/${linkNames.linkFour.mainLink.toLowerCase()}`}
             className={`component ${
-              selectedComponent === "performer" ? "bold" : "faded"
+              selectedComponent === linkNames.linkFour.mainLink.toLowerCase()
+                ? "bold"
+                : "faded"
             }`}
-            onClick={() => handleLinkClick("performer")}
+            onClick={() =>
+              handleLinkClick(linkNames.linkFour.mainLink.toLowerCase())
+            }
           >
-            {linkNames.performer}
+            {linkNames.linkFour.mainLink}
           </Link>
-
           <span className="divider">|</span>
-          {/* Engineer Subnav */}
+
           <Link
-            to="/producer"
+            to={`/${linkNames.linkFive.mainLink.toLowerCase()}`}
             className={`component ${
-              selectedComponent === "producer" ? "bold" : "faded"
+              selectedComponent === linkNames.linkFive.mainLink.toLowerCase()
+                ? "bold"
+                : "faded"
             }`}
-            onClick={() => handleLinkClick("producer")}
+            onClick={() =>
+              handleLinkClick(linkNames.linkFive.mainLink.toLowerCase())
+            }
           >
-            {linkNames.engineer}
+            {linkNames.linkFive.mainLink}
           </Link>
-
           <span className="divider">|</span>
-          {/* Songwriter Subnav */}
+
           <Link
-            to="/songwriter"
+            to={`/${linkNames.linkSix.mainLink.toLowerCase()}`}
             className={`component ${
-              selectedComponent === "songwriter" ? "bold" : "faded"
+              selectedComponent === linkNames.linkSix.mainLink.toLowerCase()
+                ? "bold"
+                : "faded"
             }`}
-            onClick={() => handleLinkClick("songwriter")}
+            onClick={() =>
+              handleLinkClick(linkNames.linkSix.mainLink.toLowerCase())
+            }
           >
-            {linkNames.songwriter}
+            {linkNames.linkSix.mainLink}
           </Link>
         </h1>
+
+        {/* Dynamic Subnavigation Rendering */}
+        {selectedComponent === linkNames.linkFour.mainLink.toLowerCase() && (
+          <PerformerNavigation />
+        )}
+        {selectedComponent === linkNames.linkFive.mainLink.toLowerCase() && (
+          <EngineerNavigation />
+        )}
+        {selectedComponent === linkNames.linkSix.mainLink.toLowerCase() && (
+          <SongwriterNavigation />
+        )}
       </div>
 
+      {/* Mobile Navigation */}
       <div className="mobile-nav">
         <h1 id="mobileMenu">
           <Link
@@ -175,8 +188,14 @@ function Navigation() {
         {/* Show the full menu when the menu is visible */}
         {menuVisible && (
           <div className="menu-items">
+            {/* Main links */}
             {Object.keys(linkNames).map((key) => {
-              if (key !== selectedComponent) {
+              if (
+                key !== "linkFour" &&
+                key !== "linkFive" &&
+                key !== "linkSix" &&
+                key !== selectedComponent
+              ) {
                 return (
                   <Link
                     to={`/${key === "home" ? "" : key}`}
@@ -188,6 +207,18 @@ function Navigation() {
                   </Link>
                 );
               }
+
+              // Render the sub-navigation components if applicable
+              if (key === "linkFour" && linkNames[key]?.subLinks) {
+                return <PerformerNavigation key={key} />;
+              }
+              if (key === "linkFive" && linkNames[key]?.subLinks) {
+                return <EngineerNavigation key={key} />;
+              }
+              if (key === "linkSix" && linkNames[key]?.subLinks) {
+                return <SongwriterNavigation key={key} />;
+              }
+
               return null;
             })}
           </div>

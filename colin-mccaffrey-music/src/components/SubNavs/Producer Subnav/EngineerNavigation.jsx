@@ -28,18 +28,18 @@ function EngineerNavigation() {
       <div className="bodyContainer nav">
         <h2>
           <Link
-            to="/engineer/studio"
+            to="/producer/studio"
             className={`component ${
-              location.pathname === "/engineer/studio" ? "bold" : "faded"
+              location.pathname === "/producer/studio" ? "bold" : "faded"
             }`}
           >
             {"Studio" || firstSublinkName}
           </Link>{" "}
           <span className="divider">|</span>
           <Link
-            to="/engineer/gear"
+            to="/producer/gear"
             className={`component ${
-              location.pathname === "/engineer/gear" ? "bold" : "faded"
+              location.pathname === "/producer/gear" ? "bold" : "faded"
             }`}
           >
             {" "}
@@ -47,9 +47,9 @@ function EngineerNavigation() {
           </Link>{" "}
           <span className="divider">|</span>
           <Link
-            to="/engineer/production-credits"
+            to="/producer/production-credits"
             className={`component ${
-              location.pathname === "/engineer/production-credits"
+              location.pathname === "/producer/production-credits"
                 ? "bold"
                 : "faded"
             }`}

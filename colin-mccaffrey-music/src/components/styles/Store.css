@@ -238,4 +238,8 @@ hr {
     max-height: 50%;
     font-size: large;
   }
+
+  .bodyContainer {
+    width: auto;
+  }
 }

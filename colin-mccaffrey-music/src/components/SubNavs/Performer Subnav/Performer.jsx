@@ -4,7 +4,7 @@ import Media from "./pages/Media";
 import "../../styles/Home.css";
 // import { client } from "../../../sanity/client";
 import Calendar from "./pages/Calendar";
-import PerformerNavigation from "./PerformerNavigation";
+// import PerformerNavigation from "./PerformerNavigation";
 import { Outlet, useLocation } from "react-router-dom";
 import DocumentMeta from "react-document-meta";
 
@@ -38,7 +38,7 @@ function Performer() {
 
   return (
     <>
-      <PerformerNavigation />
+      
       <DocumentMeta {...meta}>
         <div className="bodyContainer">
           {!isCalendarSelected && !isMediaSelected && (

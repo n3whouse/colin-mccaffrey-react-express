@@ -43,11 +43,20 @@ body {
   padding: 10px;
 }
 
-/* @media (max-width: 768px) {
-  .contactInfo,
-  .contactDetails {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.desktop-nav {
+  display: flex;
+  flex-direction: column;
+}
+
+@media (max-width: 768px) {
+  html {
+    width: auto;
+    height: auto;
   }
-} */
+  .desktop-nav {
+    width: 100dvw;
+  }
+  .nav {
+    width: 100dvw;
+  }
+}

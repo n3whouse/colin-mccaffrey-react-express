@@ -22,7 +22,7 @@
 
 @media (max-width: 768px) {
   html {
-    width: auto;
+    width: 90%;
   }
 
   /* Adjust table container to make it scrollable */
@@ -32,7 +32,8 @@
   }
 
   table {
-    display: block; /* Makes the table block-level to enable scrolling */
+    display: block;
+    margin: auto;
     white-space: nowrap; /* Prevent text from wrapping in cells */
     text-align: center;
   }
@@ -72,9 +73,7 @@
     font-size: smaller;
     width: auto;
   }
-  #headliner {
-    width: auto;
-  }
+
   /* Reduce padding on the whole table for better fitting */
   .table-container {
     display: flex;
@@ -82,7 +81,6 @@
   }
 }
 
-#headliner,
 #showName {
   font-size: 18px;
   text-align: center;
@@ -91,7 +89,8 @@
 
 #headliner {
   font-style: italic;
-  font-size: large;
+  text-align: center;
+  font-size: medium;
   margin: auto;
 }
 
@@ -209,21 +208,24 @@ button {
     width: 100%;
   }
   .bodyContainer {
+    display: flex;
     width: 100%;
+    height: 100%;
   }
 
   /* Style for table rows in mobile */
   table {
-    width: 100%;
+    width: inherit;
     display: block;
     white-space: nowrap;
   }
 
   tr {
     display: flex;
-    flex-direction: column; /* Stack contents in mobile view */
-    margin: 10px 0;
-    border: none;
+    flex-direction: row; /* Stack contents in mobile view */
+    margin: auto;
+    width: inherit;
+    justify-content: center;
   }
 
   th {
@@ -275,17 +277,24 @@ button {
     width: 100dvw;
   }
   .bodyContainer {
-    width: 100dvw;
+    width: 100%;
+    margin: auto;
   }
   #venue {
     width: inherit;
+    /* display: flex; */
+    width: auto;
   }
   #venueDetails {
-    width: 100%;
+    width: 100dvw;
     margin: auto;
   }
   tr {
     display: flex;
     width: 100dvw;
+  }
+  .home {
+    width: auto;
+    margin: auto;
   }
 }
