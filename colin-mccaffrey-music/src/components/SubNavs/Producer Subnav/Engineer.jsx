@@ -10,10 +10,10 @@ import DocumentMeta from "react-document-meta";
 
 function Engineer() {
   const meta = {
-    title: "Colin McCaffrey: Engineer",
+    title: "Colin McCaffrey: Producer",
     description:
       "Colin McCaffrey is a highly-skilled and award winning recording engineer with a long list of works. Here you can get a peek of the studio, his equipment, and his production resume.",
-    canonical: "https://colinmccaffrey.com/engineer",
+    canonical: "https://colinmccaffrey.com/producer",
     meta: {
       charset: "utf-8",
       name: {
@@ -21,22 +21,22 @@ function Engineer() {
           "Colin McCaffrey, performer, calendar, shows, videos, audio, media clips, upcoming shows",
       },
       property: {
-        "og:title": "Colin McCaffrey: Engineer",
+        "og:title": "Colin McCaffrey: Producer",
         "og:description":
           "Colin McCaffrey is a highly-skilled and award winning recording engineer with a long list of works. Here you can get a peek of the studio, his equipment, and his production resume.",
         "og:image": `https://colinmccaffrey.com/static/media/ColinTeleBarnBust.9e8f0e7a98f8872e4385.png`, //change to dynamic url if possible once home page has a link to change img
         "og:type": "website",
-        "og:url": "https://colinmccaffrey.com/engineer",
+        "og:url": "https://colinmccaffrey.com/producer",
       },
     },
   };
 
   const location = useLocation();
 
-  const isStudioSelected = location.pathname === "/engineer/studio";
-  const isGearSelected = location.pathname === "/engineer/gear";
+  const isStudioSelected = location.pathname === "/producer/studio";
+  const isGearSelected = location.pathname === "/producer/gear";
   const isProductionCreditsSelected =
-    location.pathname === "/engineer/production-credits";
+    location.pathname === "/producer/production-credits";
 
   return (
     <>

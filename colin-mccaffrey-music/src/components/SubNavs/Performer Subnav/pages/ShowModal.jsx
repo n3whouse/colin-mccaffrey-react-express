@@ -1,5 +1,5 @@
 import React from "react";
-import "../styles/UpcomingShows.css";
+import "../styles/Calendar.css";
 
 // Function to render the blocks
 const renderBlock = (block) => {

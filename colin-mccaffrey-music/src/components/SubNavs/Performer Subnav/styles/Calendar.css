@@ -21,6 +21,10 @@
 }
 
 @media (max-width: 768px) {
+  html {
+    width: auto;
+  }
+
   /* Adjust table container to make it scrollable */
   .table-container {
     width: 100%;

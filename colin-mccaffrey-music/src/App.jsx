@@ -61,11 +61,11 @@ function App() {
             </Route>
 
             {/* Engineer Subnav */}
-            <Route path="/engineer" element={<Engineer />}>
+            <Route path="/producer" element={<Engineer />}>
               <Route path="studio" element={<Studio />} />
               <Route path="gear" element={<GearAndPrograms />} />
               <Route
-                path="/engineer/production-credits"
+                path="production-credits"
                 element={<ProductionCredits />}
               />
             </Route>

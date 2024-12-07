@@ -136,11 +136,11 @@ function Navigation() {
           <span className="divider">|</span>
           {/* Engineer Subnav */}
           <Link
-            to="/engineer"
+            to="/producer"
             className={`component ${
-              selectedComponent === "engineer" ? "bold" : "faded"
+              selectedComponent === "producer" ? "bold" : "faded"
             }`}
-            onClick={() => handleLinkClick("engineer")}
+            onClick={() => handleLinkClick("producer")}
           >
             {linkNames.engineer}
           </Link>
