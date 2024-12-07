@@ -54,7 +54,7 @@ const Bio = () => {
 
   return (
     <DocumentMeta {...meta}>
-      <div className="bodyContainer">
+      <div className="componentContainer">
         <div className="bio-text">
           {bioPic && (
             <img

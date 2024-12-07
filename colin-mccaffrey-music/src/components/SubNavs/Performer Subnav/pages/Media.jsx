@@ -26,7 +26,7 @@ function Media() {
   };
 
   return (
-    <div className="bodyContainer">
+    <div className="componentContainer">
       {/* <PerformerNavigation /> */}
       <h1>Media</h1>
       {mediaItems.map((media, index) => (

@@ -7,7 +7,7 @@ html {
 }
 
 .home {
-  display: flex;
+  display: block;
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -20,6 +20,8 @@ html {
 .bodyContainer {
   width: 80%;
   padding: 0 0 3% 0;
+  box-shadow: 0 0 10px -1px rgba(0, 0, 0, 0.5),
+    0 10px 10px -1px rgba(0, 0, 0, 0.5);
 }
 
 /* ======= Navigation ======= */
@@ -29,20 +31,17 @@ html {
 }
 
 .bodyContainer,
-.nav {
+.nav,
+.componentContainer,
+.homeContainer {
   display: flex;
   flex-direction: column;
   justify-content: center;
   background-color: white;
-  width: auto;
+  width: 80dvw;
   height: 100%;
   margin: auto;
-
   opacity: 98%;
-}
-
-.bodyContainer {
-  box-shadow: 0 0 10px -1px;
 }
 
 .component {

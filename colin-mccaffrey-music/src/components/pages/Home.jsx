@@ -28,7 +28,7 @@ function Home() {
 
   return (
     <DocumentMeta {...meta}>
-      <div className="bodyContainer">
+      <div className="homeContainer">
         {/* <div className=""> */}
         <img id="headshot" src={BannerImage} alt="Colin with his Telecaster" />
         <h1 id="headerTitle">Colin McCaffrey</h1>

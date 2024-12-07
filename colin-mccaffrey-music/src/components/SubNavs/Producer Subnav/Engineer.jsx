@@ -8,8 +8,7 @@ function Engineer() {
   const location = useLocation();
 
   return (
-    <div className="bodyContainer">
-      <h1>Engineer</h1>
+    <div className="componentContainer">
       {/* Render all components by default */}
       {location.pathname === "/producer" && (
         <>

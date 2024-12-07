@@ -42,7 +42,7 @@ function Navigation() {
           home: data.linkNames.home,
           bio: data.linkNames.linkOne,
           store: data.linkNames.linkTwo,
-          booking: data.linkNames.linkThree,
+          booking: data.linkNames.linkThree.split(" ")[0],
           linkFour: {
             mainLink: data.linkNames.linkFour.mainLink,
             subLinks: data.linkNames.linkFour.subLinks || [],

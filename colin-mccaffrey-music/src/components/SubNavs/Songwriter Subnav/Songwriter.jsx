@@ -35,7 +35,7 @@ function Songwriter() {
   return (
     <>
       <DocumentMeta {...meta}>
-        <div className="bodyContainer">
+        <div className="componentContainer">
           {!isCreditsSelected && !isStreamingSelected && (
             <>
               <ColinsCredits />

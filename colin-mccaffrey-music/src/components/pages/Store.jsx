@@ -80,7 +80,7 @@ function Store() {
 
   return (
     <DocumentMeta {...meta}>
-      <div className="bodyContainer">
+      <div className="componentContainer">
         <hr />
         <div className="gridCard">
           {releases.map((release) => (

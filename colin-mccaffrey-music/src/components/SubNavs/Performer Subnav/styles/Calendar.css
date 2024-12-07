@@ -11,13 +11,16 @@
   margin-bottom: 3%;
 }
 
+table {
+  width: inherit;
+}
+
 .table-container {
   display: flex;
   flex-direction: column;
-  margin: auto;
   background-color: #fff;
   border-radius: 10px;
-  width: 80dvw;
+  width: auto;
 }
 
 @media (max-width: 768px) {
@@ -207,7 +210,7 @@ button {
     justify-content: center;
     width: 100%;
   }
-  .bodyContainer {
+  .componentContainer {
     display: flex;
     width: 100%;
     height: 100%;
@@ -215,7 +218,7 @@ button {
 
   /* Style for table rows in mobile */
   table {
-    width: inherit;
+    width: auto;
     display: block;
     white-space: nowrap;
   }

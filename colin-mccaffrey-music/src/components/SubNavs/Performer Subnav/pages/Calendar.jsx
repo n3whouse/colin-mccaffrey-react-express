@@ -50,7 +50,7 @@ const Calendar = ({ props }) => {
 
   return (
     <>
-      <div className="bodyContainer">
+      <div className="componentContainer">
         <div className="table-container">
           <h1 className="showsTitle">Calendar</h1>
           <table>

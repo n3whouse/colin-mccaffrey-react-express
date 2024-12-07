@@ -41,7 +41,7 @@ function App() {
   }, []);
 
   // Extracting link names with fallback if undefined
-  const {
+  let {
     home = "home",
     bio = "bio",
     store = "store",
@@ -59,6 +59,7 @@ function App() {
   } = linkFive;
   const { colinsCredits = "credits", streaming = "streaming" } = linkSix;
 
+  booking = booking.split(" ")[0];
   // Meta info for SEO
   const meta = {
     title: "Colin McCaffrey",
@@ -85,7 +86,7 @@ function App() {
   console.log(colinsCredits);
   return (
     <DocumentMeta {...meta}>
-      <div className="home">
+      <div className="home bodyContainer">
         <Router>
           <Navigation linkNames={linkNames} />
           <Routes>
@@ -94,7 +95,7 @@ function App() {
             <Route path={`${home}`} element={<Home />} />
             <Route path={`${bio}`} element={<Bio />} />
             <Route path={`${store}`} element={<Store />} />
-            <Route path={`${booking}`} element={<BookingAndContact />} />
+            <Route path={"booking"} element={<BookingAndContact />} />
 
             {/* Performer Subnav */}
             <Route path={`/${linkFour.mainLink}`} element={<Performer />}>

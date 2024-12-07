@@ -36,7 +36,7 @@ function Performer() {
   return (
     <>
       <DocumentMeta {...meta}>
-        <div className="bodyContainer">
+        <div className="componentContainer">
           {/* Render both components if on the main performer page */}
           {location.pathname === "/performer" && (
             <>
