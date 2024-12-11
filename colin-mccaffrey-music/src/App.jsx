@@ -19,8 +19,8 @@ import ProductionCredits from "./components/SubNavs/Producer Subnav/pages/Produc
 import ColinsCredits from "./components/SubNavs/Songwriter Subnav/pages/ColinsCredits";
 import Streaming from "./components/SubNavs/Songwriter Subnav/pages/Streaming";
 
-import Studio from "./components/SubNavs/Producer Subnav/pages/Studio"; // Import the missing Studio component
-import { client } from "./sanity/client"; // Your sanity client
+import Studio from "./components/SubNavs/Producer Subnav/pages/Studio";
+import { client } from "./sanity/client";
 
 import "./App.css";
 import "./components/styles/Home.css";
@@ -86,7 +86,7 @@ function App() {
   console.log(colinsCredits);
   return (
     <DocumentMeta {...meta}>
-      <div className="home bodyContainer">
+      <div className="bodyContainer">
         <Router>
           <Navigation linkNames={linkNames} />
           <Routes>

@@ -24,7 +24,7 @@ function PerformerNavigation() {
   console.log(firstSublinkName);
   return (
     <>
-      <div className="nav">
+      <div className="subnav">
         <h2>
           <Link
             to="/performer/calendar"

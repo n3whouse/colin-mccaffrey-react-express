@@ -54,17 +54,15 @@ const Bio = () => {
 
   return (
     <DocumentMeta {...meta}>
-      <div className="componentContainer">
-        <div className="bio-text">
-          {bioPic && (
-            <img
-              src={urlFor(bioPic).url()}
-              className="portrait"
-              alt="Headshot of Colin smiling while holding his electric guitar"
-            />
-          )}
-          <PortableText className="bioBody" value={bio} />
-        </div>
+      <div className="bio-text">
+        {bioPic && (
+          <img
+            src={urlFor(bioPic).url()}
+            className="portrait"
+            alt="Headshot of Colin smiling while holding his electric guitar"
+          />
+        )}
+        <PortableText className="bioBody" value={bio} />
       </div>
     </DocumentMeta>
   );

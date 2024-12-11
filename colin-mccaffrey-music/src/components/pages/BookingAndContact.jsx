@@ -69,7 +69,7 @@ function BookingAndContact() {
 
   return (
     <DocumentMeta {...meta}>
-      <div className="contactInfo bodyContainer">
+      <div className="contactInfo">
         <h2>Contact Information</h2>
         {contactInfo.email && (
           <p className="contactDetails">

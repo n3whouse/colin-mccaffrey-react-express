@@ -3,30 +3,18 @@ import { Link } from "react-router-dom";
 import { client } from "../../sanity/client";
 import "../styles/Navigation.css";
 import { FaChevronDown, FaChevronUp } from "react-icons/fa6";
-import Performer from "../SubNavs/Performer Subnav/Performer";
-import Engineer from "../SubNavs/Producer Subnav/Engineer";
-import Songwriter from "../SubNavs/Songwriter Subnav/Songwriter";
 import PerformerNavigation from "../SubNavs/Performer Subnav/PerformerNavigation";
 import EngineerNavigation from "../SubNavs/Producer Subnav/EngineerNavigation";
 import SongwriterNavigation from "../SubNavs/Songwriter Subnav/SongwriterNavigation";
 
-function Navigation() {
-  const [selectedComponent, setSelectedComponent] = useState("home"); // Default to "home"
-  const [selectedSubnav, setSelectedSubnav] = useState(null);
+function Navigation () {
+  const [selectedComponent, setSelectedComponent] = useState("home");
   const [menuVisible, setMenuVisible] = useState(false);
-  const [performerSubLinks, setPerformerSubLinks] = useState({
-    subLinkOne: "Calendar",
-    subLinkTwo: "Media",
-  });
-
   const [linkNames, setLinkNames] = useState({
     home: "",
     bio: "",
     store: "",
     booking: "",
-    performer: "",
-    producer: "",
-    songwriter: "",
     linkFour: { mainLink: "", subLinks: [] },
     linkFive: { mainLink: "", subLinks: [] },
     linkSix: { mainLink: "", subLinks: [] },
@@ -63,7 +51,6 @@ function Navigation() {
 
   const handleLinkClick = (component) => {
     setSelectedComponent(component);
-    setSelectedSubnav(component);
     setMenuVisible(false); // Close the menu when a link is clicked
   };
 
@@ -72,7 +59,7 @@ function Navigation() {
   };
 
   return (
-    <div className="bodyContainer nav">
+    <div className="nav">
       <div className="desktop-nav">
         <h1>
           {/* Main Navigation Links */}
@@ -165,20 +152,22 @@ function Navigation() {
           </Link>
         </h1>
 
-        {/* Dynamic Subnavigation Rendering */}
-        {selectedComponent === linkNames.linkFour.mainLink.toLowerCase() && (
-          <PerformerNavigation />
-        )}
-        {selectedComponent === linkNames.linkFive.mainLink.toLowerCase() && (
-          <EngineerNavigation />
-        )}
-        {selectedComponent === linkNames.linkSix.mainLink.toLowerCase() && (
-          <SongwriterNavigation />
-        )}
+        {/* This displays the Subnav Menus under Performer, Producer, and Songwriter tabs on desktop */}
+        <div className="subnavMenu">
+          {selectedComponent === linkNames.linkFour.mainLink.toLowerCase() && (
+            <PerformerNavigation />
+          )}
+          {selectedComponent === linkNames.linkFive.mainLink.toLowerCase() && (
+            <EngineerNavigation />
+          )}
+          {selectedComponent === linkNames.linkSix.mainLink.toLowerCase() && (
+            <SongwriterNavigation />
+          )}
+        </div>
       </div>
 
       {/* Mobile Navigation */}
-      <div className="mobileNav">
+      <div className="mobile-nav">
         <h1 id="mobileMenu">
           <Link
             to={`/${selectedComponent}`}
@@ -196,12 +185,7 @@ function Navigation() {
           <div className="menu-items">
             {/* Main links */}
             {Object.keys(linkNames).map((key) => {
-              if (
-                key !== "linkFour" &&
-                key !== "linkFive" &&
-                key !== "linkSix" &&
-                key !== selectedComponent
-              ) {
+              if (typeof linkNames[key] === "string") {
                 return (
                   <Link
                     to={`/${key === "home" ? "" : key}`}
@@ -213,18 +197,6 @@ function Navigation() {
                   </Link>
                 );
               }
-
-              // Render the sub-navigation components if applicable
-              if (key === "linkFour" && linkNames[key]?.subLinks) {
-                return <Performer key={key} />;
-              }
-              if (key === "linkFive" && linkNames[key]?.subLinks) {
-                return <Engineer key={key} />;
-              }
-              if (key === "linkSix" && linkNames[key]?.subLinks) {
-                return <Songwriter key={key} />;
-              }
-
               return null;
             })}
           </div>

@@ -1,11 +1,4 @@
-.bioContainer {
-  display: block;
-  /* flex-direction: column; */
-  justify-content: center;
-  width: 60dvw;
-  margin: auto;
-  /* font-style: inherit; */
-}
+@import "../styles/Home.css";
 
 .bioBody {
   display: flex;
@@ -15,27 +8,28 @@
 .portrait {
   display: flex;
   float: left;
-  width: 30dvh;
-  height: 100%;
-  margin: 2dvh 2dvh 0dvh 4dvw;
+  flex-direction: column;
+  width: auto;
+  height: 40dvh;
+  margin: 30px;
   border-radius: 6px;
   box-shadow: 0 0 6px -1px;
   /* object-fit: cover; */
 }
 
-.bio-text .nav {
-  display: block;
+.nav {
+  display: flex;
+  margin: auto;
   align-items: center;
-  width: 80%;
+  width: 70%;
 }
 
 @media (max-width: 768px) {
-  .bioContainer {
-    /* width: 100dvw; */
-    /* position: relative; */
-    height: 100%;
+  .bodyContainer {
+    height: auto;
+    /* overflow-y: auto; */
     width: auto;
-    margin: auto;
+    margin-top: auto;
   }
   .portrait {
     display: flex;
@@ -43,11 +37,15 @@
     justify-content: center;
     width: 100%;
     height: auto;
-    margin: 0 0 20px 0;
+    margin: 30px auto auto auto;
+    object-fit: contain;
+    height: auto;
   }
 
   .bio-text {
-    margin: auto;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
   }
 }
 

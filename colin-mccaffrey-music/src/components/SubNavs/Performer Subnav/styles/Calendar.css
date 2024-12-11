@@ -1,4 +1,3 @@
-/* Modal and general styling remains unchanged */
 #modalShowTitle {
   display: flex;
   flex-direction: column;
@@ -24,11 +23,6 @@ table {
 }
 
 @media (max-width: 768px) {
-  html {
-    width: 90%;
-  }
-
-  /* Adjust table container to make it scrollable */
   .table-container {
     width: 100%;
     /* overflow-x: auto; */
@@ -113,7 +107,7 @@ table {
 .modal-overlay {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  text-align: center;
   align-items: center;
   position: fixed;
   top: 0;

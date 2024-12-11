@@ -1,15 +1,17 @@
+/* Navigation design follows mobile-first format, unlike rest of site, due to the fact that I figured it would be less complicated to control design of mobile menu if it was focused on mobile as the default. */
+
 .nav {
-  display: flex;
+  /* display: none; */
   flex-direction: column;
   width: inherit;
 }
 
 .desktop-nav {
-  display: none; /* Hide desktop navigation on mobile */
+  display: none;
 }
 
-.mobileNav {
-  display: none;
+.mobile-nav {
+  display: flex;
   flex-direction: column; /* Stack items vertically */
   align-items: center;
   /* padding: 10px; */
@@ -18,7 +20,7 @@
 }
 
 #mobileMenu {
-  display: none;
+  display: flex;
   justify-content: center;
   width: 100%;
   align-items: center;
@@ -28,11 +30,12 @@
 
 @media (min-width: 768px) {
   .desktop-nav {
-    display: flex; /* Show desktop navigation on larger screens */
+    display: flex;
+    flex-direction: column;
     justify-content: center;
   }
 
-  .mobileNav {
+  .mobile-nav {
     display: none; /* Hide mobile navigation on larger screens */
   }
 }
