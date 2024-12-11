@@ -83,7 +83,6 @@ function App() {
       },
     },
   };
-  console.log(colinsCredits);
   return (
     <DocumentMeta {...meta}>
       <div className="bodyContainer">

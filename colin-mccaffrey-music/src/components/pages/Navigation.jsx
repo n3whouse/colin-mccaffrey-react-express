@@ -7,7 +7,7 @@ import PerformerNavigation from "../SubNavs/Performer Subnav/PerformerNavigation
 import EngineerNavigation from "../SubNavs/Producer Subnav/EngineerNavigation";
 import SongwriterNavigation from "../SubNavs/Songwriter Subnav/SongwriterNavigation";
 
-function Navigation () {
+function Navigation() {
   const [selectedComponent, setSelectedComponent] = useState("home");
   const [menuVisible, setMenuVisible] = useState(false);
   const [linkNames, setLinkNames] = useState({
@@ -53,6 +53,7 @@ function Navigation () {
     setSelectedComponent(component);
     setMenuVisible(false); // Close the menu when a link is clicked
   };
+  console.log(linkNames);
 
   const toggleMenu = () => {
     setMenuVisible(!menuVisible); // Toggle menu visibility
@@ -173,7 +174,9 @@ function Navigation () {
             to={`/${selectedComponent}`}
             className="selected component bold"
           >
-            {linkNames[selectedComponent]}
+            {selectedComponent === "home"
+              ? linkNames.home
+              : linkNames[selectedComponent] || selectedComponent}
           </Link>
           <div className="dropdown-arrow" onClick={toggleMenu}>
             {menuVisible ? <FaChevronUp /> : <FaChevronDown />}
@@ -196,8 +199,18 @@ function Navigation () {
                     {linkNames[key]}
                   </Link>
                 );
+              } else {
+                return (
+                  <Link
+                    to={`/${linkNames[key].mainLink.toLowerCase()}`}
+                    className="component"
+                    onClick={() => handleLinkClick(linkNames[key].mainLink)}
+                    key={key}
+                  >
+                    {linkNames[key].mainLink}
+                  </Link>
+                );
               }
-              return null;
             })}
           </div>
         )}

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "../styles/Calendar.css";
 
 // Function to render the blocks
@@ -10,11 +10,24 @@ const renderBlock = (block) => {
       </p>
     );
   }
-
   return null;
 };
 
 const ShowModal = ({ show, onClose }) => {
+  const [detailsVisible, setDetailsVisible] = useState(false);
+
+  // Prevent background scrolling when modal is open
+  useEffect(() => {
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, []);
+
+  const toggleDetails = () => {
+    setDetailsVisible((prev) => !prev);
+  };
+
   return (
     <>
       <div className="modal-overlay" onClick={onClose}>
@@ -22,22 +35,18 @@ const ShowModal = ({ show, onClose }) => {
           <div id="modalShowTitle">
             <h1>{show.name}</h1>
             <br />
-            <h3>
-              {show.headline.name
-                ? `with ${show.headline?.name}`
-                : show.headline.name}
-            </h3>
+            <h3>{show.headline?.name ? `with ${show.headline.name}` : ""}</h3>
           </div>
           <br />
           <hr id="titleDivider" />
 
           <a
             id="modalVenue"
-            href={show.venue.link}
+            href={show.venue?.link || "#"}
             target="_blank"
             rel="noopener noreferrer"
           >
-            {show.venue?.name || ""}
+            {show.venue?.name || "Venue not specified"}
           </a>
           <br />
           <p id="modalAddress">
@@ -45,19 +54,30 @@ const ShowModal = ({ show, onClose }) => {
               ? `${show.venue.address}, ${show.venue.city}, ${show.venue.state}`
               : "Address not specified"}
           </p>
-          <div className="showDetails">
-            {show.details && show.details.map(renderBlock)}
-          </div>
+
+          <button className="btn" onClick={toggleDetails}>
+            {detailsVisible ? "Hide Details" : "Show Details"}
+          </button>
+
+          {detailsVisible && (
+            <div className="showDetails">
+              {show.details && show.details.map(renderBlock)}
+            </div>
+          )}
+
           <p id="modalTime">{new Date(show.date).toLocaleString()}</p>
           <p id="modalPrice">{show.price > 0 ? `$${show.price}` : "Free"}</p>
-          <button className="btn">
-            <a href={show.tickets} target="_blank" rel="noopener noreferrer">
-              Buy Tickets
-            </a>
-          </button>
-          <button className="btn" onClick={onClose}>
-            Close
-          </button>
+
+          <div className="modal-buttons">
+            <button className="btn">
+              <a href={show.tickets} target="_blank" rel="noopener noreferrer">
+                Buy Tickets
+              </a>
+            </button>
+            <button className="btn" onClick={onClose}>
+              Close
+            </button>
+          </div>
         </div>
       </div>
     </>

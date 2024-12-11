@@ -55,8 +55,6 @@ function BookingAndContact() {
         }
       }`);
 
-      console.log(data);
-
       setContactInfo({
         email: data.bookingAndContactInfo?.email || "",
         phone: data.bookingAndContactInfo?.phone || "",
@@ -73,19 +71,19 @@ function BookingAndContact() {
         <h2>Contact Information</h2>
         {contactInfo.email && (
           <p className="contactDetails">
-            <p className="contactDetailHeader">Email:</p>
+            <span className="contactDetailHeader">Email:</span>
             {contactInfo.email}
           </p>
         )}
         {contactInfo.phone && (
           <p className="contactDetails">
-            <p className="contactDetailHeader">Phone:</p>
+            <span className="contactDetailHeader">Phone:</span>
             {contactInfo.phone}
           </p>
         )}
         {contactInfo.address && (
           <p className="contactDetails">
-            <p className="contactDetailHeader">Address:</p>
+            <span className="contactDetailHeader">Address:</span>
             {contactInfo.address}
           </p>
         )}
