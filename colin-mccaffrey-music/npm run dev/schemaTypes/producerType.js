@@ -1,5 +1,5 @@
 import {defineField, defineType} from 'sanity'
-import DynamicPanelName from './components/DynamicPanelName';
+import DynamicPanelName from './components/DynamicPanelName'
 
 export const producerType = defineType({
   name: 'producer',
@@ -66,6 +66,25 @@ export const producerType = defineType({
         }),
       ],
       group: 'gearAndPrograms',
+    }),
+    defineField({
+      name: 'productionCredits',
+      title: 'Production Credits',
+      type: 'object',
+      fields: [
+        defineField({
+          name: 'creditsHeadline',
+          title: 'Headgit statline',
+          type: 'string',
+        }),
+        defineField({
+          name: 'creditsDescription',
+          title: 'Description',
+          type: 'array',
+          of: [{type: 'block'}],
+        }),
+      ],
+      group: 'productionCredits',
     }),
   ],
 })

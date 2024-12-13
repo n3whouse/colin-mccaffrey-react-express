@@ -15,6 +15,8 @@ export const siteSettings = defineType({
     defineField({
       name: 'linkNames',
       title: 'Links',
+      description:
+        'The header links are divided into two sections. Links One through Three control the top row of links. Links Four through Six control the second row of links.',
       type: 'object',
       fields: [
         defineField({
@@ -50,6 +52,7 @@ export const siteSettings = defineType({
             defineField({
               name: 'subLinks',
               title: 'Sub Links',
+              description: 'Subnavigation links for the first main link of the second row.',
               type: 'array',
               of: [
                 defineField({
