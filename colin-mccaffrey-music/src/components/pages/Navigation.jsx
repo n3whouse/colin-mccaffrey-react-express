@@ -53,7 +53,6 @@ function Navigation() {
     setSelectedComponent(component);
     setMenuVisible(false); // Close the menu when a link is clicked
   };
-  console.log(linkNames);
 
   const toggleMenu = () => {
     setMenuVisible(!menuVisible); // Toggle menu visibility

@@ -5,23 +5,43 @@ import {schemaTypes} from './schemaTypes'
 import {structure} from './structure'
 import {defaultDocumentNode} from './structure/defaultDocumentNode'
 
-export default defineConfig({
-  name: 'default',
-  title: 'colin-mccaffrey-music',
+export default defineConfig([
+  {
+    name: 'default',
+    title: 'colin-mccaffrey-music',
+    projectId: 'p3o500d1',
+    dataset: 'product',
+    basePath: '/product',
+    // dataset: 'development',
+    studioHost: 'colin-mccaffrey-music',
 
-  projectId: 'p3o500d1',
-  dataset: 'product',
-  // dataset: 'development',
-  studioHost: 'colin-mccaffrey-music',
-
-  plugins: [
-    structureTool({
-      structure,
-      defaultDocumentNode,
-    }),
-    visionTool(),
-  ],
-  schema: {
-    types: schemaTypes,
+    plugins: [
+      structureTool({
+        structure,
+        defaultDocumentNode,
+      }),
+      visionTool(),
+    ],
+    schema: {
+      types: schemaTypes,
+    },
   },
-})
+  {
+    name: 'staging',
+    title: 'colin-mccaffrey-development',
+    projectId: 'p3o500d1',
+    dataset: 'development',
+    basePath: '/development',
+    studioHost: 'colin-mccaffrey-music',
+    plugins: [
+      structureTool({
+        structure,
+        defaultDocumentNode,
+      }),
+      visionTool(),
+    ],
+    schema: {
+      types: schemaTypes,
+    },
+  },
+])

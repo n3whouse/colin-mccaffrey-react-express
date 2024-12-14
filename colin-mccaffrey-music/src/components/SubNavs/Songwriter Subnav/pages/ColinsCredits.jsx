@@ -7,14 +7,12 @@ function ColinsCredits() {
 
   useEffect(() => {
     const fetchCreditsData = async () => {
-      // Fetch the first songwriter document
-
       const data = await client.fetch(`*[_type == 'songwriter'][0]{credits}`);
 
       if (data && data.credits) {
         setCreditsData(data.credits);
 
-        console.log(data.credits); // Log the credits data
+        console.log(data.credits);
       }
     };
 
@@ -22,7 +20,7 @@ function ColinsCredits() {
   }, []);
 
   if (!creditsData) {
-    return <div>Loading...</div>; // Optional loading state
+    return <div>Loading...</div>;
   }
 
   return (

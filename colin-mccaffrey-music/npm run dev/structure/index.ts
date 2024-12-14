@@ -21,11 +21,7 @@ export const schemaTypes = [
   songwriterType,
 ]
 
-const getLinkNames = async () => {
-  const data = await client.fetch(`*[_type == 'siteSettings']{linkNames}[0]`)
-  return data?.linkNames?.navigationLinks || {}
-  const linkNames = await getLinkNames()
-}
+
 
 export const structure: StructureResolver = (S, linkNames) => {
   return S.list() //show list
