@@ -19,10 +19,10 @@ html {
   display: flex;
   flex-direction: column;
   width: 80%;
-  /* height: auto; */
   margin: auto;
   background-color: white;
-  box-shadow: 0 0 10px -1px rgba(0, 0, 0, 0.5),
+  box-shadow:
+    0 0 10px -1px rgba(0, 0, 0, 0.5),
     0 10px 10px -1px rgba(0, 0, 0, 0.5);
   padding-bottom: 5%;
   font-size: 24px;
@@ -151,7 +151,9 @@ html {
 .animate-in {
   opacity: 0;
   transform: translateX(100px);
-  transition: opacity 0.5s, transform 0.5s;
+  transition:
+    opacity 0.5s,
+    transform 0.5s;
 }
 
 .animate-in.active {

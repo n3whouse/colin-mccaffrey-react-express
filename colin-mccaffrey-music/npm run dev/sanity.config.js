@@ -4,6 +4,7 @@ import {visionTool} from '@sanity/vision'
 import {schemaTypes} from './schemaTypes'
 import {structure} from './structure'
 import {defaultDocumentNode} from './structure/defaultDocumentNode'
+import {media} from 'sanity-plugin-media'
 
 export default defineConfig([
   {
@@ -21,6 +22,17 @@ export default defineConfig([
         defaultDocumentNode,
       }),
       visionTool(),
+      media({
+        albumArt: {
+          enabled: true,
+          maximumUploadSize: 1000000,
+        },
+        creditLine: {
+          enabled: true,
+          excludeSources: ['unsplash'],
+          maximumUploadSize: 10000000,
+        },
+      }),
     ],
     schema: {
       types: schemaTypes,

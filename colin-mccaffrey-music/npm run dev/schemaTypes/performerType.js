@@ -68,7 +68,7 @@ export const performerType = defineType({
               title: 'Audio File',
               type: 'file',
               options: {
-                accept: 'audio/mp3',
+                accept: '.mp3',
               },
               hidden: ({document, parent}) => parent?.mediaType !== 'audio',
             }),

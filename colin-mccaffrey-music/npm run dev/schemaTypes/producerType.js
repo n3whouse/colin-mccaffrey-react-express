@@ -74,7 +74,7 @@ export const producerType = defineType({
       fields: [
         defineField({
           name: 'creditsHeadline',
-          title: 'Headgit statline',
+          title: 'Headline',
           type: 'string',
         }),
         defineField({

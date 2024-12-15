@@ -3,8 +3,6 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(2, 1fr);
-  /* max-width: 80dvh; */
-  /* max-height: 100dvh; */
   margin: auto;
   grid-gap: 80px;
   justify-content: center;
@@ -135,7 +133,6 @@ hr {
 
   .modal-overlay {
     display: block;
-    /* flex-direction: column; */
     position: fixed;
     max-height: 80%;
     top: 0;
@@ -165,14 +162,13 @@ hr {
     width: 65%;
   }
 
-  /* Add the following styles to ensure the navigation appears above the grid items on mobile */
   .nav {
-    position: relative; /* Ensure it is positioned relative to the document flow */
-    z-index: 1000; /* Higher z-index to ensure it appears above other content */
+    position: relative;
+    z-index: 1000;
   }
 
   .modal-overlay {
-    z-index: 2000; /* Ensure it appears above the navigation */
+    z-index: 2000;
   }
 }
 
@@ -213,7 +209,7 @@ hr {
 }
 
 .album-details {
-  text-align: center; /* Center text */
+  text-align: center;
 }
 
 .btn {

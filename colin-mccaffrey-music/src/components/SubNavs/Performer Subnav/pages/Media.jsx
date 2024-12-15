@@ -3,9 +3,11 @@ import "../styles/Media.css";
 import "../styles/Calendar.css";
 import { client } from "../../../../sanity/client";
 import { PortableText } from "@portabletext/react";
+import AudioPlayer from "../../../../utils/AudioPlayer/AudioPlayer";
 
 function Media() {
   const [mediaItems, setMediaItems] = useState([]);
+  // const [audioFiles, setAudioFiles] = useState([]);
 
   useEffect(() => {
     const fetchMedia = async () => {
@@ -26,49 +28,45 @@ function Media() {
   };
 
   return (
-    <div className="media">
-      {/* <PerformerNavigation /> */}
-      <h1>Media</h1>
-      {mediaItems.map((media, index) => (
-        <div key={index} className="mediaItem">
-          <h2 id="mediaHeadline">
-            {media.mediaHeadline && (
-              <PortableText blocks={media.mediaHeadline} />
+    <>
+      <AudioPlayer />
+      <div className="media">
+        <h1>Media</h1>
+        {mediaItems.map((media, index) => (
+          <div key={index} className="mediaItem">
+            <h2 id="mediaHeadline">
+              {media.mediaHeadline && (
+                <PortableText blocks={media.mediaHeadline} />
+              )}
+            </h2>
+            {media.mediaType === "video" && (
+              <video controls>
+                <source src={media.videoFile?.asset?.url} type="video/mp4" />
+                Your browser does not support this video element.
+              </video>
             )}
-          </h2>
-          {media.mediaType === "audio" && (
-            <audio controls>
-              <source src={media.audioFile?.asset?.url} type="audio/mp3" />
-              Your browser does not support this audio element.
-            </audio>
-          )}
-          {media.mediaType === "video" && (
-            <video controls>
-              <source src={media.videoFile?.asset?.url} type="video/mp4" />
-              Your browser does not support this video element.
-            </video>
-          )}
-          {media.mediaType === "youtube" && (
-            <iframe
-              width="560"
-              height="315"
-              src={`https://www.youtube.com/embed/${getYouTubeVideoId(
-                media.youtubeUrl
-              )}`}
-              title={media.mediaHeadline}
-              allowFullScreen
-            ></iframe>
-          )}
-          {media.description && <PortableText blocks={media.description} />}
-          {media.publishedAt && (
-            <p id="publishDate">
-              Published on: {new Date(media.publishedAt).toLocaleDateString()}
-            </p>
-          )}
-          <hr />
-        </div>
-      ))}
-    </div>
+            {media.mediaType === "youtube" && (
+              <iframe
+                width="560"
+                height="315"
+                src={`https://www.youtube.com/embed/${getYouTubeVideoId(
+                  media.youtubeUrl
+                )}`}
+                title={media.mediaHeadline}
+                allowFullScreen
+              ></iframe>
+            )}
+            {media.description && <PortableText blocks={media.description} />}
+            {media.publishedAt && (
+              <p id="publishDate">
+                Published on: {new Date(media.publishedAt).toLocaleDateString()}
+              </p>
+            )}
+            <hr />
+          </div>
+        ))}
+      </div>
+    </>
   );
 }
 

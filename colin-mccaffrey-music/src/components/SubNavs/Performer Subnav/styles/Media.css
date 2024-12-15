@@ -4,7 +4,6 @@
   margin: auto;
   max-width: 100dvh;
   height: auto;
-  /* margin-bottom: 5dvh; */
 }
 
 #mediaHeadline {
@@ -17,10 +16,6 @@ iframe {
 
   margin: auto;
   margin-bottom: auto;
-  /* align-items: center; */
-  /* width: 60%; */
-  /* height: 50dvh; */
-  /* padding: 10px; */
 }
 
 #publishDate {

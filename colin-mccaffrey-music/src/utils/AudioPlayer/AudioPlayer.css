@@ -1,0 +1,135 @@
+/* AudioPlayer.css */
+
+.audio-player {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  background-color: #84b3bb;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  max-width: 600px;
+  margin: 20px auto;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  width: 100%;
+}
+
+.track-info {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+  margin-bottom: 15px;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 15px;
+}
+
+.album-art {
+  width: auto;
+  height: auto;
+  border-radius: 5px;
+  margin: 15px auto 15px auto;
+}
+
+.track-details {
+  flex-grow: 1;
+}
+
+.track-title {
+  font-size: 20px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.track-artist {
+  font-size: 18px;
+  color: #555;
+  margin: 0;
+}
+
+.controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 15px 0;
+}
+
+.volume-control {
+  margin: 10px 0;
+}
+
+button {
+  width: auto;
+  background-color: #84b3bb;
+  font-weight: bold;
+  background-color: #5ab5c5;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 15px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.play-pause-next {
+  font-size: xx-large;
+  margin: 10%;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+input[type="range"],
+#volumeControl {
+  display: flex;
+  margin: 15px auto 15px auto;
+  -webkit-appearance: none;
+  width: 60%;
+  height: 5px;
+  background: #ddd;
+  border-radius: 5px;
+  outline: none;
+}
+
+#volumeControl {
+  transform: rotateZ(270deg);
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 15px;
+  height: 15px;
+  background: #007bff;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+input[type="range"]::-moz-range-thumb {
+  width: 15px;
+  height: 15px;
+  background: #007bff;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.progress {
+  background: #ddd;
+  border-radius: 5px;
+  height: 5px;
+  margin-bottom: 10px;
+}
+
+.progress-bar {
+  height: 100%;
+  border-radius: 5px;
+}
+
+.time-display {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  color: #555;
+}

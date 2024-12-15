@@ -29,7 +29,6 @@ function Performer() {
 
   const location = useLocation();
 
-  // Determine which component to display based on the current path
   const isCalendarSelected = location.pathname === "/performer/calendar";
   const isMediaSelected = location.pathname === "/performer/media";
 
@@ -37,7 +36,6 @@ function Performer() {
     <>
       <DocumentMeta {...meta}>
         <div className="componentContainer">
-          {/* Render both components if on the main performer page */}
           {location.pathname === "/performer" && (
             <>
               <Calendar />

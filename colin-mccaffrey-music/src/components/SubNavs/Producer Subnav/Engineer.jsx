@@ -9,7 +9,6 @@ function Engineer() {
 
   return (
     <div className="subnav">
-      {/* Render all components by default */}
       {location.pathname === "/producer" && (
         <>
           <Studio />
@@ -17,8 +16,6 @@ function Engineer() {
           <ProductionCredits />
         </>
       )}
-
-      {/* This is where the nested routes will be rendered */}
       <Outlet />
     </div>
   );

@@ -9,6 +9,8 @@ import {engineerType} from '../schemaTypes/engineerType'
 import {performerType} from '../schemaTypes/performerType'
 import {songwriterType} from '../schemaTypes/songwriterType'
 import {client} from '../../src/sanity/client'
+import {UploadIcon} from '@sanity/icons'
+import audioFile from '../schemaTypes/audioFile'
 
 export const schemaTypes = [
   artistType,
@@ -19,9 +21,8 @@ export const schemaTypes = [
   engineerType,
   performerType,
   songwriterType,
+  audioFile,
 ]
-
-
 
 export const structure: StructureResolver = (S, linkNames) => {
   return S.list() //show list
@@ -52,7 +53,7 @@ export const structure: StructureResolver = (S, linkNames) => {
         .child(S.documentTypeList('release').title('Releases')),
       S.divider(),
       S.listItem()
-        .title('Engineer')
+        .title('Producer')
         .icon(AddDocumentIcon)
         .child(S.document().schemaType('engineer').documentId('engineer')),
       S.listItem()
@@ -63,5 +64,10 @@ export const structure: StructureResolver = (S, linkNames) => {
         .title('Songwriter')
         .icon(AddDocumentIcon)
         .child(S.document().schemaType('songwriter').documentId('songwriter')),
+      S.divider(),
+      S.listItem()
+        .title('Audio Files')
+        .icon(UploadIcon)
+        .child(S.document().schemaType('audioFile')),
     ])
 }
