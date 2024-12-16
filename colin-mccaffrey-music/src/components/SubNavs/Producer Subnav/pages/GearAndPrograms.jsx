@@ -6,6 +6,13 @@ import imageUrlBuilder from "@sanity/image-url";
 
 const builder = imageUrlBuilder(client);
 
+const CustomBoldWithDivider = ({ children }) => (
+  <div>
+    <strong>{children}</strong>
+    <hr className="textDivider" /> {/* Divider only below the bold text */}
+  </div>
+);
+
 function GearAndPrograms() {
   const [gearAndPrograms, setGearAndPrograms] = useState("");
 
@@ -34,7 +41,21 @@ function GearAndPrograms() {
     <div className="studioContainer">
       <h1>{gearAndPrograms.gearHeadline}</h1>
 
-      <PortableText value={gearAndPrograms.gearDetails} />
+      <PortableText
+        value={gearAndPrograms.gearDetails}
+        components={{
+          // Custom rendering for bold text
+          marks: {
+            strong: (props) => (
+              <CustomBoldWithDivider>{props.children}</CustomBoldWithDivider>
+            ),
+          },
+          // Default rendering for other block types
+          block: (props) => {
+            return <p>{props.children}</p>; // Render normal text as a paragraph
+          },
+        }}
+      />
     </div>
   );
 }

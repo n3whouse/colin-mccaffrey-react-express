@@ -29,9 +29,9 @@ function Media() {
 
   return (
     <>
-      {/* <AudioPlayer /> */}
+      <h1>Media</h1>
+      <AudioPlayer />
       <div className="media">
-        <h1>Media</h1>
         {mediaItems.map((media, index) => (
           <div key={index} className="mediaItem">
             <h2 id="mediaHeadline">

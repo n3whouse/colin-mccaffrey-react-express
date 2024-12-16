@@ -8,8 +8,7 @@ import "../Songwriter.css";
 // Define default serializers
 const serializers = {
   types: {
-    block: (props) => <p>{props.children}</p>, // Default block serializer for paragraphs
-    // You can add more custom serializers for different block types here
+    block: (props) => <p>{props.children}</p>,
   },
 };
 

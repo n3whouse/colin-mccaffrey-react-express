@@ -1,7 +1,3 @@
-p {
-  margin: auto;
-}
-
 /* =========STUDIO PAGE========== */
 .studio .info {
   display: flex;
@@ -15,11 +11,19 @@ p {
   justify-content: center;
   width: 60dvw;
   margin: auto;
+  text-align: center;
 }
 
 .greenRoom {
   float: left;
   width: 20dvw;
+}
+
+.textDivider {
+  margin: auto;
+  border: none;
+  height: 1px;
+  background-color: #ccc;
 }
 
 /* =========GEAR & PROGRAMS========== */
@@ -28,6 +32,7 @@ p {
 .productionCredits {
   display: flex;
   flex-direction: column;
+  text-align: center;
   align-items: center;
   justify-content: center;
   width: 50dvw;
@@ -40,7 +45,7 @@ p {
   .productionCredits {
     height: 100%;
     width: auto;
-    margin: auto auto 5dvh auto;
+    margin: 5dvh;
   }
   .greenRoom {
     display: flex;
@@ -49,8 +54,7 @@ p {
     width: 100%;
     margin: 0 0 20px 0;
   }
-
   p {
-    margin: auto;
+    text-align: center;
   }
 }

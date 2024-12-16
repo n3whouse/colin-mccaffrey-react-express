@@ -15,9 +15,6 @@ body {
 .home {
   display: flex;
 }
-.bodyContainer {
-  display: flex;
-}
 
 .componentContainer {
   display: flex;
@@ -52,5 +49,19 @@ body {
   padding: 10px;
 }
 
+img {
+  display: flex;
+  /* float: left; */
+  flex-direction: column;
+  width: auto;
+  height: 40dvh;
+  margin: 30px;
+  border-radius: 6px;
+  box-shadow: 0 0 6px -1px;
+}
+
 @media (max-width: 768px) {
+  .contactInfo {
+    height: 82dvh;
+  }
 }

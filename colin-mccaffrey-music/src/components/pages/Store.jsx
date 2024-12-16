@@ -81,7 +81,6 @@ function Store() {
   return (
     <DocumentMeta {...meta}>
       <div className="componentContainer">
-        <hr />
         <div className="gridCard">
           {releases.map((release) => (
             <div
@@ -102,6 +101,7 @@ function Store() {
             </div>
           ))}
         </div>
+        <hr />
       </div>
 
       {selectedRelease && (

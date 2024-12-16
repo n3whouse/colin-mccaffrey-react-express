@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "../styles/Engineer.css";
 import { client } from "../../../../sanity/client";
 import imageUrlBuilder from "@sanity/image-url";
+import { PortableText } from "@portabletext/react";
 
 const builder = imageUrlBuilder(client);
 
@@ -41,12 +42,7 @@ function Studio() {
             alt={studioData.studioTitle}
           />
         )}
-        {studioData.studioBlurb &&
-          studioData.studioBlurb.map((block, index) => (
-            <p key={index}>
-              {block.children.map((child) => child.text).join(" ")}
-            </p>
-          ))}
+        <PortableText id="studioBlurb" value={studioData.studioBlurb} />
       </div>
     </div>
   );

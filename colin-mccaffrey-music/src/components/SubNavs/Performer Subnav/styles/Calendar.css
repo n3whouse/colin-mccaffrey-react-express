@@ -91,6 +91,7 @@ button {
   display: flex;
   flex-direction: column;
   max-height: 90vh;
+  max-width: 50vh;
   overflow-y: auto;
   background: white;
   border-radius: 10px;
@@ -105,7 +106,8 @@ button {
   opacity: 80%;
   border-radius: 8px;
   margin: 10px 0;
-  padding: 10px;
+  padding: 20px;
+  overflow-y: auto;
 }
 
 #headliner {
@@ -140,8 +142,11 @@ button {
 }
 
 #modalTime {
-  padding: 5%;
   font-style: italic;
+}
+
+#modalPrice {
+  padding-bottom: 5%;
 }
 
 /* Media Queries */

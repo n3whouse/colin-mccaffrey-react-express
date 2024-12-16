@@ -42,7 +42,6 @@ function Songwriter() {
               <Streaming />
             </>
           )}
-          <hr />
           <Outlet />
         </div>
       </DocumentMeta>

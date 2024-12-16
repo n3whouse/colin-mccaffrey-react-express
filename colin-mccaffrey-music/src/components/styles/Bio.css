@@ -1,10 +1,5 @@
 @import "../styles/Home.css";
 
-.bioBody {
-  display: flex;
-  font-size: 25px;
-}
-
 .portrait {
   display: flex;
   float: left;
@@ -20,6 +15,11 @@
   display: flex;
   margin: auto;
   align-items: center;
+}
+
+.homeContainer {
+  display: flex;
+  flex-direction: column;
 }
 .bio-text {
   width: 80%;
@@ -38,7 +38,7 @@
     justify-content: center;
     width: 100%;
     height: auto;
-    margin: 30px auto auto auto;
+    margin: 10% auto 10% auto;
     object-fit: contain;
     height: auto;
   }

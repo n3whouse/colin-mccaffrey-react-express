@@ -16,11 +16,11 @@ const AudioPlayer = () => {
   const audioRef = useRef(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [volume, setVolume] = useState(1);
-  const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
+  const [currentTime, setCurrentTime] = useState(0);
   const [currentAudioIndex, setCurrentAudioIndex] = useState(0);
   const [musicItems, setMusicItems] = useState([]);
-  const [trackDurations, setTrackDurations] = useState([]); // State to hold track durations
+  const [trackDurations, setTrackDurations] = useState([]);
 
   useEffect(() => {
     const fetchMusic = async () => {
@@ -47,20 +47,32 @@ const AudioPlayer = () => {
 
       const audioFiles = data[0]?.audioFiles || [];
       setMusicItems(audioFiles);
-      setTrackDurations(new Array(audioFiles.length).fill(0)); // Initialize durations array
+      setTrackDurations(new Array(audioFiles.length).fill(0));
     };
     fetchMusic();
   }, []);
 
   useEffect(() => {
-    // Load each audio file to get its duration
+    const preloadAudioFiles = () => {
+      musicItems.forEach((item) => {
+        const audio = new Audio(item.audioFile.asset.url);
+        audio.load(); // Preload the audio file
+      });
+    };
+
+    if (musicItems.length > 0) {
+      preloadAudioFiles();
+    }
+  }, [musicItems]);
+
+  useEffect(() => {
     const loadTrackDurations = async () => {
       const durations = await Promise.all(
         musicItems.map((item) => {
           return new Promise((resolve) => {
             const audio = new Audio(item.audioFile.asset.url);
             audio.onloadedmetadata = () => {
-              resolve(audio.duration); // Get the duration when metadata is loaded
+              resolve(audio.duration);
             };
           });
         })
@@ -103,7 +115,7 @@ const AudioPlayer = () => {
 
   const handleTimeUpdate = () => {
     const audio = audioRef.current;
-    setCurrentTime(audio.currentTime);
+    setCurrentTime(audio.currentTime); // Update state for currentTime
     setDuration(audio.duration);
   };
 
@@ -115,20 +127,20 @@ const AudioPlayer = () => {
         audio.removeEventListener("timeupdate", handleTimeUpdate);
       };
     }
-  }, []); // Only set up the listener once
+  }, []);
 
   useEffect(() => {
     const audio = audioRef.current;
     if (audio && musicItems.length > 0) {
-      audio.src = musicItems[currentAudioIndex]?.audioFile.asset.url; // Set the audio source
-      audio.currentTime = currentTime; // Set the current time to maintain position
+      audio.src = musicItems[currentAudioIndex]?.audioFile.asset.url;
+      audio.currentTime = 0; // Reset to the beginning of the track
       if (isPlaying) {
         audio
           .play()
           .catch((error) => console.error("Error playing audio:", error));
       }
     }
-  }, [currentAudioIndex, musicItems, currentTime, isPlaying]); // Only run when currentAudioIndex or musicItems change
+  }, [currentAudioIndex, musicItems, isPlaying]);
 
   const formatTime = (time) => {
     const minutes = Math.floor(time / 60);
@@ -140,7 +152,7 @@ const AudioPlayer = () => {
 
   const handleProgressChange = (e) => {
     const audio = audioRef.current;
-    const newTime = (e.target.value / 100) * duration; // Convert percentage to seconds
+    const newTime = (e.target.value / 100) * duration;
     audio.currentTime = newTime;
     setCurrentTime(newTime);
   };
@@ -165,7 +177,7 @@ const AudioPlayer = () => {
           </div>
         </div>
       )}
-      <audio ref={audioRef} />
+      <audio ref={audioRef} preload="auto" />
       <div className="controls">
         <button className="play-pause-next" onClick={handlePrevious}>
           <p id="previous">
@@ -222,9 +234,8 @@ const AudioPlayer = () => {
                 onClick={() => setCurrentAudioIndex(index)}
               >
                 <td id="song-name">{item.title}</td>
-                <td id="artist-name ">{item.creditLine?.name}</td>
-                <td id="duration">{formatTime(trackDurations[index])}</td>{" "}
-                {/* Display dynamic duration */}
+                <td id="artist-name">{item.creditLine?.name}</td>
+                <td id="duration">{formatTime(trackDurations[index])}</td>
               </tr>
             ))}
           </tbody>

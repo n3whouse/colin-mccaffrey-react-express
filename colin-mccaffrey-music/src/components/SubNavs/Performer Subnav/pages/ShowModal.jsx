@@ -40,20 +40,25 @@ const ShowModal = ({ show, onClose }) => {
           <br />
           <hr id="titleDivider" />
 
-          <a
-            id="modalVenue"
-            href={show.venue?.link || "#"}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            {show.venue?.name || "Venue not specified"}
-          </a>
-          <br />
-          <p id="modalAddress">
-            {show.venue
-              ? `${show.venue.address}, ${show.venue.city}, ${show.venue.state}`
-              : "Address not specified"}
-          </p>
+          {/* Conditionally render venue and address based on detailsVisible */}
+          {!detailsVisible && (
+            <>
+              <a
+                id="modalVenue"
+                href={show.venue?.link || "#"}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {show.venue?.name || "Venue not specified"}
+              </a>
+              <br />
+              <p id="modalAddress">
+                {show.venue
+                  ? `${show.venue.address}, ${show.venue.city}, ${show.venue.state}`
+                  : "Address not specified"}
+              </p>
+            </>
+          )}
 
           <button className="btn" onClick={toggleDetails}>
             {detailsVisible ? "Hide Details" : "Show Details"}

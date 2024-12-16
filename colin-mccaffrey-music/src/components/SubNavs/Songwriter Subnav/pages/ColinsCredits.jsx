@@ -1,6 +1,14 @@
 import React, { useEffect, useState } from "react";
 import "../Songwriter.css";
 import { client } from "../../../../sanity/client";
+import { PortableText } from "@portabletext/react";
+
+const CustomParagraph = ({ children }) => (
+  <div>
+    <p id="credit">{children}</p>
+    <hr id="creditDivider" />
+  </div>
+);
 
 function ColinsCredits() {
   const [creditsData, setCreditsData] = useState(null);
@@ -27,13 +35,22 @@ function ColinsCredits() {
     <div className="creditsContainer">
       <h2>{creditsData.linkTwoHeadline || "Colin's Credits"}</h2>
 
-      {creditsData.details &&
-        creditsData.details.map((detail, index) => (
-          <p id="credit" key={index}>
-            {detail.children.map((child) => child.text).join(" ")}
-            <hr id="creditDivider" />
-          </p>
-        ))}
+      {creditsData.details && (
+        <PortableText
+          value={creditsData.details}
+          components={{
+            block: (props) => {
+              if (
+                props.node._type === "block" &&
+                props.node.style === "normal"
+              ) {
+                return <CustomParagraph>{props.children}</CustomParagraph>;
+              }
+              return <p>{props.children}</p>;
+            },
+          }}
+        />
+      )}
     </div>
   );
 }
