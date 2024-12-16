@@ -7,7 +7,7 @@ import {releaseType} from './releaseType'
 import {engineerType} from './engineerType'
 import {performerType} from './performerType'
 import {songwriterType} from './songwriterType'
-import audioFile from './audioFile'
+import {audioFile} from './audioFile'
 
 export const schemaTypes = [
   showType,

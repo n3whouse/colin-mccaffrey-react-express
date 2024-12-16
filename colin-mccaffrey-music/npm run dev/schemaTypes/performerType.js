@@ -63,15 +63,7 @@ export const performerType = defineType({
               },
               validation: (Rule) => Rule.required(),
             }),
-            defineField({
-              name: 'audioFile',
-              title: 'Audio File',
-              type: 'file',
-              options: {
-                accept: '.mp3',
-              },
-              hidden: ({document, parent}) => parent?.mediaType !== 'audio',
-            }),
+            
             defineField({
               name: 'videoFile',
               title: 'Video File',

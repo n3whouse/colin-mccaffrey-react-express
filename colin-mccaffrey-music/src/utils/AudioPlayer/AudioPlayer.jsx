@@ -9,7 +9,6 @@ import {
   ChevronRightIcon,
 } from "@sanity/icons";
 
-// Create a builder instance
 const builder = imageUrlBuilder(client);
 const urlFor = (source) => builder.image(source);
 
@@ -21,32 +20,58 @@ const AudioPlayer = () => {
   const [duration, setDuration] = useState(0);
   const [currentAudioIndex, setCurrentAudioIndex] = useState(0);
   const [musicItems, setMusicItems] = useState([]);
+  const [trackDurations, setTrackDurations] = useState([]); // State to hold track durations
 
   useEffect(() => {
     const fetchMusic = async () => {
       const data = await client.fetch(
         `*[_type == 'audioFile']{
-          asset->{
-            url
-          },
-          albumArt{
-            asset->{
-              url
+          audioFiles[]{
+            albumArt{
+              asset->{
+                url
+              }
+            },
+            audioFile{
+              asset->{
+                url
+              }
+            },
+            title,
+            creditLine->{
+              name
             }
-          },
-          title,
-          creditLine->{
-            name
-          },
-          description,
-          altText
+          }
         }`
       );
-      console.log(data);
-      setMusicItems(data);
+
+      const audioFiles = data[0]?.audioFiles || [];
+      setMusicItems(audioFiles);
+      setTrackDurations(new Array(audioFiles.length).fill(0)); // Initialize durations array
     };
     fetchMusic();
   }, []);
+
+  useEffect(() => {
+    // Load each audio file to get its duration
+    const loadTrackDurations = async () => {
+      const durations = await Promise.all(
+        musicItems.map((item) => {
+          return new Promise((resolve) => {
+            const audio = new Audio(item.audioFile.asset.url);
+            audio.onloadedmetadata = () => {
+              resolve(audio.duration); // Get the duration when metadata is loaded
+            };
+          });
+        })
+      );
+      setTrackDurations(durations);
+    };
+
+    if (musicItems.length > 0) {
+      loadTrackDurations();
+    }
+  }, [musicItems]);
 
   const handlePlayPause = () => {
     const audio = audioRef.current;
@@ -95,7 +120,7 @@ const AudioPlayer = () => {
   useEffect(() => {
     const audio = audioRef.current;
     if (audio && musicItems.length > 0) {
-      audio.src = musicItems[currentAudioIndex].asset.url; // Set the audio source
+      audio.src = musicItems[currentAudioIndex]?.audioFile.asset.url; // Set the audio source
       audio.currentTime = currentTime; // Set the current time to maintain position
       if (isPlaying) {
         audio
@@ -103,7 +128,7 @@ const AudioPlayer = () => {
           .catch((error) => console.error("Error playing audio:", error));
       }
     }
-  }, [currentAudioIndex, musicItems]); // Only run when currentAudioIndex or musicItems change
+  }, [currentAudioIndex, musicItems, currentTime, isPlaying]); // Only run when currentAudioIndex or musicItems change
 
   const formatTime = (time) => {
     const minutes = Math.floor(time / 60);
@@ -126,7 +151,7 @@ const AudioPlayer = () => {
         <div className="track-info">
           <div className="track-details">
             <img
-              src={urlFor(musicItems[currentAudioIndex].albumArt)}
+              src={urlFor(musicItems[currentAudioIndex].albumArt.asset.url)}
               alt={musicItems[currentAudioIndex].altText || "Album Art"}
               className="album-art"
             />
@@ -143,15 +168,20 @@ const AudioPlayer = () => {
       <audio ref={audioRef} />
       <div className="controls">
         <button className="play-pause-next" onClick={handlePrevious}>
-          <ChevronLeftIcon />
+          <p id="previous">
+            <ChevronLeftIcon />
+          </p>
         </button>
         <button className="play-pause-next" onClick={handlePlayPause}>
-          {isPlaying ? <PauseIcon /> : <PlayIcon />}
+          <p id="playpause">{isPlaying ? <PauseIcon /> : <PlayIcon />}</p>
         </button>
         <button className="play-pause-next" onClick={handleNext}>
-          <ChevronRightIcon />
+          <p id="next">
+            <ChevronRightIcon />
+          </p>
         </button>
         <div className="volume-control">
+          <p id="volume-label">VOL</p>
           <input
             id="volumeControl"
             type="range"
@@ -174,6 +204,31 @@ const AudioPlayer = () => {
         <div className="time-display">
           {formatTime(currentTime)} / {formatTime(duration)}
         </div>
+      </div>
+      <div className="track-list">
+        <table id="tracklist-table">
+          <thead>
+            <tr>
+              <th className="tracklist-item">Track</th>
+              <th className="tracklist-item">Contributing Artist(s)</th>
+              <th className="tracklist-item">Duration</th>
+            </tr>
+          </thead>
+          <tbody>
+            {musicItems.map((item, index) => (
+              <tr
+                key={index}
+                className={`track-item ${currentAudioIndex === index ? "active" : ""}`}
+                onClick={() => setCurrentAudioIndex(index)}
+              >
+                <td id="song-name">{item.title}</td>
+                <td id="artist-name ">{item.creditLine?.name}</td>
+                <td id="duration">{formatTime(trackDurations[index])}</td>{" "}
+                {/* Display dynamic duration */}
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
     </div>
   );

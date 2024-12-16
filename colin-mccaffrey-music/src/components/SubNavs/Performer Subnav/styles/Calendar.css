@@ -1,3 +1,4 @@
+/* Base Styles */
 #modalShowTitle {
   display: flex;
   flex-direction: column;
@@ -11,7 +12,8 @@
 }
 
 table {
-  width: inherit;
+  width: 100%; /* Set table width to 100% */
+  border-collapse: collapse; /* Collapse borders */
 }
 
 .table-container {
@@ -20,178 +22,6 @@ table {
   background-color: #fff;
   border-radius: 10px;
   width: auto;
-}
-
-@media (max-width: 768px) {
-  .table-container {
-    max-width: 768px;
-  }
-
-  table {
-    display: flex;
-    margin: auto;
-    padding: auto;
-    text-align: center;
-  }
-
-  #venueDetails {
-    display: flex;
-    justify-content: center;
-    text-align: center;
-  }
-
-  th,
-  td {
-    width: auto;
-    font-size: 12px;
-  }
-
-  td:last-child,
-  th:last-child {
-    align-items: center;
-  }
-
-  #showName,
-  #headliner {
-    font-size: 13px;
-  }
-
-  #venue {
-    display: flex;
-    flex-direction: column;
-    font-size: 14px;
-    text-align: center;
-    margin: auto 30% auto auto;
-    justify-content: center;
-    align-items: center;
-  }
-  #venueDetails {
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    font-size: smaller;
-    width: auto;
-  }
-  .table-container {
-    display: flex;
-    justify-content: center;
-  }
-  #modalShowTitle {
-    font-size: 15px;
-  }
-  #modal-content {
-    max-height: 100dvh;
-    overflow-inline: 0;
-  }
-}
-
-#showName {
-  font-size: 18px;
-  text-align: center;
-  margin: auto;
-}
-
-#headliner {
-  font-style: italic;
-  text-align: center;
-  font-size: medium;
-  margin: auto;
-}
-
-#showName {
-  font-weight: 500;
-  font-size: 14px;
-}
-
-#venue {
-  font-size: 25px;
-}
-
-/* Modal CSS */
-#modalAddress {
-  padding: 2%;
-}
-
-.modal-overlay {
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-  align-items: center;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.7);
-  z-index: 1000;
-  max-height: 100%;
-  overflow: hidden;
-}
-
-.modal-content {
-  display: flex;
-  flex-direction: column;
-  max-height: 90vh;
-  overflow-y: auto;
-  background: white;
-  border-radius: 10px;
-  padding: 20px;
-  position: relative;
-}
-
-.showDetails {
-  display: flex;
-  flex-direction: column;
-  background: lightgray;
-  opacity: 80%;
-  border-radius: 8px;
-  margin: 10px 0;
-  padding: 10px;
-}
-
-.modal-buttons {
-  display: flex;
-  justify-content: space-between;
-  margin-top: auto;
-}
-
-.showDetails {
-  display: flex;
-  flex-direction: column;
-  background: lightgray;
-  opacity: 80%;
-  border-radius: 8px;
-  margin: auto;
-  max-width: auto;
-  max-height: 100dvh;
-  overflow-y: auto;
-  overflow-x: hidden;
-  position: relative;
-}
-
-#modalVenue {
-  font-size: 1.4rem;
-  font-weight: bold;
-}
-
-#modalAddress {
-  font-size: 1.2rem;
-}
-
-#modalVenue,
-#modalAddress,
-#modalPrice {
-  margin: auto;
-}
-
-#modalTime {
-  padding: 5%;
-  font-style: italic;
-}
-
-table {
-  width: 100%;
-  border-collapse: collapse;
 }
 
 .showsTitle,
@@ -236,6 +66,150 @@ button {
   text-align: center;
 }
 
+/* Modal Styles */
+#modalAddress {
+  padding: 2%;
+}
+
+.modal-overlay {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 1000;
+  max-height: 100%;
+  overflow: hidden;
+}
+
+.modal-content {
+  display: flex;
+  flex-direction: column;
+  max-height: 90vh;
+  overflow-y: auto;
+  background: white;
+  border-radius: 10px;
+  padding: 20px;
+  position: relative;
+}
+/* Table details  */
+.showDetails {
+  display: flex;
+  flex-direction: column;
+  background: lightgray;
+  opacity: 80%;
+  border-radius: 8px;
+  margin: 10px 0;
+  padding: 10px;
+}
+
+#headliner {
+  font-style: italic;
+  margin: 2% auto 2% auto;
+}
+
+#showName {
+  font-weight: bold;
+  margin: 3% auto 2% auto;
+}
+
+.modal-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: auto;
+}
+
+#modalVenue {
+  font-size: 1.4rem;
+  font-weight: bold;
+}
+
+#modalAddress {
+  font-size: 1.2rem;
+}
+
+#modalVenue,
+#modalAddress,
+#modalPrice {
+  margin: auto;
+}
+
+#modalTime {
+  padding: 5%;
+  font-style: italic;
+}
+
+/* Media Queries */
+@media (max-width: 801px) {
+  .table-container {
+    max-width: 768px;
+  }
+
+  table {
+    display: flex;
+    margin: auto;
+    padding: auto;
+    text-align: center;
+  }
+
+  #venueDetails {
+    display: flex;
+    font-size: medium;
+    justify-content: center;
+    text-align: center;
+  }
+
+  th,
+  td {
+    width: auto;
+    font-size: 12px;
+  }
+
+  td:last-child,
+  th:last-child {
+    align-items: center;
+  }
+
+  #showName,
+  #headliner {
+    font-size: 16px;
+    width: auto;
+  }
+
+  #venue {
+    display: flex;
+    flex-direction: column;
+    font-size: 20px;
+    align-items: center;
+  }
+
+  #venueDetails {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    width: auto;
+  }
+
+  .table-container {
+    display: flex;
+    justify-content: center;
+  }
+
+  #modalShowTitle {
+    font-size: 15px;
+  }
+
+  #modal-content {
+    max-height: 100dvh;
+    overflow-inline: 0;
+  }
+}
+
 @media (max-width: 801px) {
   .table-container {
     display: flex;
@@ -244,6 +218,7 @@ button {
     justify-content: center;
     width: 100%;
   }
+
   .componentContainer {
     display: flex;
     width: 100%;
@@ -319,21 +294,18 @@ button {
   .nav {
     width: 100dvw;
   }
-  .bodyContainer {
-    width: 100%;
-    margin: auto;
-  }
-  #venue {
-    width: inherit;
-    width: auto;
-  }
+
   #venueDetails {
-    width: 100dvw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     margin: auto;
   }
+
   .showDetails {
     max-height: 30%;
   }
+
   tr {
     display: flex;
     width: 100dvw;

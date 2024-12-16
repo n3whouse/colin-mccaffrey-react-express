@@ -12,7 +12,7 @@ export const defaultDocumentNode: DefaultDocumentNodeResolver = (S, {schemaType}
         S.view
           .component(DocumentsPane)
           .options({
-            query: `*[_type == "event" && references($id)]`,
+            query: `*[_type == "show" && references($id)]`,
             params: {id: `_id`},
             options: {perspective: 'previewDrafts'},
           })

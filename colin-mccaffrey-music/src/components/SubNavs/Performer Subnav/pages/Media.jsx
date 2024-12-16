@@ -29,7 +29,7 @@ function Media() {
 
   return (
     <>
-      <AudioPlayer />
+      {/* <AudioPlayer /> */}
       <div className="media">
         <h1>Media</h1>
         {mediaItems.map((media, index) => (
@@ -47,7 +47,7 @@ function Media() {
             )}
             {media.mediaType === "youtube" && (
               <iframe
-                width="560"
+                width="500"
                 height="315"
                 src={`https://www.youtube.com/embed/${getYouTubeVideoId(
                   media.youtubeUrl

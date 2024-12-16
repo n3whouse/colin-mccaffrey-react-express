@@ -1,0 +1,58 @@
+@media (max-width: 768px) {
+  #root {
+    width: 100dvw;
+  }
+
+  .audio-player {
+    grid-template-rows: auto 1fr; /* Keep the layout as two rows */
+    grid-template-columns: 1fr; /* Single column layout */
+    padding: 10px; /* Adjust padding for smaller screens */
+    max-width: 600px;
+    width: 80dvw;
+  }
+
+  .controls {
+    width: 100%; /* Full width for controls */
+  }
+
+  .track-details {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: auto;
+    align-items: center; /* Center items */
+  }
+
+  #tracklist-table {
+    width: 80%; /* Set width to 80% of viewport width */
+    margin: 0 auto; /* Center the table */
+    padding: 0px;
+  }
+
+  .track-item,
+  .track-list {
+    width: 80vw; /* Set width to 80% of viewport width */
+    margin: auto; /* Center the track items */
+    flex-direction: row;
+  }
+
+  .play-pause-next {
+    width: 15vw; /* Adjust button size */
+    height: 15vw; /* Adjust button size */
+  }
+
+  thead,
+  td {
+    width: 80%;
+  }
+
+  tr {
+    display: flex;
+  }
+
+  tbody {
+    display: flex;
+    flex-direction: column;
+    width: 20%;
+  }
+}

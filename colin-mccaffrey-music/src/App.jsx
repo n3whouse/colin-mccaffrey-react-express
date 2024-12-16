@@ -118,9 +118,9 @@ function App() {
               <Route path={`${streaming}`} element={<Streaming />} />
             </Route>
           </Routes>
-          <Footer />
         </Router>
       </div>
+      <Footer />
     </DocumentMeta>
   );
 }
