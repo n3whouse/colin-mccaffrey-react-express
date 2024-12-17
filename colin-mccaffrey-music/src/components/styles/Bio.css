@@ -26,6 +26,10 @@
   margin: auto;
 }
 
+p {
+  text-align: center;
+}
+
 @media (max-width: 768px) {
   .bodyContainer {
     height: auto;

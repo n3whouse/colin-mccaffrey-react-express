@@ -1,10 +1,12 @@
+@import "../styles/storeFlexMenu.css";
+
 /* Grid Card Styles */
 .gridCard {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(2, 1fr);
+  /* gap: 16px; */
   margin: auto;
-  grid-gap: 80px;
+  last-row: center;
   justify-content: center;
   width: inherit;
 }

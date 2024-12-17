@@ -9,6 +9,27 @@ function EngineerNavigation() {
   const [secondSublinkName, setSecondSublinkName] = useState("");
   const [thirdSublinkName, setThirdSublinkName] = useState("");
 
+  const meta = {
+    title: "Colin McCaffrey: Producer",
+    description:
+      "Colin McCaffrey is an award-winning and highly-educated Vermont record producer, and here you can find his production credits and details about his studio and equipment.",
+    canonical: "https://colinmccaffrey.com/producer",
+    meta: {
+      charSet: "utf-8",
+      name: {
+        keywords:
+          "Colin, McCaffrey, engineer, producer, biography, bio, studio info, greenroom, gear and programs",
+      },
+      property: {
+        "og:title": "Colin McCaffrey: Producer",
+        "og:description":
+          "Colin McCaffrey is an award-winning and highly-educated Vermont record producer, and here you can find his production credits and details about his studio and equipment.",
+        "og:type": "website",
+        "og:url": "https://colinmccaffrey.com/producer",
+      },
+    },
+  };
+
   const location = useLocation();
 
   useEffect(() => {

@@ -16,6 +16,7 @@ body {
   display: flex;
 }
 
+
 .componentContainer {
   display: flex;
   flex-direction: column;

@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import client from "../../sanity/client";
-import "../styles/Store.css";
-import "../styles/Home.css";
+import "../styles/Store.css"; // Keep your existing styles
 import imageUrlBuilder from "@sanity/image-url";
 import DocumentMeta from "react-document-meta";
 
@@ -21,7 +20,7 @@ function Store() {
         "og:title": "Colin McCaffrey: Store",
         "og:description":
           "Peruse and purchase from the discography of Vermont native and award-winning singer-songwriter and recording engineer, Colin McCaffrey.",
-        "og:image": `https://colinmccaffrey.com/static/media/ColinTeleBarnBust.9e8f0e7a98f8872e4385.png`, //change to dynamic url if possible once home page has a link to change img
+        "og:image": `https://colinmccaffrey.com/static/media/ColinTeleBarnBust.9e8f0e7a98f8872e4385.png`,
         "og:type": "website",
         "og:url": "https://colinmccaffrey.com/store",
       },
@@ -81,11 +80,11 @@ function Store() {
   return (
     <DocumentMeta {...meta}>
       <div className="componentContainer">
-        <div className="gridCard">
+        <div className="flexCard">
           {releases.map((release) => (
             <div
               key={release._id}
-              className={`gridItem item${release._id} ${
+              className={`flexItem item${release._id} ${
                 selectedItem === release._id ? "selected" : ""
               }`}
               onClick={() => handleItemClick(release._id)}

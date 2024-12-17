@@ -1,0 +1,32 @@
+.flexCard {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.flexItem {
+  flex: 1 1 calc(33.333% - 20px); /* Three items per row with gap */
+  max-width: calc(33.333% - 20px); /* Ensure items do not exceed this width */
+  box-sizing: border-box; /* Include padding and border in width */
+  cursor: pointer; /* Change cursor to pointer on hover */
+  transition: transform 0.2s; /* Smooth scaling effect */
+}
+
+.flexItem:hover {
+  transform: scale(1.05); /* Scale up on hover */
+}
+
+/* Media Query for Mobile Devices */
+@media (max-width: 768px) {
+  .flexCard {
+    flex-direction: column;
+    align-items: center;
+    margin-top: 30px;
+  }
+
+  .flexItem {
+    flex: 1 1 100%; /* Make each item take full width */
+    max-width: 100%; /* Ensure items do not exceed full width */
+  }
+}
