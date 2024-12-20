@@ -63,7 +63,7 @@ export const performerType = defineType({
               },
               validation: (Rule) => Rule.required(),
             }),
-            
+
             defineField({
               name: 'videoFile',
               title: 'Video File',

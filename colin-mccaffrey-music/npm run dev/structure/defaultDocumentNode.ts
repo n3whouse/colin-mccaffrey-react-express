@@ -25,6 +25,11 @@ export const defaultDocumentNode: DefaultDocumentNodeResolver = (S, {schemaType}
         S.view.form(),
         S.view.component(ReorderReleases).title('Reorder Releases'),
       ])
+    case 'testRelease':
+      return S.document().views([
+        S.view.form(),
+        S.view.component(ReorderReleases).title('Reorder Releases'),
+      ])
     default:
       return S.document().views([S.view.form()])
   }

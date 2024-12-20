@@ -8,6 +8,7 @@ import {engineerType} from './engineerType'
 import {performerType} from './performerType'
 import {songwriterType} from './songwriterType'
 import {audioFile} from './audioFile'
+import {testReleaseType} from './_tests_/releaseType.test'
 
 export const schemaTypes = [
   showType,
@@ -20,4 +21,5 @@ export const schemaTypes = [
   performerType,
   songwriterType,
   audioFile,
+  testReleaseType,
 ]

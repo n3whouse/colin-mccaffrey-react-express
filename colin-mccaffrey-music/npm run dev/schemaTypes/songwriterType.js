@@ -21,7 +21,7 @@ export const songwriterType = defineType({
           type: 'string',
         }),
         defineField({
-          name: 'details',
+          name: 'details', 
           title: 'Details',
           type: 'array',
           of: [{type: 'block'}],

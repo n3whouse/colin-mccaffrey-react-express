@@ -10,6 +10,7 @@ import {performerType} from '../schemaTypes/performerType'
 import {songwriterType} from '../schemaTypes/songwriterType'
 import {UploadIcon} from '@sanity/icons'
 import {audioFile} from '../schemaTypes/audioFile'
+import {testReleaseType} from '../schemaTypes/_tests_/releaseType.test'
 
 export const schemaTypes = [
   artistType,
@@ -21,6 +22,7 @@ export const schemaTypes = [
   performerType,
   songwriterType,
   audioFile,
+  testReleaseType,
 ]
 
 export const structure: StructureResolver = (S, linkNames) => {
@@ -69,5 +71,9 @@ export const structure: StructureResolver = (S, linkNames) => {
         .icon(UploadIcon)
         .child(S.document().schemaType('audioFile')),
       S.divider(),
+      S.listItem()
+        .title('TEST Releases')
+        .icon()
+        .child(S.document().schemaType('testRelease').documentId('testRelease')),
     ])
 }
