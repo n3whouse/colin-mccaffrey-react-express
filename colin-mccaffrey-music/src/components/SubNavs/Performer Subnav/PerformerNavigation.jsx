@@ -20,8 +20,6 @@ function PerformerNavigation() {
     };
     fetchLinkNames();
   }, []);
-
-  console.log(firstSublinkName);
   return (
     <>
       <div className="subnav">

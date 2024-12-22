@@ -22,7 +22,6 @@ function ProductionCredits() {
 
       if (data && data.productionCredits) {
         setCreditsData(data.productionCredits);
-        console.log(data.productionCredits);
       }
     };
 

@@ -19,8 +19,6 @@ function ColinsCredits() {
 
       if (data && data.credits) {
         setCreditsData(data.credits);
-
-        console.log(data.credits);
       }
     };
 

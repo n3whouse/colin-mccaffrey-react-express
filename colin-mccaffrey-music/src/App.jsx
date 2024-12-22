@@ -8,6 +8,7 @@ import Footer from "./components/Footer";
 import Home from "./components/pages/Home";
 import Bio from "./components/pages/Bio";
 import Store from "./components/pages/Store";
+import StoreTest from "./components/pages/_tests_/Store.test";
 import BookingAndContact from "./components/pages/BookingAndContact";
 import Performer from "./components/SubNavs/Performer Subnav/Performer";
 import Engineer from "./components/SubNavs/Producer Subnav/Engineer";

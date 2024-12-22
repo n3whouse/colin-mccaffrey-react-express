@@ -21,7 +21,6 @@ function Streaming() {
       const flattenedStreamingItems = data.flatMap(
         (songwriter) => songwriter.streaming || []
       );
-      console.log(flattenedStreamingItems); // Log data for verification
       setStreamingItems(flattenedStreamingItems);
     };
     fetchStreaming();
@@ -43,7 +42,7 @@ function Streaming() {
               <SanityBlockContent
                 blocks={stream.mediaHeadline}
                 id="streamingHeader"
-                serializers={serializers} // Pass serializers here
+                serializers={serializers}
               />
             )}
           </h2>

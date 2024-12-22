@@ -21,15 +21,7 @@ export const defaultDocumentNode: DefaultDocumentNodeResolver = (S, {schemaType}
     case 'siteSettings':
       return S.document().views([])
     case 'release':
-      return S.document().views([
-        S.view.form(),
-        S.view.component(ReorderReleases).title('Reorder Releases'),
-      ])
-    case 'testRelease':
-      return S.document().views([
-        S.view.form(),
-        S.view.component(ReorderReleases).title('Reorder Releases'),
-      ])
+      return S.document().views([S.view.form()])
     default:
       return S.document().views([S.view.form()])
   }

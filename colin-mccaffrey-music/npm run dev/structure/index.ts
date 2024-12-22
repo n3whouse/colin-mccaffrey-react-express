@@ -51,7 +51,7 @@ export const structure: StructureResolver = (S, linkNames) => {
       S.listItem()
         .title('Releases')
         .icon(AddDocumentIcon)
-        .child(S.documentTypeList('release').title('Releases')),
+        .child(S.document().schemaType('release').title('Release')),
       S.divider(),
       S.listItem()
         .title('Producer')
@@ -70,10 +70,5 @@ export const structure: StructureResolver = (S, linkNames) => {
         .title('Audio Files')
         .icon(UploadIcon)
         .child(S.document().schemaType('audioFile')),
-      S.divider(),
-      S.listItem()
-        .title('TEST Releases')
-        .icon()
-        .child(S.document().schemaType('testRelease').documentId('testRelease')),
     ])
 }

@@ -19,7 +19,7 @@ function Home() {
         "og:title": "Colin McCaffrey: Home",
         "og:description":
           "Official website of Vermont native and award-winning singer-songwriter and recording engineer, Colin McCaffrey.",
-        "og:image": `https://colinmccaffrey.com/static/media/ColinTeleBarnBust.9e8f0e7a98f8872e4385.png`, //change to dynamic url if possible once home page has a link to change img
+        "og:image": `${BannerImage}`,
         "og:type": "website",
         "og:url": "https://colinmccaffrey.com/home",
       },
@@ -29,11 +29,9 @@ function Home() {
   return (
     <DocumentMeta {...meta}>
       <div className="homeContainer">
-        {/* <div className=""> */}
         <img id="headshot" src={BannerImage} alt="Colin with his Telecaster" />
         <h1 id="headerTitle">Colin McCaffrey</h1>
       </div>
-      {/* </div> */}
     </DocumentMeta>
   );
 }

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import client from "../../sanity/client";
-import "../styles/Store.css"; // Keep your existing styles
+import client from "../../../sanity/client";
+import "../../styles/Store.css";
 import imageUrlBuilder from "@sanity/image-url";
 import DocumentMeta from "react-document-meta";
 
@@ -38,9 +38,8 @@ function Store() {
 
   useEffect(() => {
     const fetchStoreItems = async () => {
-      const data = await client.fetch(`*[_type == 'release']{
+      const data = await client.fetch(`*[_type == 'testRelease']{
         releaseList[]{
-        _id,
           releaseTitle,
           releaseYear,
           releaseDescription,
@@ -54,6 +53,7 @@ function Store() {
           _key,
         }
       }`);
+      // Flatten the releaseList array
       const flattenedReleases = data.flatMap((release) => release.releaseList);
       setReleases(flattenedReleases);
     };
@@ -68,6 +68,7 @@ function Store() {
     setSelectedItem(null);
   };
 
+  // Find the selected release based on the selectedItem
   const selectedRelease = releases.find(
     (release) => release._key === selectedItem
   );

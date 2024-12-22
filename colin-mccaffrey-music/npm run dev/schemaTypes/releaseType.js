@@ -11,40 +11,56 @@ export const releaseType = defineType({
   ],
   fields: [
     defineField({
-      name: 'releaseTitle',
-      title: 'Release Title',
-      type: 'string',
-      validation: (rule) => rule.required().min(1).error('Release name cannot be blank.'),
-      group: 'releaseInfo',
-    }),
-    defineField({
-      name: 'coverArt',
-      title: 'Cover Art',
-      type: 'image',
-      options: {
-        hotspot: true,
-      },
-      group: 'releaseInfo',
-    }),
-    defineField({
-      name: 'releaseDescription',
-      title: 'Release Description',
+      name: 'releaseList',
+      title: 'Release List',
       type: 'array',
-      of: [{type: 'block'}],
-      group: 'releaseInfo',
-    }),
-    defineField({
-      name: 'purchaseLink',
-      title: 'Purchase Link',
-      type: 'url',
-      group: 'releaseInfo',
-    }),
-    defineField({
-      name: 'order',
-      title: 'Order',
-      type: 'number',
-      group: 'customization',
-      description: 'Lower numbers appear first',
+      of: [
+        {
+          type: 'object',
+          fields: [
+            defineField({
+              name: 'releaseTitle',
+              title: 'Release Title',
+              type: 'string',
+              description: 'Title of release',
+              validation: (Rule) => Rule.required().error('Release Title cannot be blank.'),
+            }),
+            defineField({
+              name: 'releaseYear',
+              title: 'Release Year',
+              type: 'date',
+              options: {
+                dateFormat: 'YYYY',
+              },
+              description: 'Year of release',
+              validation: (rule) => rule.required().error('Release Year required.'),
+            }),
+            defineField({
+              name: 'coverArt',
+              title: 'Cover Art',
+              type: 'image',
+              description: 'Cover art of release',
+              options: {
+                hotspot: true,
+              },
+              validation: (rule) =>
+                rule.required().error('A cover photo is required for the store page.'),
+            }),
+            defineField({
+              name: 'releaseDescription',
+              title: 'Release Description',
+              type: 'array',
+              of: [{type: 'block'}],
+            }),
+            defineField({
+              name: 'purchaseLink',
+              title: 'Purchase Link',
+              type: 'url',
+              description: 'Link to purchase release',
+            }),
+          ],
+        },
+      ],
     }),
   ],
 })
