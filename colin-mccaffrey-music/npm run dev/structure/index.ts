@@ -5,7 +5,7 @@ import {artistType} from '../schemaTypes/artistType'
 import {venueType} from '../schemaTypes/venueType'
 import {siteSettings} from '../schemaTypes/siteSettings'
 import {releaseType} from '../schemaTypes/releaseType'
-import {engineerType} from '../schemaTypes/engineerType'
+import {producerType} from '../schemaTypes/producerType'
 import {performerType} from '../schemaTypes/performerType'
 import {songwriterType} from '../schemaTypes/songwriterType'
 import {UploadIcon} from '@sanity/icons'
@@ -18,7 +18,7 @@ export const schemaTypes = [
   venueType,
   siteSettings,
   releaseType,
-  engineerType,
+  producerType,
   performerType,
   songwriterType,
   audioFile,
@@ -44,10 +44,7 @@ export const structure: StructureResolver = (S, linkNames) => {
       S.documentTypeListItem('artist').title('Artists').icon(UsersIcon),
       S.documentTypeListItem('venue').title('Venues').icon(PinIcon),
       S.divider(),
-      S.documentTypeListItem('siteSettings')
-        .title('Site Settings')
-        .icon(AddDocumentIcon)
-        .child(S.document().schemaType('siteSettings').documentId('siteSettings')),
+
       S.listItem()
         .title('Releases')
         .icon(AddDocumentIcon)
@@ -70,5 +67,10 @@ export const structure: StructureResolver = (S, linkNames) => {
         .title('Audio Files')
         .icon(UploadIcon)
         .child(S.document().schemaType('audioFile')),
+      S.listItem()
+        .title('Site Settings')
+        .schemaType('siteSettings')
+        .icon(AddDocumentIcon)
+        .child(S.document().schemaType('siteSettings').documentId('siteSettings')),
     ])
 }

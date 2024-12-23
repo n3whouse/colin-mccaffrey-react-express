@@ -1,23 +1,17 @@
 import {defineField, defineType} from 'sanity'
-import DynamicPanelName from './components/DynamicPanelName'
 
 export const producerType = defineType({
-  name: 'producer',
-  title: 'Producer',
+  name: 'engineer',
+  title: 'Engineer',
   type: 'document',
   __experimental_formPreviewTitle: false,
   groups: [
     {name: 'studio', title: 'Studio'},
-    {name: 'gearAndPrograms', title: 'Gear & Programs'},
+    {name: 'gearAndSoftware', title: 'Gear & Software'},
     {name: 'productionCredits', title: 'Production Credits'},
+    {name: 'customization', title: 'Customization'},
   ],
   fields: [
-    defineField({
-      name: 'panelName',
-      title: 'Panel Name',
-      type: 'string',
-      inputComponent: DynamicPanelName,
-    }),
     defineField({
       name: 'studio',
       title: 'Studio',
@@ -26,7 +20,7 @@ export const producerType = defineType({
       fields: [
         defineField({
           name: 'studioTitle',
-          title: 'Title',
+          title: 'Headline',
           type: 'string',
           validation: (rule) => rule.required().min(1).error('Title must not be blank.'),
         }),
@@ -40,7 +34,7 @@ export const producerType = defineType({
         }),
         defineField({
           name: 'studioBlurb',
-          title: 'Studio Description',
+          title: 'Studio Details',
           type: 'array',
           of: [{type: 'block'}],
           validation: (rule) => rule.required().min(1).error('Description cannot be blank'),
@@ -50,7 +44,7 @@ export const producerType = defineType({
     }),
     defineField({
       name: 'gearAndPrograms',
-      title: 'Gear & Programs',
+      title: 'Gear & Software',
       type: 'object',
       fields: [
         defineField({
@@ -59,13 +53,21 @@ export const producerType = defineType({
           type: 'string',
         }),
         defineField({
-          name: 'gearDescription',
-          title: 'Description',
+          name: 'gearPhoto',
+          title: 'Photo',
+          type: 'image',
+          options: {
+            hotspot: 'true',
+          },
+        }),
+        defineField({
+          name: 'gearDetails',
+          title: 'Details',
           type: 'array',
           of: [{type: 'block'}],
         }),
       ],
-      group: 'gearAndPrograms',
+      group: 'gearAndSoftware',
     }),
     defineField({
       name: 'productionCredits',
@@ -73,18 +75,49 @@ export const producerType = defineType({
       type: 'object',
       fields: [
         defineField({
-          name: 'creditsHeadline',
+          name: 'productionHeadline',
           title: 'Headline',
           type: 'string',
         }),
         defineField({
-          name: 'creditsDescription',
-          title: 'Description',
+          name: 'creditsPhoto',
+          title: 'Photo',
+          type: 'image',
+          options: {
+            hotspot: 'true',
+          },
+        }),
+        defineField({
+          name: 'productionDetails',
+          title: 'Details',
           type: 'array',
           of: [{type: 'block'}],
         }),
       ],
       group: 'productionCredits',
+    }),
+    defineField({
+      name: 'subnavLinks',
+      title: 'Subnav Links',
+      type: 'object',
+      fields: [
+        defineField({
+          name: 'subLinkOne',
+          title: 'Link One',
+          type: 'string',
+        }),
+        defineField({
+          name: 'subLinkTwo',
+          title: 'Link Two',
+          type: 'string',
+        }),
+        defineField({
+          name: 'subLinkThree',
+          title: 'Link Three',
+          type: 'string',
+        }),
+      ],
+      group: 'customization',
     }),
   ],
 })

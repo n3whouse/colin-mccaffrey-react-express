@@ -1,25 +1,23 @@
-import React, {useEffect, useState} from 'react'
+import React, {useEffect} from 'react'
 import {client} from '../../../src/sanity/client.js'
+import {useDocumentOperation} from '@sanity/react-hooks'
 
-const DynamicPanelName = ({documentId}) => {
-  const [panelName, setPanelName] = useState('')
+const DynamicPanelName = ({documentId, fieldName, linkNameKey}) => {
+  const {patch} = useDocumentOperation(documentId, 'producer')
 
   useEffect(() => {
     const fetchLinkNames = async () => {
-      const data = await client.fetch(`*[_type == 'siteSettings']{linkNames}[0]`)
+      const data = await client.fetch(`*[_type == 'siteSettings'][0]{linkNames}`)
       if (data && data.linkNames) {
-        setPanelName(data.linkNames.navigationLinks.linkOne)
-        setPanelName(data.linkNames.navigationLinks.linkTwo)
-        setPanelName(data.linkNames.navigationLinks.linkThree)
-        setPanelName(data.linkNames.navigationLinks.linkFour)
-        setPanelName(data.linkNames.navigationLinks.linkFive)
-        setPanelName(data.linkNames.navigationLinks.linkSix)
+        const newPanelName = data.linkNames[linkNameKey] || 'Default Name' // Fallback if not found
+        // Update the document field dynamically
+        patch.execute([{set: {[fieldName]: newPanelName}}])
       }
     }
     fetchLinkNames()
-  }, [])
+  }, [documentId, fieldName, linkNameKey, patch])
 
-  return <div>{panelName}</div>
+  return null // No UI needed, just updating the document
 }
 
 export default DynamicPanelName

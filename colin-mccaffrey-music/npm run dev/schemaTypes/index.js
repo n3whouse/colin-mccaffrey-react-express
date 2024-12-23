@@ -4,7 +4,7 @@ import {venueType} from './venueType'
 import {siteSettings} from './siteSettings'
 import {bookingAndContactInfo} from './bookingAndContactInfo'
 import {releaseType} from './releaseType'
-import {engineerType} from './engineerType'
+import {producerType} from './producerType'
 import {performerType} from './performerType'
 import {songwriterType} from './songwriterType'
 import {audioFile} from './audioFile'
@@ -17,7 +17,7 @@ export const schemaTypes = [
   siteSettings,
   bookingAndContactInfo,
   releaseType,
-  engineerType,
+  producerType,
   performerType,
   songwriterType,
   audioFile,
