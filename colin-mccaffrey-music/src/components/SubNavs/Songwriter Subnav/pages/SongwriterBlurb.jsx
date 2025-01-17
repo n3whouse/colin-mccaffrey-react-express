@@ -17,10 +17,9 @@ function SongwriterBlurb() {
             fetchBlurb();
         }, []);
 
-        if (!blurbData) {
-            return <div>Loading...</div>
+        if (!blurbData.blurb) {
+            return <div></div>
         }
-        console.log(blurbData);
     return (
     <div>
        <h2>{blurbData.blurb.blurbHeader}</h2> 

@@ -36,6 +36,7 @@ function Store() {
 
   const [releases, setReleases] = useState([]);
   const [selectedItem, setSelectedItem] = useState(null);
+  const [showShippingInfo, setShowShippingInfo] = useState(false)
 
   useEffect(() => {
     const fetchStoreItems = async () => {
@@ -65,11 +66,17 @@ function Store() {
 
   const handleItemClick = (item) => {
     setSelectedItem(selectedItem === item ? null : item);
+    setShowShippingInfo(false);
   };
 
   const handleCloseModal = () => {
     setSelectedItem(null);
+    setShowShippingInfo(false);
   };
+
+  const handlePhysicalOrder = () => {
+    setShowShippingInfo((prev) => !prev);
+  }
 
   const selectedRelease = releases.find(
     (release) => release._key === selectedItem
@@ -129,10 +136,19 @@ function Store() {
               rel="noopener noreferrer"
             >
               <button className="btn">Buy Now</button>
-            </a>
-            <br />{selectedRelease.releaseType === "album" 
-            ? <PaypalAndShipping props={selectedRelease} /> 
-            : null}
+              </a>
+
+              {selectedRelease.releaseType === "album" && (
+                <button className="btn" onClick={handlePhysicalOrder}>
+                  Order Physical Copy
+                  </button>
+              )}
+              <br />
+              {showShippingInfo && selectedRelease.releaseType === "album" && (
+                <PaypalAndShipping props={selectedRelease} />
+              )}
+
+  
             <br />
             {selectedRelease.releaseDescription && (
               <div className="description-container">
