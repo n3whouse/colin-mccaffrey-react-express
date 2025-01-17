@@ -35,8 +35,7 @@ function App() {
     };
     fetchLinkNames();
   }, []);
-
-  // Extracting link names with fallback if undefined
+  
   const {
     home = "home",
     bio = "bio",

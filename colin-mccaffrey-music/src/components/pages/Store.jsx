@@ -3,6 +3,7 @@ import client from "../../sanity/client";
 import "../styles/Store.css"; // Keep your existing styles
 import imageUrlBuilder from "@sanity/image-url";
 import DocumentMeta from "react-document-meta";
+import PaypalAndShipping from "../../utils/PaypalAndShipping/PaypalAndShipping";
 
 function Store() {
   const builder = imageUrlBuilder(client);
@@ -127,6 +128,9 @@ function Store() {
             >
               <button className="btn">Buy Now</button>
             </a>
+            <br />
+            <br />
+              <PaypalAndShipping />
             <br />
             {selectedRelease.releaseDescription && (
               <div className="description-container">
