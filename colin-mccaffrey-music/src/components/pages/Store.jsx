@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import client from "../../sanity/client";
-import "../styles/Store.css"; // Keep your existing styles
+import "../styles/Store.css";
 import imageUrlBuilder from "@sanity/image-url";
 import DocumentMeta from "react-document-meta";
 import PaypalAndShipping from "../../utils/PaypalAndShipping/PaypalAndShipping";
