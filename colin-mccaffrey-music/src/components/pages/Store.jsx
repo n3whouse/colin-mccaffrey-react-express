@@ -43,6 +43,7 @@ function Store() {
         releaseList[]{
         _id,
           releaseTitle,
+          releaseType,
           releaseYear,
           releaseDescription,
           coverArt {
@@ -52,6 +53,7 @@ function Store() {
             }
           },
           purchaseLink,
+          price,
           _key,
         }
       }`);
@@ -128,8 +130,9 @@ function Store() {
             >
               <button className="btn">Buy Now</button>
             </a>
-            <br />
-              <PaypalAndShipping />
+            <br />{selectedRelease.releaseType === "album" 
+            ? <PaypalAndShipping props={selectedRelease} /> 
+            : null}
             <br />
             {selectedRelease.releaseDescription && (
               <div className="description-container">

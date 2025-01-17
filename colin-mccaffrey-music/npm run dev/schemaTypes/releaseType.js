@@ -17,13 +17,24 @@ export const releaseType = defineType({
       of: [
         {
           type: 'object',
-          fields: [
+          fields: [ 
             defineField({
               name: 'releaseTitle',
               title: 'Release Title',
               type: 'string',
               description: 'Title of release',
               validation: (Rule) => Rule.required().error('Release Title cannot be blank.'),
+            }),
+            defineField({
+              name: 'releaseType',
+              type: 'string',
+              options: {
+                list: [
+                  {title: 'Single', value: 'single'}, 
+                  {title: 'Album', value: 'album'},
+                ],
+                layout: 'radio',
+              }
             }),
             defineField({
               name: 'releaseYear',
@@ -57,6 +68,14 @@ export const releaseType = defineType({
               title: 'Purchase Link',
               type: 'url',
               description: 'Link to purchase release',
+            }),
+            defineField({
+              name: 'price',
+              title: 'Price',
+              type: 'number',
+              description: 'Set the price of the release. The price will be displayed dynamically per release in each store modal.',
+              hidden: ({ parent }) => parent?.releaseType === 'single',
+              validation: (rule) => rule.min(0).error('Price must be a positive number.') 
             }),
           ],
         },
