@@ -54,6 +54,7 @@
   thead,
   td {
     width: 80%;
+    border-bottom: 0;
   }
 
   tr {

@@ -35,7 +35,7 @@ const ShowModal = ({ show, onClose }) => {
           <div id="modalShowTitle">
             <h1>{show.name}</h1>
             <br />
-            <h3>{show.headline?.name ? `with ${show.headline.name}` : ""}</h3>
+            <h4>{show.headline?.name ? `with ${show.headline.name}` : ""}</h4>
           </div>
           <br />
           <hr id="titleDivider" />
