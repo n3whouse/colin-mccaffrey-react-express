@@ -129,7 +129,6 @@ function Store() {
               <button className="btn">Buy Now</button>
             </a>
             <br />
-            <br />
               <PaypalAndShipping />
             <br />
             {selectedRelease.releaseDescription && (

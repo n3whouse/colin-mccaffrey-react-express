@@ -26,14 +26,6 @@ export const showType = defineType({
       group: ['details', 'editorial'],
     }),
     defineField({
-      name: 'slug',
-      type: 'slug',
-      options: {source: 'name'},
-      validation: (rule) => rule.required().error('Required to generate a page on the website.'),
-      hidden: ({document}) => !document?.name,
-      group: 'details',
-    }),
-    defineField({
       name: 'date',
       type: 'datetime',
       group: 'details',
