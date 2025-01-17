@@ -6,10 +6,31 @@ export const songwriterType = defineType({
   __experimental_formPreviewTitle: false,
   type: 'document',
   groups: [
+    {name: 'blurb', title: 'Blurb'},
     {name: 'linkOne', title: 'Link One'},
     {name: 'linkTwo', title: 'Link Two'},
   ],
   fields: [
+    defineField({
+      name: 'blurb',
+      title: 'Blurb',
+      type: 'object',
+      fields: [
+        defineField({
+          name: 'blurbHeader',
+          title: 'Blurb Header',
+          type: 'string',
+        }),
+        defineField({
+          name: 'blurbText',
+          title: 'Details',
+          type: 'array',
+          of: [{type: 'block'}],
+          validation: (Rule) => Rule.required(), 
+        }),
+      ],
+      group: 'blurb',
+    }),
     defineField({
       name: 'credits',
       title: 'Credits',

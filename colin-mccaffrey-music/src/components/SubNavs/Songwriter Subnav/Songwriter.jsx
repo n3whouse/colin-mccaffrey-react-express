@@ -5,6 +5,7 @@ import ColinsCredits from "./pages/ColinsCredits";
 import "./Songwriter.css";
 import SongwriterNavigation from "./SongwriterNavigation";
 import DocumentMeta from "react-document-meta";
+import SongwriterBlurb from "./pages/SongwriterBlurb";
 
 function Songwriter() {
   const meta = {
@@ -38,6 +39,7 @@ function Songwriter() {
         <div className="componentContainer">
           {!isCreditsSelected && !isStreamingSelected && (
             <>
+              <SongwriterBlurb />
               <ColinsCredits />
               <Streaming />
             </>
