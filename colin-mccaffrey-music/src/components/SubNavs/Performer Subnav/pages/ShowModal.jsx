@@ -32,17 +32,16 @@ const ShowModal = ({ show, onClose }) => {
     <>
       <div className="modal-overlay" onClick={onClose}>
         <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+          {!detailsVisible && (
+            <>
           <div id="modalShowTitle">
-            <h1>{show.name}</h1>
-            <br />
+            <h2>{show.name}</h2>
             <h4>{show.headline?.name ? `with ${show.headline.name}` : ""}</h4>
           </div>
           <br />
           <hr id="titleDivider" />
 
           {/* Conditionally render venue and address based on detailsVisible */}
-          {!detailsVisible && (
-            <>
               <a
                 id="modalVenue"
                 href={show.venue?.link || "#"}
@@ -59,10 +58,10 @@ const ShowModal = ({ show, onClose }) => {
               </p>
             </>
           )}
-
+          {show.details ?
           <button className="btn" onClick={toggleDetails}>
             {detailsVisible ? "Hide Details" : "Show Details"}
-          </button>
+          </button> : null}
 
           {detailsVisible && (
             <div className="showDetails">
@@ -70,15 +69,20 @@ const ShowModal = ({ show, onClose }) => {
             </div>
           )}
 
-          <p id="modalTime">{new Date(show.date).toLocaleString()}</p>
-          <p id="modalPrice">{show.price > 0 ? `$${show.price}` : "Free"}</p>
+          {/* Conditionally render time and price based on detailsVisible */}
+          {!detailsVisible && (
+            <>
+              <p id="modalTime">{new Date(show.date).toLocaleString()}</p>
+              <p id="modalPrice">{show.price > 0 ? `$${show.price}` : "Free"}</p>
+            </>
+          )}
 
           <div className="modal-buttons">
-            <button className="btn">
+            {show.tickets ? <button className="btn">
               <a href={show.tickets} target="_blank" rel="noopener noreferrer">
                 Buy Tickets
               </a>
-            </button>
+            </button> : null}
             <button className="btn" onClick={onClose}>
               Close
             </button>

@@ -2,7 +2,7 @@
 #modalShowTitle {
   display: flex;
   flex-direction: column;
-  margin: 0;
+  margin: auto;
 }
 
 #titleDivider {
@@ -182,7 +182,7 @@ button {
     justify-content: center;
   }
 
-  th {
+  th, #titleDivider {
     display: none; /* Hide table headers on mobile */
   }
 
@@ -243,7 +243,11 @@ button {
   }
 
   .showDetails {
-    height: 80% !important;
+    height: auto;
+    max-height: 80vh;
+    overflow-y: auto;
+    padding: 20px;
+    margin: 10px;
   }
 
   tr {

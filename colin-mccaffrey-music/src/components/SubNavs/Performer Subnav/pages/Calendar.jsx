@@ -54,14 +54,6 @@ const Calendar = ({ props }) => {
         <div className="table-container">
           <h1 className="showsTitle">Calendar</h1>
           <table>
-            <thead>
-              {/* <tr>
-            <th>Date</th>
-            <th>Venue</th>
-            <th>Price</th>
-            <th>Actions</th>
-            </tr> */}
-            </thead>
             <tbody>
               {shows.map((show) => (
                 <tr
@@ -89,7 +81,7 @@ const Calendar = ({ props }) => {
                     {show.price > 0 ? `$${show.price}` : "Free"}
                   </td>
                   <td>
-                    <button id="tickets">
+                    {show.tickets ? <button id="tickets">
                       <a
                         href={show.tickets}
                         target="_blank"
@@ -97,7 +89,7 @@ const Calendar = ({ props }) => {
                       >
                         Buy Tickets
                       </a>
-                    </button>
+                    </button> : null}
                   </td>
                 </tr>
               ))}
