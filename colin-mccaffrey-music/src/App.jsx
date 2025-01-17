@@ -18,10 +18,6 @@ import ColinsCredits from "./components/SubNavs/Songwriter Subnav/pages/ColinsCr
 import Streaming from "./components/SubNavs/Songwriter Subnav/pages/Streaming";
 import Studio from "./components/SubNavs/Producer Subnav/pages/Studio";
 import { client } from "./sanity/client";
-
-//Yo I wanna fucking end it
-//Not enough nicotine in the world
-
 import "./App.css";
 import "./components/styles/Home.css";
 
