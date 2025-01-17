@@ -3,7 +3,6 @@ import { Outlet, useLocation } from "react-router-dom";
 import Streaming from "./pages/Streaming";
 import ColinsCredits from "./pages/ColinsCredits";
 import "./Songwriter.css";
-import SongwriterNavigation from "./SongwriterNavigation";
 import DocumentMeta from "react-document-meta";
 import SongwriterBlurb from "./pages/SongwriterBlurb";
 

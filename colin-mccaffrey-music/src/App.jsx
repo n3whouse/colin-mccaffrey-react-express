@@ -1,14 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import DocumentMeta from "react-document-meta";
-
 import Navigation from "./components/pages/Navigation";
 import Footer from "./components/Footer";
-
 import Home from "./components/pages/Home";
 import Bio from "./components/pages/Bio";
 import Store from "./components/pages/Store";
-import StoreTest from "./components/pages/_tests_/Store.test";
 import BookingAndContact from "./components/pages/BookingAndContact";
 import Performer from "./components/SubNavs/Performer Subnav/Performer";
 import Engineer from "./components/SubNavs/Producer Subnav/Engineer";
@@ -19,9 +16,11 @@ import GearAndPrograms from "./components/SubNavs/Producer Subnav/pages/GearAndP
 import ProductionCredits from "./components/SubNavs/Producer Subnav/pages/ProductionCredits";
 import ColinsCredits from "./components/SubNavs/Songwriter Subnav/pages/ColinsCredits";
 import Streaming from "./components/SubNavs/Songwriter Subnav/pages/Streaming";
-
 import Studio from "./components/SubNavs/Producer Subnav/pages/Studio";
 import { client } from "./sanity/client";
+
+//Yo I wanna fucking end it
+//Not enough nicotine in the world
 
 import "./App.css";
 import "./components/styles/Home.css";
@@ -42,7 +41,7 @@ function App() {
   }, []);
 
   // Extracting link names with fallback if undefined
-  let {
+  const {
     home = "home",
     bio = "bio",
     store = "store",
@@ -60,7 +59,6 @@ function App() {
   } = linkFive;
   const { colinsCredits = "credits", streaming = "streaming" } = linkSix;
 
-  booking = booking.split(" ")[0];
   // Meta info for SEO
   const meta = {
     title: "Colin McCaffrey",
@@ -95,7 +93,7 @@ function App() {
             <Route path={`${home}`} element={<Home />} />
             <Route path={`${bio}`} element={<Bio />} />
             <Route path={`${store}`} element={<Store />} />
-            <Route path={"booking"} element={<BookingAndContact />} />
+            <Route path={`${booking}`} element={<BookingAndContact />} />
 
             {/* Performer Subnav */}
             <Route path={`/${linkFour.mainLink}`} element={<Performer />}>
