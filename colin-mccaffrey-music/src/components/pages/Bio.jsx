@@ -52,12 +52,13 @@ const Bio = () => {
     fetchBioAndBioPic();
   }, []);
 
+  const bioPicUrl = urlFor(bioPic).url();
   return (
     <DocumentMeta {...meta}>
       <div className="bio-text">
         {bioPic && (
           <img
-            src={urlFor(bioPic).url()}
+            src={bioPicUrl}
             className="portrait"
             alt="Headshot of Colin smiling while holding his electric guitar"
           />
