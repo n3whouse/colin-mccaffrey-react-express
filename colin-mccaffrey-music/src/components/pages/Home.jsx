@@ -10,6 +10,7 @@ const builder = imageUrlBuilder(client);
 
 const Home = () => {
   const [headshot, setHeadshot] = useState(null);
+  const [photoCredit, setPhotoCredit] = useState("");
 
   function urlFor(source) {
     return builder.image(source);
@@ -41,15 +42,23 @@ const Home = () => {
   useEffect(() => {
     const fetchHeadshot = async () => {
       try {
-        const data = await client.fetch(`*[_type == 'siteSettings'][0]`);
+        const data = await client.fetch(`*[_type == 'siteSettings'][0]{
+          homeImage{
+          asset->{
+            _id,
+            creditLine
+            }
+          }
+        }`);
         if (data) {
           setHeadshot(data.homeImage?.asset || BannerImage);
-          console.log(headshot);
+          setPhotoCredit(data.homeImage.asset.creditLine);
+          console.log(photoCredit);
         }
       } catch (error) {}
     };
     fetchHeadshot();
-  });
+  }, []);
 
   return (
     <DocumentMeta {...meta}>
@@ -60,9 +69,11 @@ const Home = () => {
             src={headshot ? urlFor(headshot).url() : BannerImage}
             alt="Colin McCaffrey"
           />
-          <div className="creditContent">
-            <h3>Colin McCaffrey</h3>
-          </div>
+          {photoCredit && (
+            <div className="creditContent">
+              <p className="photoCredit">Photo by: {photoCredit}</p>
+            </div>
+          )}
         </div>
         <h1 id="headerTitle">Colin McCaffrey</h1>
       </div>

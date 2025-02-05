@@ -17,7 +17,18 @@ function Studio() {
     const fetchStudioPage = async () => {
       try {
         const data = await client.fetch(
-          `*[_type == 'engineer'][0]{studio{studioTitle, studioPhoto, studioBlurb}}`
+          `*[_type == 'engineer'][0]{
+  studio{
+    studioTitle, 
+      studioPhoto {
+        asset->{
+        _id,
+        creditLine
+        }
+        },
+      studioBlurb
+  }
+}`
         );
         setStudioData(data.studio);
       } catch (error) {
@@ -25,6 +36,7 @@ function Studio() {
       }
     };
 
+    console.log(studioData);
     fetchStudioPage();
   }, []);
 
@@ -35,13 +47,18 @@ function Studio() {
     <div className="studioContainer">
       <h1>{studioData.studioTitle}</h1>
       <div className="studio info">
-        {studioData.studioPhoto && (
-          <img
-            className="greenRoom"
-            src={urlFor(studioData.studioPhoto).url()}
-            alt={studioData.studioTitle}
-          />
-        )}
+        <div className="image-wrapper">
+          {studioData.studioPhoto && (
+            <img
+              className="greenRoom"
+              src={urlFor(studioData.studioPhoto).url()}
+              alt={studioData.studioTitle}
+            />
+          )}
+          <div className="creditContent">
+            <p className="photoCredit">Photo by: {studioData.studioPhoto.asset.creditLine}</p>
+          </div>
+        </div>
         <PortableText id="studioBlurb" value={studioData.studioBlurb} />
       </div>
     </div>

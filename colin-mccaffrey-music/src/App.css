@@ -45,6 +45,10 @@ body {
   transition: 0.6s;
 }
 
+.image-wrapper:hover .creditContent {
+  opacity: 1;
+}
+
 /* == img rules end == */
 
 .componentContainer {

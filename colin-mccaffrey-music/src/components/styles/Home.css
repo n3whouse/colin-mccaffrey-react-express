@@ -143,10 +143,6 @@ html {
   box-shadow: 0 0 10px -1px;
 }
 
-.greenRoom {
-  margin: 25px;
-}
-
 @media (max-width: 768px) {
   .greenRoom,
   .portrait {

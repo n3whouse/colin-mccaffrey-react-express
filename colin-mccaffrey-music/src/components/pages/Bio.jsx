@@ -85,11 +85,11 @@ const Bio = () => {
               src={urlFor(bioPic).url()}
               className="portrait"
               alt="Headshot of Colin smiling while holding his electric guitar"
-            ></img>
+            />
           )}
           {bioPic && bioPic.creditLine && (
             <div className="creditContent">
-              <h4>{bioPic.creditLine}</h4>
+              <p className="photoCredit">Photo by: {bioPic.creditLine}</p>
             </div>
           )}
         </div>
