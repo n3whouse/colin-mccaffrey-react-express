@@ -89,7 +89,7 @@ const Bio = () => {
           )}
           {bioPic && bioPic.creditLine && (
             <div className="creditContent">
-              <h2>{bioPic.creditLine}</h2>
+              <h4>{bioPic.creditLine}</h4>
             </div>
           )}
         </div>

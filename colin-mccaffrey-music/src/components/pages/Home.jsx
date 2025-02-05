@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "../styles/Home.css";
+import "../../App.css";
 import BannerImage from "../../assets/ColinTeleBarnBust.png";
 import DocumentMeta from "react-document-meta";
 import { client } from "../../sanity/client";
@@ -59,6 +60,9 @@ const Home = () => {
             src={headshot ? urlFor(headshot).url() : BannerImage}
             alt="Colin McCaffrey"
           />
+          <div className="creditContent">
+            <h3>Colin McCaffrey</h3>
+          </div>
         </div>
         <h1 id="headerTitle">Colin McCaffrey</h1>
       </div>

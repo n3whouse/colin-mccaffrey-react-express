@@ -9,15 +9,7 @@
 }
 
 .image-wrapper {
-  display: flex;
-  position: relative;
-  flex-direction: column;
   float: left;
-  flex-direction: column;
-  margin: 30px;
-  overflow: hidden;
-  border-radius: 6px;
-  box-shadow: 0 0 6px -1px;
 }
 .creditContent {
   display: flex;
@@ -27,7 +19,6 @@
   bottom: 0;
   left: 0;
   right: 0;
-  max-width: 20dvw;
   width: auto;
   height: auto;
   position: absolute;
