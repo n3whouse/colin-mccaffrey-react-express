@@ -26,7 +26,7 @@ export const songwriterType = defineType({
           title: 'Details',
           type: 'array',
           of: [{type: 'block'}],
-          validation: (Rule) => Rule.required(), 
+          validation: (Rule) => Rule.required(),
         }),
       ],
       group: 'blurb',
@@ -42,7 +42,7 @@ export const songwriterType = defineType({
           type: 'string',
         }),
         defineField({
-          name: 'details', 
+          name: 'details',
           title: 'Details',
           type: 'array',
           of: [{type: 'block'}],

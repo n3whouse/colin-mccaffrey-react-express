@@ -13,6 +13,16 @@ export const siteSettings = defineType({
   // Beginning of "Bio" field ----------------------------
   fields: [
     defineField({
+      name: 'homeImage',
+      title: 'Home Image',
+      type: 'image',
+      description:
+        'This is the image that will greet visitors front-and-center when navigating to your home page.',
+      options: {
+        hotspot: true,
+      },
+    }),
+    defineField({
       name: 'linkNames',
       title: 'Links',
       description:
@@ -23,26 +33,33 @@ export const siteSettings = defineType({
           name: 'home',
           title: 'Home Link',
           type: 'string',
+          description: 'The first link in the top row. This link is Home by default.',
         }),
         defineField({
           name: 'linkOne',
           title: 'Link One',
           type: 'string',
+          description: 'The first link after Home in the top row. This link is BIO by default.',
         }),
         defineField({
           name: 'linkTwo',
           title: 'Link Two',
           type: 'string',
+          description: 'The second link after Home in the top row. This link is STORE by default.',
         }),
         defineField({
           name: 'linkThree',
           title: 'Link Three',
           type: 'string',
+          description:
+            'The third link after Home in the top row. This link is BOOKING & CONTACT by default.',
         }),
         defineField({
           name: 'linkFour',
           title: 'Link Four',
           type: 'object',
+          description:
+            'The first link in the bottom row. This link is PERFORMER by default and has two sublinks.',
           fields: [
             defineField({
               name: 'mainLink',
@@ -63,11 +80,14 @@ export const siteSettings = defineType({
                       name: 'title',
                       title: 'Sub Link Title',
                       type: 'string',
+                      description: 'Sublink beneath default PERFORMER Main Link',
                     }),
                     defineField({
                       name: 'url',
                       title: 'Sub Link URL',
                       type: 'string',
+                      description:
+                        'I will leave this as editable, but please do NOT change without consulting me.',
                     }),
                   ],
                 }),
@@ -79,6 +99,7 @@ export const siteSettings = defineType({
           name: 'linkFive',
           title: 'Link Five',
           type: 'object',
+          description: 'The first link in the bottom row. This link is set to PRODUCER by default.',
           fields: [
             defineField({
               name: 'mainLink',
@@ -98,11 +119,14 @@ export const siteSettings = defineType({
                       name: 'title',
                       title: 'Sub Link Title',
                       type: 'string',
+                      description:
+                        'Changing this will change the title of the corresponding sublink underneath the default PRODUCER link.',
                     }),
                     defineField({
                       name: 'url',
                       title: 'Sub Link URL',
                       type: 'string',
+                      description: 'Please do NOT change without consult.',
                     }),
                   ],
                 }),
@@ -114,6 +138,8 @@ export const siteSettings = defineType({
           name: 'linkSix',
           title: 'Link Six',
           type: 'object',
+          description:
+            'The last link in the bottom row. This link is set to SONGWRITER by default.',
           fields: [
             defineField({
               name: 'mainLink',
@@ -158,8 +184,9 @@ export const siteSettings = defineType({
     }),
     defineField({
       name: 'profilePicture',
-      title: 'Profile Picture',
+      title: 'Bio Picture',
       type: 'image',
+      description: 'This image will appear on the BIO page',
       options: {
         hotspot: true,
       },

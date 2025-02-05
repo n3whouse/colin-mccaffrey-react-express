@@ -4,7 +4,7 @@ import {visionTool} from '@sanity/vision'
 import {schemaTypes} from './schemaTypes'
 import {structure} from './structure'
 import {defaultDocumentNode} from './structure/defaultDocumentNode'
-import {media} from 'sanity-plugin-media'
+import {media, mediaAssetSource} from 'sanity-plugin-media'
 
 export default defineConfig([
   {
@@ -34,6 +34,13 @@ export default defineConfig([
         },
       }),
     ],
+    form: {
+      file: {
+        assetSources: previousAssetSources => {
+          return previousAssetSources.filter(assetSource => assetSource !== mediaAssetSource)
+        }
+      }
+    }, 
     schema: {
       types: schemaTypes,
     },

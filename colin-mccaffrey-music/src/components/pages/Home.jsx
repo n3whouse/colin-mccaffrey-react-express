@@ -1,9 +1,20 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "../styles/Home.css";
 import BannerImage from "../../assets/ColinTeleBarnBust.png";
 import DocumentMeta from "react-document-meta";
+import { client } from "../../sanity/client";
+import imageUrlBuilder from "@sanity/image-url";
 
-function Home() {
+const builder = imageUrlBuilder(client);
+
+const Home = () => {
+  const [headshot, setHeadshot] = useState(null);
+
+  function urlFor(source) {
+    return builder.image(source);
+  }
+
+  // meta for site indexing
   const meta = {
     title: "Colin McCaffrey",
     description:
@@ -26,13 +37,32 @@ function Home() {
     },
   };
 
+  useEffect(() => {
+    const fetchHeadshot = async () => {
+      try {
+        const data = await client.fetch(`*[_type == 'siteSettings'][0]`);
+        if (data) {
+          setHeadshot(data.homeImage?.asset || BannerImage);
+          console.log(headshot);
+        }
+      } catch (error) {}
+    };
+    fetchHeadshot();
+  });
+
   return (
     <DocumentMeta {...meta}>
       <div className="homeContainer">
-        <img id="headshot" src={BannerImage} alt="Colin with his Telecaster" />
+        <div className="image-wrapper">
+          <img
+            id="headshot"
+            src={headshot ? urlFor(headshot).url() : BannerImage}
+            alt="Colin McCaffrey"
+          />
+        </div>
         <h1 id="headerTitle">Colin McCaffrey</h1>
       </div>
     </DocumentMeta>
   );
-}
+};
 export default Home;

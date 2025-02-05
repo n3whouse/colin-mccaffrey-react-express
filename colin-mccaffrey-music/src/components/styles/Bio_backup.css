@@ -1,41 +1,41 @@
 @import "../styles/Home.css";
 
 .portrait {
-  display: block;
+  display: flex;
   position: relative;
-  width: 100%;
-  height: auto;
-  max-width: 15dvw;
+  float: left;
+  flex-direction: column;
+  /* max-width: 20dvw; */
+  /* max-height: 50dvh; */
+  /* width: inherit; */
+  border-radius: 6px;
+  box-shadow: 0 0 6px -1px;
+  outline: 2px solid blue;
 }
 
 .image-wrapper {
   display: flex;
-  position: relative;
-  flex-direction: column;
   float: left;
   flex-direction: column;
-  margin: 30px;
-  overflow: hidden;
-  border-radius: 6px;
-  box-shadow: 0 0 6px -1px;
+  max-width: 20dvw;
+  outline: 2px solid green;
 }
 .creditContent {
   display: flex;
   justify-content: center;
   flex-direction: column;
   text-align: center;
-  bottom: 0;
-  left: 0;
-  right: 0;
   max-width: 20dvw;
   width: auto;
   height: auto;
   position: absolute;
+  top: 2;
+  margin-left: 0.8%;
   background: rgba(0, 0, 0, 0.6);
-  color: white;
   display: flex;
   opacity: 0;
   transition: 0.6s;
+  outline: 2px solid red;
 }
 
 .creditContent:hover {
@@ -51,8 +51,6 @@
 .homeContainer {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
 }
 .bio-text {
   width: 80%;

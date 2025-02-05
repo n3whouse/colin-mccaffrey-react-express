@@ -37,32 +37,62 @@ const Bio = () => {
   useEffect(() => {
     const fetchBioAndBioPic = async () => {
       try {
-        const data = await client.fetch(`*[_type == 'siteSettings'][0]`);
-        setBio(data.bio);
+        const data = await client.fetch(`*[_id == 'siteSettings']{
+          bio,
+          profilePicture {
+            asset->{
+              _id,
+              _ref,
+              _type,
+              altText,
+              description,
+              creditLine,
+              "tags": opt.media.tags[]->name.current,
+              title
+            }
+          }
+        }`);
 
-        // Check if the profilePicture exists and set the image object
-        if (data.profilePicture) {
-          setBioPic(data.profilePicture); // Set the entire object, not just the URL
+        if (data.length > 0) {
+          const siteSettings = data[0]; // Access the first item in the array
+          if (siteSettings.bio || "") {
+            setBio(siteSettings.bio || null);
+            setBioPic(siteSettings.profilePicture?.asset || null);
+          }
+
+          // Check if the profilePicture exists and set the asset object
+          if (
+            siteSettings.profilePicture &&
+            siteSettings.profilePicture.asset
+          ) {
+            setBioPic(siteSettings.profilePicture.asset); // Set the entire asset object
+          }
         }
       } catch (error) {
-        console.error({ message: "bio fetch failed", error });
+        console.error({ message: "Bio fetch failed", error });
       }
     };
 
     fetchBioAndBioPic();
   }, []);
 
-  const bioPicUrl = urlFor(bioPic).url();
   return (
     <DocumentMeta {...meta}>
       <div className="bio-text">
-        {bioPic && (
-          <img
-            src={bioPicUrl}
-            className="portrait"
-            alt="Headshot of Colin smiling while holding his electric guitar"
-          />
-        )}
+        <div className="image-wrapper">
+          {bioPic && (
+            <img
+              src={urlFor(bioPic).url()}
+              className="portrait"
+              alt="Headshot of Colin smiling while holding his electric guitar"
+            ></img>
+          )}
+          {bioPic && bioPic.creditLine && (
+            <div className="creditContent">
+              <h2>{bioPic.creditLine}</h2>
+            </div>
+          )}
+        </div>
         <PortableText className="bioBody" value={bio} />
       </div>
     </DocumentMeta>
