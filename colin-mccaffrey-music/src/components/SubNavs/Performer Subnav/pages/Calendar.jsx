@@ -2,6 +2,9 @@ import React, { useState, useEffect } from "react";
 import client from "../../../../sanity/client.js";
 import "../styles/Calendar.css";
 import ShowModal from "./ShowModal.jsx"; // Import the modal component
+import imageUrlBuilder from "@sanity/image-url";
+
+const builder = imageUrlBuilder(client);
 
 const Calendar = ({ props }) => {
   const [shows, setShows] = useState([]);
@@ -13,6 +16,12 @@ const Calendar = ({ props }) => {
       const showData = await client.fetch(`*[_type == 'show']{
         _id,
         name,
+        image {
+          asset->{
+            _id,
+            creditLine,
+            }
+          },
         date,
         price,
         tickets,
@@ -81,15 +90,17 @@ const Calendar = ({ props }) => {
                     {show.price > 0 ? `$${show.price}` : "Free"}
                   </td>
                   <td>
-                    {show.tickets ? <button id="tickets">
-                      <a
-                        href={show.tickets}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        Buy Tickets
-                      </a>
-                    </button> : null}
+                    {show.tickets ? (
+                      <button id="tickets">
+                        <a
+                          href={show.tickets}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          Buy Tickets
+                        </a>
+                      </button>
+                    ) : null}
                   </td>
                 </tr>
               ))}

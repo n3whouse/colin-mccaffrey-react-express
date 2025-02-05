@@ -5,6 +5,12 @@
   margin: auto;
 }
 
+#showImage {
+  display: flex;
+  width: 80%;
+  margin: auto;
+}
+
 #titleDivider {
   display: block;
   width: 80%;
@@ -182,7 +188,8 @@ button {
     justify-content: center;
   }
 
-  th, #titleDivider {
+  th,
+  #titleDivider {
     display: none; /* Hide table headers on mobile */
   }
 
@@ -196,7 +203,6 @@ button {
     border-bottom: 1px solid #ddd;
     word-wrap: break-word !important;
     white-space: normal;
-
   }
 
   #venueDetails {
@@ -224,7 +230,7 @@ button {
     font-weight: bold;
   }
 
- .showDate {
+  .showDate {
     font-size: 18px;
     font-weight: bold;
   }
@@ -259,7 +265,7 @@ button {
     width: auto;
     margin: auto;
   }
-  
+
   .modal-buttons {
     display: flex;
     flex-direction: column;
