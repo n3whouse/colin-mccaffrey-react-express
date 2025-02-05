@@ -15,6 +15,10 @@ body {
   display: flex;
 }
 
+.photoCredit {
+  font-size: 15px;
+}
+
 /* ======= Image Rules for Photo Credit ==== */
 .image-wrapper {
   display: flex;
@@ -22,7 +26,6 @@ body {
   flex-direction: column;
   max-width: 40%;
   margin: 30px;
-  overflow: hidden;
   border-radius: 6px;
   box-shadow: 0 0 6px -1px;
 }
@@ -87,7 +90,6 @@ body {
 img {
   display: flex;
   width: auto;
-  height: 40dvh;
   border-radius: 6px;
   box-shadow: 0 0 6px -1px;
 }

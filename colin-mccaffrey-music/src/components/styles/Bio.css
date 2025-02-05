@@ -10,6 +10,7 @@
 
 .image-wrapper {
   float: left;
+  margin: 20px;
 }
 .creditContent {
   display: flex;

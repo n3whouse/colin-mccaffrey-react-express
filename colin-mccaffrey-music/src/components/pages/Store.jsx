@@ -5,9 +5,10 @@ import imageUrlBuilder from "@sanity/image-url";
 import DocumentMeta from "react-document-meta";
 import PaypalAndShipping from "../../utils/PaypalAndShipping/PaypalAndShipping";
 
-function Store() {
-  const builder = imageUrlBuilder(client);
+const builder = imageUrlBuilder(client);
 
+function Store() {
+  const [photoCredit, setPhotoCredit] = useState("");
   function urlFor(source) {
     return builder.image(source);
   }
@@ -36,7 +37,7 @@ function Store() {
 
   const [releases, setReleases] = useState([]);
   const [selectedItem, setSelectedItem] = useState(null);
-  const [showShippingInfo, setShowShippingInfo] = useState(false)
+  const [showShippingInfo, setShowShippingInfo] = useState(false);
 
   useEffect(() => {
     const fetchStoreItems = async () => {
@@ -50,6 +51,7 @@ function Store() {
           coverArt {
             asset->{
               _id,
+              creditLine,
               url
             }
           },
@@ -64,6 +66,10 @@ function Store() {
     fetchStoreItems();
   }, []);
 
+  const selectedRelease = releases.find(
+    (release) => release._key === selectedItem
+  );
+
   const handleItemClick = (item) => {
     setSelectedItem(selectedItem === item ? null : item);
     setShowShippingInfo(false);
@@ -76,11 +82,7 @@ function Store() {
 
   const handlePhysicalOrder = () => {
     setShowShippingInfo((prev) => !prev);
-  }
-
-  const selectedRelease = releases.find(
-    (release) => release._key === selectedItem
-  );
+  };
 
   useEffect(() => {
     const handleClickOut = (e) => {
@@ -120,14 +122,30 @@ function Store() {
         <hr />
       </div>
 
+      {/* Begin Modal */}
+
       {selectedRelease && (
         <div className="modal-overlay" onClick={handleCloseModal}>
           <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-            <img
-              src={urlFor(selectedRelease.coverArt.asset).url()}
-              id={`modal-album-art`}
-              alt={selectedRelease.releaseTitle}
-            />
+            {/* Begin album art wrapper */}
+            <div className="image-wrapper albumArt">
+              <img
+                src={urlFor(selectedRelease.coverArt.asset).url()}
+                id={`modal-album-art`}
+                alt={selectedRelease.releaseTitle}
+              />
+
+              {selectedRelease && selectedRelease.coverArt.asset ? (
+                <div className="creditContent">
+                  <p className="photoCredit">
+                    Album Art:
+                    <br />
+                    {selectedRelease.coverArt.asset.creditLine}
+                  </p>
+                </div>
+              ) : null}
+            </div>
+            {/* End album art wrapper */}
 
             <h4>{selectedRelease.releaseTitle}</h4>
             <a
@@ -136,19 +154,18 @@ function Store() {
               rel="noopener noreferrer"
             >
               <button className="btn">Buy Now</button>
-              </a>
+            </a>
 
-              {selectedRelease.releaseType === "album" && (
-                <button className="btn" onClick={handlePhysicalOrder}>
-                  Order Physical Copy
-                  </button>
-              )}
-              <br />
-              {showShippingInfo && selectedRelease.releaseType === "album" && (
-                <PaypalAndShipping props={selectedRelease} />
-              )}
+            {selectedRelease.releaseType === "album" && (
+              <button className="btn" onClick={handlePhysicalOrder}>
+                Order Physical Copy
+              </button>
+            )}
+            <br />
+            {showShippingInfo && selectedRelease.releaseType === "album" && (
+              <PaypalAndShipping props={selectedRelease} />
+            )}
 
-  
             <br />
             {selectedRelease.releaseDescription && (
               <div className="description-container">
