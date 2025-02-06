@@ -38,7 +38,7 @@ function Studio() {
 
     console.log(studioData);
     fetchStudioPage();
-  }, []);
+  }, [studioData]);
 
   if (!studioData) {
     return <div>Loading...</div>;
@@ -56,7 +56,9 @@ function Studio() {
             />
           )}
           <div className="creditContent">
-            <p className="photoCredit">Photo by: {studioData.studioPhoto.asset.creditLine}</p>
+            <p className="photoCredit">
+              Photo by: {studioData.studioPhoto.asset.creditLine}
+            </p>
           </div>
         </div>
         <PortableText id="studioBlurb" value={studioData.studioBlurb} />

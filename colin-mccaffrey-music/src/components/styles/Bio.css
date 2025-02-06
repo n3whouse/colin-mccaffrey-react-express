@@ -1,5 +1,6 @@
 @import "../styles/Home.css";
 
+/* controls bio portrait */
 .portrait {
   display: block;
   position: relative;
@@ -10,6 +11,7 @@
 
 .image-wrapper {
   float: left;
+  width: auto;
   margin: 20px;
 }
 .creditContent {
@@ -25,7 +27,6 @@
   position: absolute;
   background: rgba(0, 0, 0, 0.6);
   color: white;
-  display: flex;
   opacity: 0;
   transition: 0.6s;
 }
@@ -56,41 +57,20 @@ p {
 }
 
 @media (max-width: 768px) {
-  .bodyContainer {
-    height: auto;
-    width: auto;
-    margin-top: auto;
-  }
   .portrait {
     display: flex;
     flex-direction: column;
     justify-content: center;
     width: 100%;
-    height: auto;
-    margin: 10% auto 10% auto;
+    height: 100%;
     object-fit: contain;
-    height: auto;
+    max-width: 100%;
   }
 
   .bio-text {
     display: flex;
     flex-direction: column;
     background-color: white;
+    width: 95%;
   }
-}
-
-.bio {
-  padding: 10px;
-}
-
-.bio .divider {
-  display: inline;
-}
-
-hr {
-  width: 10dvw;
-}
-
-.bio .nav a:not(:last-child) {
-  margin-right: 10px;
 }

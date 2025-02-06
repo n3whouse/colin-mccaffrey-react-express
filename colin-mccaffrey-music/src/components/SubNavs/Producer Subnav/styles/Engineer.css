@@ -10,14 +10,9 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width: 60dvw;
+  width: 70dvw;
   margin: auto;
   text-align: center;
-}
-
-.greenRoom {
-  float: left;
-  /* width: 20dvw; */
 }
 
 .textDivider {
@@ -41,7 +36,10 @@
 }
 
 @media (max-width: 768px) {
-  .studioContainer,
+  .studioContainer {
+    margin: auto;
+    width: 95%;
+  }
   .gearAndPrograms,
   .productionCredits {
     height: 100%;
@@ -51,9 +49,8 @@
   .greenRoom {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     width: 100%;
-    margin: 0 0 20px 0;
+    margin: auto;
   }
   p {
     text-align: center;

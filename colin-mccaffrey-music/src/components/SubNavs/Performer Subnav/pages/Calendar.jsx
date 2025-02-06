@@ -2,9 +2,6 @@ import React, { useState, useEffect } from "react";
 import client from "../../../../sanity/client.js";
 import "../styles/Calendar.css";
 import ShowModal from "./ShowModal.jsx"; // Import the modal component
-import imageUrlBuilder from "@sanity/image-url";
-
-const builder = imageUrlBuilder(client);
 
 const Calendar = ({ props }) => {
   const [shows, setShows] = useState([]);

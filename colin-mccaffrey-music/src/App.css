@@ -6,20 +6,15 @@
   font-family: "Courier New", Courier, monospace;
 }
 
+/* stops background from being shown + centers all for mobile, fits the navbar into the bodyContainer without letting it stick out */
+html,
 body {
-  padding: 0;
+  max-width: 100%;
+  overflow-x: hidden;
   margin: 0;
 }
 
-.home {
-  display: flex;
-}
-
-.photoCredit {
-  font-size: 15px;
-}
-
-/* ======= Image Rules for Photo Credit ==== */
+/* ======= image & credit rules ==== */
 .image-wrapper {
   display: flex;
   position: relative;
@@ -28,6 +23,7 @@ body {
   margin: 30px;
   border-radius: 6px;
   box-shadow: 0 0 6px -1px;
+  float: left;
 }
 .creditContent {
   display: flex;
@@ -52,7 +48,20 @@ body {
   opacity: 1;
 }
 
-/* == img rules end == */
+.photoCredit {
+  font-size: 15px;
+}
+
+/* ==== mobile image & credit rules ==== */
+
+@media (max-width: 768px) {
+  .image-wrapper {
+    width: 100%;
+    margin: 10% auto 10% auto;
+    max-width: 100%;
+    float: none;
+  }
+}
 
 .componentContainer {
   display: flex;
@@ -79,6 +88,20 @@ body {
   margin: auto;
 }
 
+.btn {
+  margin: auto;
+  font-weight: normal;
+  width: 20dvh;
+  height: auto;
+  font-size: 15px;
+  border-radius: 7px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  margin: 1% auto 2% auto;
+}
+
 #socialLinks {
   display: flex;
   margin: auto auto 15% auto;
@@ -95,7 +118,14 @@ img {
 }
 
 @media (max-width: 768px) {
+  .image-wrapper {
+    max-width: 95%;
+  }
   .contactInfo {
     height: 100dvh;
+  }
+  .btn {
+    display: flex;
+    width: 40dvh;
   }
 }

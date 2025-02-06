@@ -5,6 +5,7 @@ import Calendar from "./pages/Calendar";
 import DocumentMeta from "react-document-meta";
 
 function Performer() {
+  //meta info for site indexing
   const meta = {
     title: "Colin McCaffrey: Performer",
     description:
@@ -27,15 +28,14 @@ function Performer() {
     },
   };
 
+  //import the useLocation tool and call it location
   const location = useLocation();
-
-  const isCalendarSelected = location.pathname === "/performer/calendar";
-  const isMediaSelected = location.pathname === "/performer/media";
 
   return (
     <>
       <DocumentMeta {...meta}>
         <div className="componentContainer">
+          {/* do i even need this ? check pls */}
           {location.pathname === "/performer" && (
             <>
               <Calendar />

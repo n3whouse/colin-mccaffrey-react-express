@@ -6,12 +6,15 @@ import DocumentMeta from "react-document-meta";
 import { client } from "../../sanity/client";
 import imageUrlBuilder from "@sanity/image-url";
 
+//tool to build image urls for static backend assets
 const builder = imageUrlBuilder(client);
 
 const Home = () => {
+  // useStates for setting the headshot and credit
   const [headshot, setHeadshot] = useState(null);
   const [photoCredit, setPhotoCredit] = useState("");
 
+  //function to call builder tool
   function urlFor(source) {
     return builder.image(source);
   }
@@ -39,9 +42,11 @@ const Home = () => {
     },
   };
 
+  //GROQ query to fetch siteSettings from the backend
   useEffect(() => {
     const fetchHeadshot = async () => {
       try {
+        //extract homeImage and photoCredit from siteSettings. _id is necessary for pulling correct creditLine
         const data = await client.fetch(`*[_type == 'siteSettings'][0]{
           homeImage{
           asset->{
@@ -50,19 +55,23 @@ const Home = () => {
             }
           }
         }`);
+        //conditional render, fallback static asset, and error handling
         if (data) {
           setHeadshot(data.homeImage?.asset || BannerImage);
           setPhotoCredit(data.homeImage.asset.creditLine);
           console.log(photoCredit);
         }
-      } catch (error) {}
+      } catch (error) {
+        console.error({ message: "home image/photo credit fetch failed" });
+      }
     };
     fetchHeadshot();
-  }, []);
+  }, [photoCredit]);
 
   return (
     <DocumentMeta {...meta}>
       <div className="homeContainer">
+        {/* image-wrapper, creditContent, and photoCredit must stay nested in exactly this way for photo credits to appear the way they do and avoid breaking errors when photoCredit is null */}
         <div className="image-wrapper">
           <img
             id="headshot"
