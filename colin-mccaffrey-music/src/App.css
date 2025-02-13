@@ -52,6 +52,25 @@ body {
   font-size: 15px;
 }
 
+/* === Global link rules === */
+
+/* no underline for main links */
+a {
+  color: black;
+  text-decoration: none;
+}
+
+a:hover {
+  color: gray;
+}
+
+/* underline links for these specific pages and store modal */
+.studioContainer a,
+.creditsContainer a,
+.show-modal a {
+  text-decoration: underline dotted;
+}
+
 /* ==== mobile image & credit rules ==== */
 
 @media (max-width: 768px) {

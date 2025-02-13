@@ -3,7 +3,7 @@ import "../styles/Calendar.css";
 import imageUrlBuilder from "@sanity/image-url";
 import { client } from "../../../../sanity/client";
 
-// Function to render the blocks
+// This renders the any block type in the incoming show props by taking in the block and mapping through the children and joining them.
 const renderBlock = (block) => {
   if (block._type === "block") {
     return (
@@ -15,13 +15,17 @@ const renderBlock = (block) => {
   return null;
 };
 
+// builder variable is used to store the imageUrlBuilder tool i imported...
 const builder = imageUrlBuilder(client);
 
+// ..to be used in this function to generate the image url for any asset being pulled from the backend (source/client).
 function urlFor(source) {
   return builder.image(source);
 }
 
+// the ShowModal takes in the show props and renders the show details in a modal.
 const ShowModal = ({ show, onClose }) => {
+  // useStates conditionally render the show details and the image credits.
   const [detailsVisible, setDetailsVisible] = useState(false);
   const [imageCredit, setImageCredit] = useState("");
 
@@ -50,7 +54,7 @@ const ShowModal = ({ show, onClose }) => {
   return (
     <>
       <div className="modal-overlay" onClick={onClose}>
-        <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+        <div className="show-modal" onClick={(e) => e.stopPropagation()}>
           {!detailsVisible && (
             <>
               <div id="modalShowTitle">

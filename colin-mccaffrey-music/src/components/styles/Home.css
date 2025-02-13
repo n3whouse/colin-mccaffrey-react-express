@@ -193,16 +193,6 @@ h2 {
   text-align: center;
 }
 
-a {
-  color: black;
-  text-decoration: none;
-}
-
-a:hover {
-  color: gray;
-  /* text-decoration: none; */
-}
-
 .footer {
   display: block;
   background-color: white;

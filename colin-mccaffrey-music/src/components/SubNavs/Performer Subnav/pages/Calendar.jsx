@@ -3,7 +3,7 @@ import client from "../../../../sanity/client.js";
 import "../styles/Calendar.css";
 import ShowModal from "./ShowModal.jsx"; // Import the modal component
 
-const Calendar = ({ props }) => {
+const Calendar = () => {
   const [shows, setShows] = useState([]);
   const [selectedShow, setSelectedShow] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -36,6 +36,7 @@ const Calendar = ({ props }) => {
         }
       }`);
 
+      // this sorts the shows soonest to furthest out and saves them as sortedShows, then passing sortedShows to the shows state
       const sortedShows = showData.sort(
         (a, b) => new Date(a.date) - new Date(b.date)
       );
@@ -44,11 +45,13 @@ const Calendar = ({ props }) => {
     fetchData();
   }, []);
 
+  // if show is clicked, set selected calendar show and pass it to the modal, then open the modal.
   const handleShowClick = (show) => {
     setSelectedShow(show);
     setIsModalOpen(true);
   };
 
+  // if the modal is closed, set selected show to null and close the modal.
   const handleCloseModal = () => {
     setIsModalOpen(false);
     setSelectedShow(null);
