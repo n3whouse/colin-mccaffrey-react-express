@@ -9,9 +9,6 @@ import PaypalAndShipping from "../../utils/PaypalAndShipping/PaypalAndShipping";
 const builder = imageUrlBuilder(client);
 
 function Store() {
-  //may or may not be useful
-  // const [photoCredit, setPhotoCredit] = useState("");
-
   // using urlFor() uses imageUrlBuilder (builder) to take image asset from query and build a URL for it to display it correctly.
   function urlFor(source) {
     return builder.image(source);
@@ -67,6 +64,7 @@ function Store() {
           _key,
         }
       }`);
+
       // flattens the release list to make nested array of data a single array of release items out of the content of each release.
       const flattenedReleases = data.flatMap((release) => release.releaseList);
       setReleases(flattenedReleases);
@@ -150,7 +148,7 @@ function Store() {
                 alt={selectedRelease.releaseTitle}
               />
 
-              {selectedRelease && selectedRelease.coverArt.asset ? (
+              {selectedRelease.coverArt.asset.creditLine ? (
                 <div className="creditContent">
                   <p className="photoCredit">
                     Album Art:

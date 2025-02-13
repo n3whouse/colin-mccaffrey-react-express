@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "../styles/Calendar.css";
 import imageUrlBuilder from "@sanity/image-url";
 import { client } from "../../../../sanity/client";
+
 // Function to render the blocks
 const renderBlock = (block) => {
   if (block._type === "block") {
@@ -13,6 +14,7 @@ const renderBlock = (block) => {
   }
   return null;
 };
+
 const builder = imageUrlBuilder(client);
 
 function urlFor(source) {
@@ -21,15 +23,25 @@ function urlFor(source) {
 
 const ShowModal = ({ show, onClose }) => {
   const [detailsVisible, setDetailsVisible] = useState(false);
+  const [imageCredit, setImageCredit] = useState("");
+
   const showImageUrl = show.image ? urlFor(show.image.asset).url() : "";
 
-  // Prevent background scrolling when modal is open
   useEffect(() => {
     document.body.style.overflow = "hidden";
     return () => {
       document.body.style.overflow = "auto";
     };
   }, []);
+
+  useEffect(() => {
+    const fetchCreditLine = async () => {
+      if (show.image && show.image.asset) {
+        setImageCredit(show.image.asset.creditLine);
+      }
+    };
+    fetchCreditLine();
+  }, [show]);
 
   const toggleDetails = () => {
     setDetailsVisible((prev) => !prev);
@@ -43,19 +55,26 @@ const ShowModal = ({ show, onClose }) => {
             <>
               <div id="modalShowTitle">
                 <h2>{show.name}</h2>
-                {showImageUrl ? (
+              </div>
+              {showImageUrl ? (
+                <div className="image-wrapper showImageWrapper">
                   <img
                     src={showImageUrl}
-                    id="showImage"
+                    className="showImage"
                     alt="A header for the currently selected show"
                   />
-                ) : (
-                  " "
-                )}
-                <h4>
-                  {show.headline?.name ? `with ${show.headline.name}` : ""}
-                </h4>
-              </div>
+                  {imageCredit && (
+                    <div className="creditContent">
+                      <p className="photoCredit">
+                        Album Art:
+                        <br />
+                        {imageCredit}
+                      </p>
+                    </div>
+                  )}
+                </div>
+              ) : null}
+              <h4>{show.headline?.name ? `with ${show.headline.name}` : ""}</h4>
               <br />
               <hr id="titleDivider" />
 
