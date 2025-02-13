@@ -65,11 +65,7 @@ const ShowModal = ({ show, onClose }) => {
                   />
                   {imageCredit && (
                     <div className="creditContent">
-                      <p className="photoCredit">
-                        Album Art:
-                        <br />
-                        {imageCredit}
-                      </p>
+                      <p className="photoCredit">Photo by: {imageCredit}</p>
                     </div>
                   )}
                 </div>
