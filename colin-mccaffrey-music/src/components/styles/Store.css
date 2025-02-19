@@ -1,10 +1,6 @@
 @import "../styles/storeFlexMenu.css";
 @import "../../App.css";
 
-.componentContainer {
-  margin: 5% auto 5% auto;
-}
-
 .releaseTitle {
   width: auto;
   height: auto;
