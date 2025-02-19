@@ -1,6 +1,7 @@
 import {defineField, defineType} from 'sanity'
 import {CalendarIcon} from '@sanity/icons'
 import {DoorsOpenInput} from './components/DoorsOpenInput'
+import {ShowInfo} from './components/ShowInfo'
 export const showType = defineType({
   name: 'show',
   title: 'Show',
@@ -11,6 +12,14 @@ export const showType = defineType({
     {name: 'editorial', title: 'Editorial'},
   ],
   fields: [
+    defineField({
+      name: 'info',
+      type: 'string',
+      components: {
+        field: ShowInfo,
+      },
+      readOnly: true,
+    }),
     defineField({
       name: 'showType',
       type: 'string',
@@ -24,11 +33,13 @@ export const showType = defineType({
       name: 'name',
       type: 'string',
       group: ['details', 'editorial'],
+      description: 'Main title of the show (case-sensitive)',
     }),
     defineField({
       name: 'date',
       type: 'datetime',
       group: 'details',
+      description: 'Set date and time',
     }),
     defineField({
       name: 'price',
@@ -59,6 +70,7 @@ export const showType = defineType({
           }
           return true
         }),
+      description: 'Choose a pre-created venue or create a new one',
     }),
     defineField({
       name: 'headline',

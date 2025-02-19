@@ -8,10 +8,18 @@
 
 /* stops background from being shown + centers all for mobile, fits the navbar into the bodyContainer without letting it stick out */
 html,
-body {
+body,
+#root {
   max-width: 100%;
   overflow-x: hidden;
   margin: 0;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  text-align: center;
 }
 
 /* ======= image & credit rules ==== */
@@ -52,7 +60,19 @@ body {
   font-size: 15px;
 }
 
-/* === Global link rules === */
+/* = mobile image & credit rules = */
+
+@media (max-width: 768px) {
+  .image-wrapper {
+    width: 100%;
+    margin: 10% auto 10% auto;
+    max-width: 100%;
+    float: none;
+  }
+}
+
+/* =======End image & credit rules======== */
+/* ========= Global link & button rules ========== */
 
 /* no underline for main links */
 a {
@@ -64,6 +84,30 @@ a:hover {
   color: gray;
 }
 
+.btn {
+  margin: auto;
+  font-weight: normal;
+  width: 20dvh;
+  height: auto;
+  font-size: 15px;
+  border-radius: 7px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  margin: 1% auto 2% auto;
+  /* text-decoration: none !important; */
+}
+
+@media (max-width: 768px) {
+  .btn {
+    display: flex;
+    max-width: 80dvw;
+  }
+}
+
+/* =====End global link & button rules===== */
+
 /* underline links for these specific pages and store modal */
 .studioContainer a,
 .creditsContainer a,
@@ -71,17 +115,49 @@ a:hover {
   text-decoration: underline dotted;
 }
 
-/* ==== mobile image & credit rules ==== */
+/* ===========Global Modal Rules============ */
+
+/*Modal Styles */
+
+.modal-overlay {
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 1000;
+  max-height: 100%;
+  overflow: hidden;
+}
+
+.modal-content {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  max-height: 90vh;
+  max-width: 50vh;
+  overflow-y: auto;
+  background: white;
+  border-radius: 10px;
+  padding: 20px;
+  position: relative;
+}
 
 @media (max-width: 768px) {
-  .image-wrapper {
-    width: 100%;
-    margin: 10% auto 10% auto;
-    max-width: 100%;
-    float: none;
+  .modal-overlay {
+    padding-top: 10px;
+  }
+  .modal-content {
+    display: flex;
   }
 }
 
+/* =====Booking and Contact Page Rules===== */
 .componentContainer {
   display: flex;
   flex-direction: column;
@@ -107,21 +183,6 @@ a:hover {
   margin: auto;
 }
 
-.btn {
-  margin: auto;
-  font-weight: normal;
-  width: 20dvh;
-  height: auto;
-  font-size: 15px;
-  border-radius: 7px;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
-  margin: 1% auto 2% auto;
-  /* text-decoration: none !important; */
-}
-
 #socialLinks {
   display: flex;
   margin: auto auto 15% auto;
@@ -143,9 +204,5 @@ img {
   }
   .contactInfo {
     height: 100dvh;
-  }
-  .btn {
-    display: flex;
-    width: 40dvh;
   }
 }

@@ -54,7 +54,10 @@ const ShowModal = ({ show, onClose }) => {
   return (
     <>
       <div className="modal-overlay" onClick={onClose}>
-        <div className="show-modal" onClick={(e) => e.stopPropagation()}>
+        <div
+          className="modal-content show-modal"
+          onClick={(e) => e.stopPropagation()}
+        >
           {!detailsVisible && (
             <>
               <div id="modalShowTitle">
