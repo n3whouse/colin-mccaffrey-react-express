@@ -76,21 +76,27 @@ export const showType = defineType({
       name: 'headline',
       type: 'reference',
       to: [{type: 'artist'}],
+      description: 'Typically who you are playing alongside',
     }),
     defineField({
       name: 'image',
       type: 'image',
       group: 'editorial',
+      description:
+        'This is the image that displays on the show modal when someone clicks on this show on the calendar',
     }),
     defineField({
       name: 'details',
       type: 'array',
       of: [{type: 'block'}],
       group: 'editorial',
+      description: 'This description will show up when folks click this show on the calendar',
     }),
     defineType({
       name: 'tickets',
       type: 'url',
+      description:
+        'If you include a ticket link, a button for tickets will be enabled on both the calendar and the pop-up modals. If this is blank, the buttons will not appear',
     }),
   ],
   preview: {

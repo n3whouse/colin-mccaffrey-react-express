@@ -62,6 +62,7 @@ function Store() {
           purchaseLink,
           price,
           _key,
+          hostedButtonId,
         }
       }`);
 
@@ -161,22 +162,24 @@ function Store() {
             {/* End album art wrapper */}
 
             <h4>{selectedRelease.releaseTitle}</h4>
-            <a
+
+            {/* Old Buy Now button, to be removed to consolidate modal with PayPal additions */}
+            {/* <a
               href={selectedRelease.purchaseLink}
               target="_blank"
               rel="noopener noreferrer"
             >
               <button className="btn">Buy Now</button>
-            </a>
+            </a> */}
 
             {selectedRelease.releaseType === "album" && (
               <button className="btn" onClick={handlePhysicalOrder}>
-                Order Physical Copy
+                Order Now
               </button>
             )}
             <br />
             {showShippingInfo && selectedRelease.releaseType === "album" && (
-              <PaypalAndShipping props={selectedRelease} />
+              <PaypalAndShipping selectedRelease={selectedRelease} />
             )}
 
             <br />

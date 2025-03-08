@@ -1,15 +1,25 @@
 import {defineField, defineType} from 'sanity'
 import ReorderReleases from './components/ReorderReleases'
+import {ReleaseInfo} from './components/ReleaseInfo'
 
 export const releaseType = defineType({
   name: 'release',
   title: 'Release',
   type: 'document',
+  __experimental_formPreviewTitle: false,
   groups: [
     {name: 'releaseInfo', title: 'Release Info'},
     {name: 'customization', title: 'Customization'},
   ],
   fields: [
+    defineField({
+      name: 'info',
+      type: 'string',
+      components: {
+        field: ReleaseInfo,
+      },
+      readOnly: true,
+    }),
     defineField({
       name: 'releaseList',
       title: 'Release List',
@@ -17,7 +27,7 @@ export const releaseType = defineType({
       of: [
         {
           type: 'object',
-          fields: [ 
+          fields: [
             defineField({
               name: 'releaseTitle',
               title: 'Release Title',
@@ -30,11 +40,11 @@ export const releaseType = defineType({
               type: 'string',
               options: {
                 list: [
-                  {title: 'Single', value: 'single'}, 
+                  {title: 'Single', value: 'single'},
                   {title: 'Album', value: 'album'},
                 ],
                 layout: 'radio',
-              }
+              },
             }),
             defineField({
               name: 'releaseYear',
@@ -70,12 +80,18 @@ export const releaseType = defineType({
               description: 'Link to purchase release',
             }),
             defineField({
+              name: 'hostedButtonId',
+              title: 'Paypal Hosted Button ID',
+              type: 'string',
+            }),
+            defineField({
               name: 'price',
               title: 'Price',
               type: 'number',
-              description: 'Set the price of the release. The price will be displayed dynamically per release in each store modal.',
-              hidden: ({ parent }) => parent?.releaseType === 'single',
-              validation: (rule) => rule.min(0).error('Price must be a positive number.') 
+              description:
+                'Set the price of the release. The price will be displayed dynamically per release in each store modal.',
+              hidden: ({parent}) => parent?.releaseType === 'single',
+              validation: (rule) => rule.min(0).error('Price must be a positive number.'),
             }),
           ],
         },

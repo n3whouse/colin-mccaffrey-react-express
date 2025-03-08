@@ -15,7 +15,20 @@ export default defineConfig([
     basePath: '/product',
     // dataset: 'development',
     studioHost: 'colin-mccaffrey-music',
-
+    document: {
+      newDocumentOptions: (prev, {currentUser, creationContext}) => {
+        const {type, schemaType} = creationContext
+        if (type === 'global') {
+          return prev.filter(
+            (template) =>
+              template.templateId === 'venue' ||
+              template.templateId === 'show' ||
+              template.templateId === 'artist',
+          )
+        }
+        return prev
+      },
+    },
     plugins: [
       structureTool({
         structure,
@@ -36,11 +49,11 @@ export default defineConfig([
     ],
     form: {
       file: {
-        assetSources: previousAssetSources => {
-          return previousAssetSources.filter(assetSource => assetSource !== mediaAssetSource)
-        }
-      }
-    }, 
+        assetSources: (previousAssetSources) => {
+          return previousAssetSources.filter((assetSource) => assetSource !== mediaAssetSource)
+        },
+      },
+    },
     schema: {
       types: schemaTypes,
     },

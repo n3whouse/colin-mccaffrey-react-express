@@ -1,4 +1,5 @@
 import {defineField, defineType} from 'sanity'
+import {SiteInfo} from './components/SiteInfo'
 
 export const siteSettings = defineType({
   name: 'siteSettings',
@@ -12,6 +13,14 @@ export const siteSettings = defineType({
   ],
   // Beginning of "Bio" field ----------------------------
   fields: [
+    defineField({
+      name: 'info',
+      type: 'string',
+      components: {
+        field: SiteInfo,
+      },
+      readOnly: true,
+    }),
     defineField({
       name: 'homeImage',
       title: 'Home Image',

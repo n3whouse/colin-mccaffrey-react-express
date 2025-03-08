@@ -20,17 +20,13 @@ export const performerType = defineType({
           name: 'upcomingShowsHeadline',
           title: 'Headline',
           type: 'string',
+          description: 'The headline above the show calendar',
         }),
         defineField({
           name: 'upcomingShowsSubtitle',
           title: 'Subtitle',
           type: 'string',
-        }),
-        defineField({
-          name: 'addShow',
-          title: 'Add Show',
-          type: 'reference',
-          to: [{type: 'show'}],
+          description: 'Optional subtitle below the headline',
         }),
       ],
       group: 'calendar',
@@ -39,9 +35,12 @@ export const performerType = defineType({
       name: 'media',
       title: 'Media',
       type: 'array',
+      description:
+        'Add, edit, or delete media items under the Media sublink. This can be either uploaded video or a YouTube link. For uploading or changing mp3 files for the audio player, use the Audio Files tab on the left.',
       of: [
         defineField({
           type: 'object',
+
           fields: [
             defineField({
               name: 'mediaHeadline',
@@ -56,7 +55,6 @@ export const performerType = defineType({
               type: 'string',
               options: {
                 list: [
-                  {title: 'Audio (MP3)', value: 'audio'},
                   {title: 'Video (MP4)', value: 'video'},
                   {title: 'YouTube', value: 'youtube'},
                 ],
