@@ -1,15 +1,28 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import "../PaypalAndShipping/PaypalAndShipping.css";
-import PayPalButton from "./PayPalButton";
 
 function PaypalAndShipping({ selectedRelease }) {
+  const paypal = useRef();
+
+  useEffect(() => {
+    let paypalButton;
+    if (selectedRelease && selectedRelease.hostedButtonId) {
+      paypalButton = window.paypal.HostedButtons({
+        hostedButtonId: selectedRelease.hostedButtonId,
+      });
+      paypalButton.render(paypal.current);
+    }
+    return () => {
+      if (paypal.current) {
+        paypal.current.innerHTML = "";
+      }
+    };
+  }, [selectedRelease]);
+
   return (
     <>
-      {/* this section handles the payment options and the 'icons' will be controlled by the Buy Now button with a state called showIcons. when btn is clicked, setShowIcons is 'true' and relevant icons are displayed */}
-      {/* default: hidden when true && no link present. if link present, show when showIcons is true and hide when showIcons is false */}
-
       {/* PAYPAL BUTTON GOES HERE */}
-
+      <div ref={paypal}></div>
       <br />
       <section className="orderCD">
         You can easily order this CD by mail: Send a check or money order to $
